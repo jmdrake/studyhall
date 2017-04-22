@@ -187,10 +187,10 @@ shopping:
   - TallCop says: Beats me, but we will figure out soon enough.
   - Me says: Oh, no! Lucien is in danger!
   - Me says: I have to do something!
-  - var call: 0
+  - var call: false
   - choice:
     - Call Lucien.:
-      - var call: 1
+      - var call: true
       - scene: call
     - Run back home.:
       - scene: returnhome
@@ -207,8 +207,8 @@ call:
 
 returnhome:
   - show house: WITH FADE
-  - Me says: Oh, no! They're taken Lucien away.
-  - if: ({call} == 1)
+  - Me says: Oh, no! They've taken Lucien away.
+  - if: ({call} == true)
     ISTRUE:
       - show Lucien: eyesmile WITH FADE
       - Lucien says: The house is sparkling Allen!
@@ -217,13 +217,64 @@ returnhome:
     ISFALSE:
       - Me says: Shit! I didn't make it in time.
       - Me says: Maybe I should have called.
-  - Me says: I think I need to find a place to crash.
+  - Me says: Shit. I need to find a place to crash.
   - Me says: I think the guys were at the bar.
   - Me says: They might be able to give me a hand.
+  - var talkkerouac: false
+  - var talkburroughs: false
+  - var talkcorso: false
   - scene: bar
 
 bar:
   - show bar: WITH FADE
+  - Me says: So...
+  - Me says: Jack is playing pool.
+  - Me says: William is getting high in one of the couches.
+  - Me says: And there's a stranger at the bar.
+  - Me says: He seems nice.
+  - choice:
+    - Talk to Jack:
+      - var talkkerouac: true
+      - scene: kerouacbar
+    - Talk to William:
+      - var talkburroughs: true
+      - scene: burroughsbar
+    - Talk to stranger:
+      - var talkcorso: true
+      - scene: corsobar
+
+kerouacbar:
+  - show Kerouac: eyesmile WITH FADE
+
+burroughsbar:
+  - show Burroughs: evil WITH FADE
+
+corsobar:
+  - show Corso: downcast WITH FADE
+  - Corso says: You're in the way.
+  - show Corso: angry WITH CUT
+  - Me says: Is that your beer?
+  - Me says: Want me to hand it over?
+  - show Corso: normal WITH CUT
+  - Corso says: Now it is.
+  - show Corso: smile WITH CUT
+  - Me says: So...
+  - choice:
+    - What do you do around here?:
+      - Me says: Besides drinking other people's drinks.
+    - Do you come here often?:
+      - show Corso: normal WITH CUT
+      - Corso says: Every once in a while.
+      - show Corso: smile WITH CUT
+      - Corso says: I'm Greg.
+      - Corso says: And you're?
+      - show Corso: normal WITH CUT
+      - Me says: Allen. I'm a poet. I try to.
+      - show Corso: smile WITH CUT
+      - Corso says: That's nice. I live in a library, you know?
+      - show Corso: normal WITH CUT
+      - Me says: You do?
+
 
 #   - play lovecats: WITH FADE
 #   - text: You...
