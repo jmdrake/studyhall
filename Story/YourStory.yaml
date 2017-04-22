@@ -11,12 +11,12 @@ setup:
         normal: assets/characters/burroughs/m2_default.png
     TallCop:
       displayName: Tall Cop
-      speechColour: "#FF530D"
+      speechColour: "#546160"
       looks:
         normal: assets/characters/burroughs/m2_default.png
     ShortCop:
       displayName: Short Cop
-      speechColour: "#FF530D"
+      speechColour: "#546160"
       looks:
         normal: assets/characters/burroughs/m2_default.png
     Burroughs:
@@ -208,15 +208,15 @@ call:
 returnhome:
   - show house: WITH FADE
   - Me says: Oh, no! They're taken Lucien away.
-  # - if: ({call} == 1)
-  #   ISTRUE:
-  #       - show Lucien: eyesmile WITH FADE
-  #       - Lucien says: The house is sparkling Allen!
-  #       - Me says: Lucien... that's not what I meant...
-  #       - hide Lucien: WITH FADE
-  #   ISFALSE:
-  #       - Me says: Shit! I didn't make it in time.
-  #       - Me says: Maybe I should have called.
+  - if: ({call} == 1)
+    ISTRUE:
+      - show Lucien: eyesmile WITH FADE
+      - Lucien says: The house is sparkling Allen!
+      - Me says: Lucien... that's not what I meant...
+      - hide Lucien: WITH FADE
+    ISFALSE:
+      - Me says: Shit! I didn't make it in time.
+      - Me says: Maybe I should have called.
   - Me says: I think I need to find a place to crash.
   - Me says: I think the guys were at the bar.
   - Me says: They might be able to give me a hand.
