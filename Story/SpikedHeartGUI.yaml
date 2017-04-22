@@ -1,0 +1,76 @@
+simpleGUI:
+  assets:
+    images:
+      menuBackground: assets/gui/portada.jpg
+      settingsBackground: assets/gui/SettingsBG.png
+      sliderFull: assets/gui/SliderFull.png
+      sliderEmpty: assets/gui/SliderEmpty.png
+      textBox: assets/gui/Textbox.png
+      nameBox: assets/gui/NameBox.png
+      ctc: assets/gui/CTC.png
+    spritesheets:
+      startButton: assets/gui/StartButton.png 214 54
+      loadButton: assets/gui/LoadButton.png 214 54
+      settingsButton: assets/gui/SettingsButton.png 214 54
+      returnButton: assets/gui/ReturnButton.png 214 54
+      qmAutoButton: assets/gui/AutoQButton.png 101 57
+      qmSkipButton: assets/gui/SkipQButton.png 101 57
+      qmSettingsButton: assets/gui/MenuQButton.png 101 57
+      qmSaveButton: assets/gui/SaveQButton.png 101 57
+      choice: assets/gui/Choice.png 720 96
+    sound:
+      bgm: assets/audio/nowherefast.WAV
+  hud:
+    message:
+      box: textBox 43 480
+      text:
+        font: 16pt elliotsix
+        boundingBox: 50 30 700 70
+        fill: "#49094d"
+    name:
+      box: nameBox 6 -50
+      text:
+        font: 18pt elliotsix
+        boundsAlignH: center
+        boundsAlignV: middle
+    choice:
+      box: choice
+      text:
+        font: 20pt elliotsix
+        boundsAlignH: center
+        boundsAlignV: middle
+        fill: "#49094d"
+    buttons:
+      auto: qmAutoButton 175 550
+      skip: qmSkipButton 280 550
+      save: qmSaveButton 395 550
+      settings: qmSettingsButton 510 550
+    ctc: ctc -10 -40
+  menus:
+    main: 
+      background: menuBackground 0 0
+      music: bgm
+      buttons: 
+        start: startButton 570 40
+        load: loadButton 570 100
+        settings: settingsButton 570 160
+    settings:
+      background: settingsBackground 0 0
+      buttons:
+        return: returnButton 72 507
+        start: startButton 299 507
+        load: loadButton 525 507
+      sliders:
+        textSpeed: 
+          full: sliderFull 425 245
+          empty: sliderEmpty 425 245
+        autoSpeed:
+          full: sliderFull 425 395
+          empty: sliderEmpty 425 395
+        bgmv:
+          full: sliderFull 90 245
+          empty: sliderEmpty 90 245
+        sfxv:
+          full: sliderFull 90 395
+          empty: sliderEmpty 90 395
+   

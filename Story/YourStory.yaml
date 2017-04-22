@@ -1,0 +1,514 @@
+setup:
+  backgrounds:
+    house: assets/backgrounds/house.jpg
+    street: assets/backgrounds/street.jpg
+    bar: assets/backgrounds/bar.jpg
+    dream: assets/backgrounds/dream.jpg
+  characters:
+    Me:
+      speechColour: "#ff0000"
+      looks:
+        normal: assets/characters/burroughs/m2_default.png
+    TallCop:
+      displayName: Tall Cop
+      speechColour: "#ff0000"
+      looks:
+        normal: assets/characters/burroughs/m2_default.png
+    ShortCop:
+      displayName: Short Cop
+      speechColour: "#ff0000"
+      looks:
+        normal: assets/characters/burroughs/m2_default.png
+    Burroughs:
+      speechColour: "#ff00ff"
+      looks:
+        normal: assets/characters/burroughs/m2_default.png
+        angry: assets/characters/burroughs/m2_angry.png
+        blush: assets/characters/burroughs/m2_blush.png
+        confused: assets/characters/burroughs/m2_confused.png
+        cry: assets/characters/burroughs/m2_cry.png
+        downcast: assets/characters/burroughs/m2_downcast.png
+        dread: assets/characters/burroughs/m2_dread.png
+        evil: assets/characters/burroughs/m2_evil.png
+        eyesmile: assets/characters/burroughs/m2_eyesmile.png
+        flustered: assets/characters/burroughs/m2_flustered.png
+        frown: assets/characters/burroughs/m2_frown.png
+        grin: assets/characters/burroughs/m2_grin.png
+        pout: assets/characters/burroughs/m2_pout.png
+        sad: assets/characters/burroughs/m2_sad.png
+        scared: assets/characters/burroughs/m2_scared.png
+        shock: assets/characters/burroughs/m2_shock.png
+        smile: assets/characters/burroughs/m2_smile.png
+        smirk: assets/characters/burroughs/m2_smirk.png
+        surprised: assets/characters/burroughs/m2_surprised.png
+        wink: assets/characters/burroughs/m2_wink.png
+    Kerouac:
+      speechColour: "#ff0000"
+      looks:
+        normal: assets/characters/kerouac/m1_default.png
+        angry: assets/characters/kerouac/m1_angry.png
+        blush: assets/characters/kerouac/m1_blush.png
+        confused: assets/characters/kerouac/m1_confused.png
+        cry: assets/characters/kerouac/m1_cry.png
+        downcast: assets/characters/kerouac/m1_downcast.png
+        dread: assets/characters/kerouac/m1_dread.png
+        evil: assets/characters/kerouac/m1_evil.png
+        eyesmile: assets/characters/kerouac/m1_eyesmile.png
+        flustered: assets/characters/kerouac/m1_flustered.png
+        frown: assets/characters/kerouac/m1_frown.png
+        grin: assets/characters/kerouac/m1_grin.png
+        pout: assets/characters/kerouac/m1_pout.png
+        sad: assets/characters/kerouac/m1_sad.png
+        scared: assets/characters/kerouac/m1_scared.png
+        shock: assets/characters/kerouac/m1_shock.png
+        smile: assets/characters/kerouac/m1_smile.png
+        smirk: assets/characters/kerouac/m1_smirk.png
+        surprised: assets/characters/kerouac/m1_surprised.png
+        wink: assets/characters/kerouac/m1_wink.png
+    Corso:
+      speechColour: "#00ff00"
+      looks:
+        normal: assets/characters/corso/m5_default.png
+        angry: assets/characters/corso/m5_angry.png
+        blush: assets/characters/corso/m5_blush.png
+        confused: assets/characters/corso/m5_confused.png
+        cry: assets/characters/corso/m5_cry.png
+        downcast: assets/characters/corso/m5_downcast.png
+        dread: assets/characters/corso/m5_dread.png
+        evil: assets/characters/corso/m5_evil.png
+        eyesmile: assets/characters/corso/m5_eyesmile.png
+        flustered: assets/characters/corso/m5_flustered.png
+        frown: assets/characters/corso/m5_frown.png
+        grin: assets/characters/corso/m5_grin.png
+        pout: assets/characters/corso/m5_pout.png
+        sad: assets/characters/corso/m5_sad.png
+        scared: assets/characters/corso/m5_scared.png
+        shock: assets/characters/corso/m5_shock.png
+        smile: assets/characters/corso/m5_smile.png
+        smirk: assets/characters/corso/m5_smirk.png
+        surprised: assets/characters/corso/m5_surprised.png
+        wink: assets/characters/corso/m5_wink.png
+    Lucien:
+      speechColour: "#00ff00"
+      looks:
+        normal: assets/characters/lucien/m7_default.png
+        angry: assets/characters/lucien/m7_angry.png
+        blush: assets/characters/lucien/m7_blush.png
+        confused: assets/characters/lucien/m7_confused.png
+        cry: assets/characters/lucien/m7_cry.png
+        downcast: assets/characters/lucien/m7_downcast.png
+        dread: assets/characters/lucien/m7_dread.png
+        evil: assets/characters/lucien/m7_evil.png
+        eyesmile: assets/characters/lucien/m7_eyesmile.png
+        flustered: assets/characters/lucien/m7_flustered.png
+        frown: assets/characters/lucien/m7_frown.png
+        grin: assets/characters/lucien/m7_grin.png
+        pout: assets/characters/lucien/m7_pout.png
+        sad: assets/characters/lucien/m7_sad.png
+        scared: assets/characters/lucien/m7_scared.png
+        shock: assets/characters/lucien/m7_shock.png
+        smile: assets/characters/lucien/m7_smile.png
+        smirk: assets/characters/lucien/m7_smirk.png
+        surprised: assets/characters/lucien/m7_surprised.png
+        wink: assets/characters/lucien/m7_wink.png
+  cgs:
+    comb: assets/objects/Comb.png
+    hairpin: assets/objects/Hairpin.png
+    remote: assets/objects/Remote.png
+  music:
+    handsomedevil: assets/audio/handsomedevil.WAV
+    lovecats: assets/audio/lovecats.WAV
+    neverhad: assets/audio/neverhadnooneever.WAV
+    nowherefast: assets/audio/nowherefast.WAV
+    please: assets/audio/pleasepleasepleaseletmegetwhatiwant.WAV
+    theboy: assets/audio/theboywiththethorninhisside.WAV
+    charmingman: assets/audio/thischarmingman.WAV
+  sfx:
+    catfight: assets/audio/angry4.wav
+    catwarning: assets/audio/angry6.wav
+    miau: assets/audio/cat2.wav
+    magic: assets/audio/magic.wav
+    throw: assets/audio/throw.wav
+    explosionSound: assets/audio/throw.wav
+    staticSound: assets/audio/static.mp3
+  extra:
+    spritesheets:
+      explosion: assets/effects/explosion.png 450 274
+      static: assets/ambient/static.png 320 256
+
+start:
+  - show dream: WITH FADE
+  - Me says: I love you Lucien.
+  - show Lucien: blush AT RIGHT WITH FADE
+  - Lucien says: I know.
+  - show Lucien: smile AT RIGHT WITH CUT
+  - Me says: It's so nice to be around you Jack
+  - show Kerouac: eyesmile AT CENTER WITH FADE
+  - Kerouac says: I know, right?
+  - show Kerouac: smile AT CENTER WITH CUT
+  - Kerouac says: We have so much fun together
+  - show Burroughs: normal AT LEFT WITH FADE
+  - show Burroughs: wink AT LEFT WITH CUT
+  - hide Lucien: WITH FADE
+  - hide Kerouac: WITH FADE
+  - hide Burroughs: WITH FADE
+  - scene: breakfast
+
+breakfast:
+  - show house: WITH FADE
+  - show Lucien: smile AT CENTER WITH FADE
+  - Lucien says: Good morning!
+  - hide Lucien: WITH FADE
+  - Me says: I guess I was dreaming. It was so pretty though.
+  - Me says: Lucien, did you have breakfast yet?
+  - Lucien says: No, but I guess you can make some toast.
+  - Lucien says: I think the toaster is behind the pile of stolen tellies.
+  # this should be an interrupt
+  - choice:
+    - Are you a criminal Lucien!?:
+      - Lucien says: They've been here all week. How come you're so surprised.
+      - Me says: ...
+    - Oh, ok.:
+      - Me says: Lucien, you should tide up a bit. This is a mess.
+  - Me says: Mmmm, there's a lot of stuff in here.
+  - wait: 300
+  - Me says: Found it!
+  - Me says: Where's the bread?
+  - Lucien says: I think we're out.
+  - Me says: Ok, guess I'll go get some.
+  - Me says: Be right back.
+  - scene: shopping
+
+shopping:
+  - show street: WITH FADE
+  - ShortCop says: Is this the place?
+  - TallCop says: Yeah, seems like it.
+  - ShortCop says: How did he manage to steal a shipment of stolen TV sets?
+  - TallCop says: Beats me, but we will figure out soon enough.
+  - Me says: Oh, no! Lucien is in danger!
+  - Me says: I have to do something!
+  - var call: 0
+  - choice:
+    - Call Lucien.:
+      - var call: 1
+      - scene: call
+    - Run back home.:
+      - scene: returnhome
+
+call:
+  - show street: WITH FADE
+  - Me says: Lucien, please pick up...
+  - Lucien says: Hello, who's this?
+  - Me says: It's me Allen.
+  - Me says: The cops are coming to your house.
+  - Me says: Lucien, you need to clean up.
+  - Lucien says: Sure, thanks for the heads up!
+  - scene: returnhome
+
+returnhome:
+  - show house: WITH FADE
+  - Me says: Oh, no! They're taken Lucien away.
+  # - if: ({call} == 1)
+  #   ISTRUE:
+  #       - show Lucien: eyesmile WITH FADE
+  #       - Lucien says: The house is sparkling Allen!
+  #       - Me says: Lucien... that's not what I meant...
+  #       - hide Lucien: WITH FADE
+  #   ISFALSE:
+  #       - Me says: Shit! I didn't make it in time.
+  #       - Me says: Maybe I should have called.
+  - Me says: I think I need to find a place to crash.
+  - Me says: I think the guys were at the bar.
+  - Me says: They might be able to give me a hand.
+  - scene: bar
+
+bar:
+  - show bar: WITH FADE
+
+#   - play lovecats: WITH FADE
+#   - text: You...
+#   - text: Who are you?
+#   - text: Where are you?
+#   - text: Are your eyes opened?
+#   - var points: 0
+#   - show comb: AT 200,200
+#     zoom: 2
+#   - animate comb:
+#     angle: 180
+#     position:
+#       x: 300
+#       y: 300
+#   - hide comb: WITH CUT
+#   - Cereza says: SPIKE!!!
+#   - effect: EXPLOSION
+#   - effect: SHAKE
+#   - choice:
+#       - win 1 point:
+#         - var points: 1 + {points}
+#       - win 2 points:
+#         - var points: 2 + {points}
+#   - show Spike: surprise AT LEFT WITH FADE
+#   - Spike says: What!?
+#   - text: You start to remember
+#   - text: You are...
+#   - text: you have {points} points!
+#   - show Spike: normal
+#   - if: ({points} == 2)
+#     ISTRUE:
+#       - text: you think you are so clever
+#     ISFALSE:
+#       - text: you could have 2 points, why only one?
+#   - Spike says: I am Spike
+#   - var texto: this is text
+#   - ambient: STATIC
+#   - Spike says: But where am I?
+#   - text: You start walking until...
+#   - show Spike: AT RIGHT WITH MOVE
+#     flipped: true
+#   - text: the text says {texto}
+#   - Spike says: What a strange place
+#   - Spike says: Did I fall to the sea?
+#   - Spike says: Or am I flying?
+#   - Spike says: I can't remember...
+#   - text: You look around, trying to make sense of all this
+#   - Spike says: If I could only get to those fishes
+#   - text: You start running and jumping
+#   - text: And then...
+#   - ambient: CLEAR
+#   - show Spike: AT LEFT WITH MOVE
+#     flipped: false
+#   - Cereza says: SPIIIIIIIIiiiiiiiikeeeeEEEEEEE
+#   - effect: SHAKE
+#   - show Spike: surprise
+#   - Spike says: What?
+#   - show Cereza: normalFairy AT RIGHT WITH FADE
+#   - Cereza says: sppPPPPPppiiiiiikkEEEEEEeeeee
+#   - Spike says: Cereza...? Where are we?
+#   - Spike says: Thiiiiiiissss iiiissss a dreaaaaaaaaaaam
+#   - show Spike: normal
+#   - Spike says: Do you have to talk like that?
+#   - show Cereza: happyFairy
+#   - Cereza says: No...
+#   - Cereza says: But it is a dream soooooo
+#   - Spike says: Don't
+#   - Cereza says: "..."
+#   - Cereza says: Yooooouuu
+#   - Spike says: Just, just don't
+#   - show Cereza: normalFairy
+#   - Cereza says: Fine, if you are gonna be like that, I'll go straight to the point
+#   - Cereza says: You have 6 hours
+#   - Spike says: For what?
+#   - Cereza says: To know who do you love the most. OR ELSE
+#   - Spike says: Or else what?
+#   - show Cereza: happyFairy
+#   - Cereza says: OR ELSE!!!!
+#   - Spike says: "..."
+#   - Cereza says: "..."
+#   - Cereza says: That's all bye!
+#   - hide Cereza: WITH FADE
+#   - Spike says: Wait... wha
+#   - hide Spike: WITH CUT
+#   - scene: sixHoursRemaining
+#
+# sixHoursRemaining:
+# # start:
+#   - play charmingman: WITH FADE
+#   - show hall: WITH FADE
+#   - text: You wake up, finally
+#   - text: you just fell asleep next to your food bowl
+#   - show Spike: surprise AT LEFT WITH FADE
+#   - Spike says: Was that a dream?
+#   - Spike says: ...
+#   - show Spike: normal
+#   - Spike says: Maybe I should...
+#   - Spike says: What a strange quest I have
+#   - Spike says: To find the one I love
+#   - Spike says: But do I love anyone...
+#   - Spike says: I should find out
+#   - text: Six hors remaining...
+#   - text: But for what?
+#   - scene: whatToDo
+#
+# fiveHoursRemaining:
+#   - play charmingman: WITH FADE
+#   - show hall: WITH FADE
+#   - show Spike: normal AT LEFT WITH FADE
+#   - text: Five hours remaining
+#   - Spike says: Am I closer to my goal yet?
+#   - Spike says: Only five hours
+#   - Spike says: I must choose my actions wisely
+#   - scene: whatToDo
+#
+# whatToDo:
+#   - Spike says: What should I do?
+#   - choice:
+#       - Go to the kitchen:
+#         - scene: inKitchen
+#       - Go to the bedroom:
+#         - scene: inBedroom0
+#       - Go to the courtyard:
+#         - scene: inCourtyard
+#       - Go to the livingroom:
+#         - scene: inLivingroom
+#
+# inBedroom0:
+#   - show bedroom: WITH FADE
+#   - text: The bedroom is dark, and someone sleeps in the bed...
+#   - Spike says: Who could be sleeping at this time?
+#   - text: Spike gets on the bed and finds Martin!
+#   - show Spike: surprise
+#   - Spike says: Doesn't he need to get to work?
+#   - show Spike: normal
+#   - Spike says: Maybe I should wake him up...
+#   - Spike says: Or Maybe not
+#   - Spike says: He's so soft and cozy...
+#   - Spike says: I could just sleep some myself
+#   - choice:
+#       - Just a nap, it won't hurt anyone:
+#         - hide Spike: WITH FADE
+#         - wait: 250
+#         - show Spike: love AT LEFT WITH FADE
+#         - Spike says: Well, that was nice
+#         - show Martin: sad AT RIGHT
+#         - Martin says: Oh no, I overslept, my boss is gonna be angry
+#         - hide Martin: WITH FADE
+#         - show Spike: normal
+#         - Spike says: Well, it's not like I could've done anything...
+#         - hide Spike: WITH FADE
+#         - scene: fiveHoursRemaining
+#       - Jump on top of Martin, that'll wake him up:
+#         - show Spike: mischief
+#         - effect: SHAKE
+#         - Spike says: Wake up!!!
+#         - show Martin: surprise AT RIGHT
+#         - Martin says: Whaaa!?!?!?
+#         - Spike says: Good morning
+#         - scene: martinAngry
+#       - Make him some coffee:
+#         - scene: coffeePuzzle
+#       - Go somewhere else:
+#         - scene: whatToDo
+#
+# martinAngry:
+#   - show Martin: angry
+
+
+
+#   - show: Deuzilene
+#     transition: FADE
+#   - show: Deuzilene
+#     transition: MOVE
+#     position: LEFT
+#   - show: fixinshit
+#     zoom: 2
+#     position:
+#       x: 450
+#       y: 550
+#   - animate: fixinshit
+#     position:
+#       x: 1400
+#       y: 1150
+#     zoom: 3
+#   - wait: 400
+#   - text: She was fixin da shit
+#   - hide: fixinshit
+#     transition: FADETOBLACK
+#   - say: Deuzilene
+#     text: Asdf Qwer asdf qwer, sdfga qwer asdf. Aqwer sadf lkjqwer lkasjdf lasdj kwqs. Qqwerkl, asdf lkj!!!! asdf qwer!!
+#   - show: Jair
+#     transition: FADE
+#   - effect: SHAKE
+#   - say: Jair
+#     text: asdfq, qwer aszsa
+#   - hide: Jair
+#     transition: FADE
+#   - text: asdf asqqwe asdfqwe
+#   - choice:
+#       - Rain:
+#         - show: Deuzilene
+#           look: happy
+#           transition: CUT
+#         - ambient: RAIN
+#       - Snow:
+#         - effect: SOUND
+#           sfx: howl
+#         - show: Deuzilene
+#           look: normal
+#           transition: CUT
+#         - ambient: SNOW
+#       - Cherry Blossoms:
+#         - show: Deuzilene
+#           look: angry
+#           transition: CUT
+#         - ambient: SAKURA
+#         - scene: happiness
+#   - show: Jair
+#     look: angry
+#   - say: Jair
+#     text: Make it stop
+#   - ambient: CLEAR
+#   - scene: fight
+
+# fight:
+#   - show: Deuzilene
+#     look: angry
+#   - show: Jair
+#     look: angry
+#     position: RIGHT
+#     transition: MOVE
+#   - text: FIGHT STARTING
+#   - effect: ATTACK
+#   - say: Jair
+#     text: You'll need more than that
+#   - say: Deuzilene
+#     text: I'd like to see you try
+#   - effect: MULTIATTACK
+#   - say: Deuzilene
+#     text: You think that's enough?
+#   - say: Deuzilene
+#     text: Brace yourself
+#   - effect: CHAINATTACK
+
+# happiness:
+#   - show: school_park
+#   - show: Jair
+#     position: RIGHT
+#     transition: FADE
+#   - play: asdf
+#     transition: FADE
+#   - say: Deuzilene
+#     text: asdf
+#   - show: Deuzilene
+#     look: happy
+#     transition: CUT
+#   - jsScript: !!js/function >
+#       function() {
+#         console.log("asdf inside funcion qwer");
+#         RenJS.resolve();
+#       }
+#   - say: Deuzilene
+#     text: Don't you dare interrupt me while I talk
+#   - say: Jair
+#     text: ...
+#   - interrupt:
+#       - I want to say something:
+#         - say: Jair
+#           text: asdf qwer
+#         - show: Deuzilene
+#           look: angry
+#       - Say she's cute:
+#         - say: Jair
+#           text: uhhh
+#         - show: Deuzilene
+#           look: angry
+#   - say: Deuzilene
+#     text: All right, the first thing to ... asdf qwer asdf
+#   - say: Deuzilene
+#     text: The second is ... asdf qwer sdf
+#   - say: Deuzilene
+#     text: Finally asdf qwer sadf
+#   - interrupt: stop
+#   - say: Deuzilene
+#     text: How was it?
+#   - say: Jair
+#     text: Terrible...
