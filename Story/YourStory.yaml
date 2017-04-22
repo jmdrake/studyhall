@@ -6,21 +6,21 @@ setup:
     dream: assets/backgrounds/dream.jpg
   characters:
     Me:
-      speechColour: "#ff0000"
+      speechColour: "#483737"
       looks:
         normal: assets/characters/burroughs/m2_default.png
     TallCop:
       displayName: Tall Cop
-      speechColour: "#ff0000"
+      speechColour: "#FF530D"
       looks:
         normal: assets/characters/burroughs/m2_default.png
     ShortCop:
       displayName: Short Cop
-      speechColour: "#ff0000"
+      speechColour: "#FF530D"
       looks:
         normal: assets/characters/burroughs/m2_default.png
     Burroughs:
-      speechColour: "#ff00ff"
+      speechColour: "#627578"
       looks:
         normal: assets/characters/burroughs/m2_default.png
         angry: assets/characters/burroughs/m2_angry.png
@@ -43,7 +43,7 @@ setup:
         surprised: assets/characters/burroughs/m2_surprised.png
         wink: assets/characters/burroughs/m2_wink.png
     Kerouac:
-      speechColour: "#ff0000"
+      speechColour: "#294844"
       looks:
         normal: assets/characters/kerouac/m1_default.png
         angry: assets/characters/kerouac/m1_angry.png
@@ -66,7 +66,7 @@ setup:
         surprised: assets/characters/kerouac/m1_surprised.png
         wink: assets/characters/kerouac/m1_wink.png
     Corso:
-      speechColour: "#00ff00"
+      speechColour: "#7B6D39"
       looks:
         normal: assets/characters/corso/m5_default.png
         angry: assets/characters/corso/m5_angry.png
@@ -89,7 +89,7 @@ setup:
         surprised: assets/characters/corso/m5_surprised.png
         wink: assets/characters/corso/m5_wink.png
     Lucien:
-      speechColour: "#00ff00"
+      speechColour: "#37483C"
       looks:
         normal: assets/characters/lucien/m7_default.png
         angry: assets/characters/lucien/m7_angry.png

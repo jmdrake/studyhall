@@ -22,8 +22,13 @@ RenJS.startGame = function(){
             } else {
                 // this.gui = new RenJS.story.gui.customGUI();
             }    
-            game.add.text(20, 20, 'TITLE', {font: '42px exo'});
-            game.add.text(20, 20, 'BODY', {font: '42px elliotsix'});
+            //preload the fontss
+            _.each(guiSetup.simpleGUI.assets.fonts,function(font){
+                console.log("loading" + font)
+                game.add.text(20, 20, font, {font: '42px '+font});
+            });
+            
+            // game.add.text(20, 20, 'BODY', {font: '42px elliotsix'});
             game.state.start("init");
         }
     });

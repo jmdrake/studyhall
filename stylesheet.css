@@ -1,6 +1,22 @@
 /*FONTS FROM https://www.fontsquirrel.com/*/
 
 @font-face {
+  font-family: 'albertus';
+  src: url('assets/gui/Albertus.ttf');
+  src: url('assets/gui/Albertus.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'junicode';
+  src: url('assets/gui/Junicode-BoldItalic.ttf');
+  src: url('assets/gui/Junicode-BoldItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'elliotsix';
   src: url('assets/gui/ElliotSix.ttf');
   src: url('assets/gui/ElliotSix.ttf') format('truetype');

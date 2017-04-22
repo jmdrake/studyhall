@@ -1,11 +1,16 @@
 simpleGUI:
   assets:
+    fonts:
+      - junicode
+      - albertus
+      - elliotsix
+      - exo
     images:
       menuBackground: assets/gui/portada.jpg
       settingsBackground: assets/gui/SettingsBG.png
       sliderFull: assets/gui/SliderFull.png
       sliderEmpty: assets/gui/SliderEmpty.png
-      textBox: assets/gui/Textbox.png
+      textBox: assets/gui/TextBox.png
       nameBox: assets/gui/NameBox.png
       ctc: assets/gui/CTC.png
     spritesheets:
@@ -13,39 +18,39 @@ simpleGUI:
       loadButton: assets/gui/LoadButton.png 214 54
       settingsButton: assets/gui/SettingsButton.png 214 54
       returnButton: assets/gui/ReturnButton.png 214 54
-      qmAutoButton: assets/gui/AutoQButton.png 101 57
-      qmSkipButton: assets/gui/SkipQButton.png 101 57
-      qmSettingsButton: assets/gui/MenuQButton.png 101 57
-      qmSaveButton: assets/gui/SaveQButton.png 101 57
-      choice: assets/gui/Choice.png 720 96
+      qmAutoButton: assets/gui/GuiButtonsAuto.png 100 27
+      qmSkipButton: assets/gui/GuiButtonsSkip.png 100 27
+      qmSettingsButton: assets/gui/GuiButtonsMenu.png 100 27
+      qmSaveButton: assets/gui/GuiButtonsSave.png 100 27
+      choice: assets/gui/Choice.png 1136 74
     sound:
       bgm: assets/audio/nowherefast.WAV
   hud:
     message:
-      box: textBox 43 480
+      box: textBox 0 572
       text:
-        font: 16pt elliotsix
-        boundingBox: 50 30 700 70
-        fill: "#49094d"
+        font: 28pt albertus
+        boundingBox: 52 75 1000 70
+        fill: "#ac9393"
     name:
-      box: nameBox 6 -50
+      box: nameBox 88 -34
       text:
-        font: 18pt elliotsix
+        font: 40pt junicode
         boundsAlignH: center
         boundsAlignV: middle
     choice:
       box: choice
       text:
-        font: 20pt elliotsix
+        font: 28pt albertus
         boundsAlignH: center
         boundsAlignV: middle
-        fill: "#49094d"
+        fill: "#ac9393"
     buttons:
-      auto: qmAutoButton 175 550
-      skip: qmSkipButton 280 550
-      save: qmSaveButton 395 550
-      settings: qmSettingsButton 510 550
-    ctc: ctc -10 -40
+      auto: qmAutoButton 1175 583
+      skip: qmSkipButton 1175 647
+      save: qmSaveButton 1175 679
+      settings: qmSettingsButton 1175 615
+    ctc: ctc 1116 62
   menus:
     main: 
       background: menuBackground 0 0

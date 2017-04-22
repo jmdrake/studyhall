@@ -2,7 +2,7 @@ var config = {
     //name of the game
     name: "RenJS-GAME",
     story: "Story/YourStory.yaml",
-    gui: "Story/SpikedHeartGUI.yaml",
+    gui: "Story/GUI.yaml",
     stageSize : {w:1280,h:720},
     textDefaults: {
         font: "bold 16pt Arial",
