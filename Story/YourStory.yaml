@@ -262,6 +262,15 @@ corsobar:
   - choice:
     - What do you do around here?:
       - Me says: Besides drinking other people's drinks.
+      - show Corso: angry WITH CUT
+      - Corso says: None of your business.
+      - Me says: Oh, I'm sorry. I was joking.
+      - Corso says: ...
+      - choice:
+        - I really want to get to know you.:
+          - scene: knowcorso
+        - Okay. I guess I'll leave.:
+          - scene: leavecorso
     - Do you come here often?:
       - show Corso: normal WITH CUT
       - Corso says: Every once in a while.
@@ -274,8 +283,12 @@ corsobar:
       - Corso says: That's nice. I live in a library, you know?
       - show Corso: normal WITH CUT
       - Me says: You do?
+      - show Corso: smile WITH CUT
+      - Corso says: Of course I do.
 
+knowcorso:
 
+leavecorso:
 #   - play lovecats: WITH FADE
 #   - text: You...
 #   - text: Who are you?
