@@ -12,7 +12,7 @@ var config = {
     settings: {
         textSpeed: 150
     },
-    splash: "assets/gui/Splash.jpg",
+    splash: "assets/gui/Splash.png",
 
     //stage width and height
 
