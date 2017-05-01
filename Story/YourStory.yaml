@@ -50,7 +50,6 @@ setup:
         blush: assets/characters/kerouac/m1_blush.png
         confused: assets/characters/kerouac/m1_confused.png
         cry: assets/characters/kerouac/m1_cry.png
-        downcast: assets/characters/kerouac/m1_downcast.png
         dread: assets/characters/kerouac/m1_dread.png
         evil: assets/characters/kerouac/m1_evil.png
         eyesmile: assets/characters/kerouac/m1_eyesmile.png
@@ -71,7 +70,6 @@ setup:
         normal: assets/characters/corso/m5_default.png
         angry: assets/characters/corso/m5_angry.png
         blush: assets/characters/corso/m5_blush.png
-        confused: assets/characters/corso/m5_confused.png
         cry: assets/characters/corso/m5_cry.png
         downcast: assets/characters/corso/m5_downcast.png
         dread: assets/characters/corso/m5_dread.png
@@ -85,9 +83,7 @@ setup:
         scared: assets/characters/corso/m5_scared.png
         shock: assets/characters/corso/m5_shock.png
         smile: assets/characters/corso/m5_smile.png
-        smirk: assets/characters/corso/m5_smirk.png
         surprised: assets/characters/corso/m5_surprised.png
-        wink: assets/characters/corso/m5_wink.png
     Lucien:
       speechColour: "#37483C"
       looks:
@@ -137,18 +133,19 @@ setup:
       static: assets/ambient/static.png 320 256
 
 start:
+  - scene: corsobar
   - show dream: WITH FADE
   - Me says: I love you Lucien.
   - show Lucien: blush AT RIGHT WITH FADE
   - Lucien says: I know.
-  - show Lucien: smile AT RIGHT WITH CUT
+  - show Lucien: smile AT RIGHT
   - Me says: It's so nice to be around you Jack
   - show Kerouac: eyesmile AT CENTER WITH FADE
   - Kerouac says: I know, right?
-  - show Kerouac: smile AT CENTER WITH CUT
+  - show Kerouac: smile AT CENTER
   - Kerouac says: We have so much fun together
   - show Burroughs: normal AT LEFT WITH FADE
-  - show Burroughs: wink AT LEFT WITH CUT
+  - show Burroughs: wink AT LEFT
   - hide Lucien: WITH FADE
   - hide Kerouac: WITH FADE
   - hide Burroughs: WITH FADE
@@ -217,7 +214,7 @@ returnhome:
     ISFALSE:
       - Me says: Shit! I didn't make it in time.
       - Me says: Maybe I should have called.
-  - Me says: Shit. I need to find a place to crash.
+  - Me says: I need to find a place to crash.
   - Me says: I think the guys were at the bar.
   - Me says: They might be able to give me a hand.
   - var talkkerouac: false
@@ -230,16 +227,16 @@ bar:
   - Me says: So...
   - Me says: Jack is playing pool.
   - Me says: William is getting high in one of the couches.
-  - Me says: And there's a stranger at the bar.
-  - Me says: He seems nice.
+  - Me says: And there's Greg, that guy from the other day.
+  - Me says: I hope he's doing fine now.
   - choice:
-    - Talk to Jack:
+    - Talk to Jack.:
       - var talkkerouac: true
       - scene: kerouacbar
-    - Talk to William:
+    - Talk to William.:
       - var talkburroughs: true
       - scene: burroughsbar
-    - Talk to stranger:
+    - Talk to Greg.:
       - var talkcorso: true
       - scene: corsobar
 
@@ -251,44 +248,116 @@ burroughsbar:
 
 corsobar:
   - show Corso: downcast WITH FADE
-  - Corso says: You're in the way.
-  - show Corso: angry WITH CUT
+  - Corso says: Could you move a little bit?
+  - show Corso: angry
   - Me says: Is that your beer?
-  - Me says: Want me to hand it over?
-  - show Corso: normal WITH CUT
-  - Corso says: Now it is.
-  - show Corso: smile WITH CUT
+  - show Corso: normal
+  - Corso says: Sort of.
+  - Corso says: I made a deal with the barman.
+  - Corso says: I can have whatever is left over.
+  - Corso says: It's easier to clean the glasses that way.
+  - show Corso: smile
   - Me says: So...
+  - Me says: Last time I saw you, you were a little bit...
+  - wait: 300
+  - Me says: Agitated.
+  - show Corso: scared
+  - Me says: Are you feeling better?
+  - show Corso: normal
+  - Corso says: Yeah, I'm doing much better now.
   - choice:
-    - What do you do around here?:
-      - Me says: Besides drinking other people's drinks.
-      - show Corso: angry WITH CUT
-      - Corso says: None of your business.
-      - Me says: Oh, I'm sorry. I was joking.
-      - Corso says: ...
-      - choice:
-        - I really want to get to know you.:
-          - scene: knowcorso
-        - Okay. I guess I'll leave.:
-          - scene: leavecorso
-    - Do you come here often?:
-      - show Corso: normal WITH CUT
-      - Corso says: Every once in a while.
-      - show Corso: smile WITH CUT
-      - Corso says: I'm Greg.
-      - Corso says: And you're?
-      - show Corso: normal WITH CUT
-      - Me says: Allen. I'm a poet. I try to.
-      - show Corso: smile WITH CUT
-      - Corso says: That's nice. I live in a library, you know?
-      - show Corso: normal WITH CUT
-      - Me says: You do?
-      - show Corso: smile WITH CUT
-      - Corso says: Of course I do.
+    - That's nice. I'm not doing so good though.:
+          - scene: corsosteal
+    - So... What made you act like that?:
+          - scene: corsolies
 
-knowcorso:
+corsolies:
+  - show Corso: flustered
+  - Corso says: Well, it didn't feel right, you know?
+  - show Corso: normal
+  - Corso says: I was trying to be a gentleman.
+  - show Corso: blush
+  - Corso says: Doing what I did was the most gentlemanly thing to do.
+  - show Corso: normal
+  - Corso says: All things considered.
+  - choice:
+    - I'm not sure things were that way.:
+      - Me says: You looked pretty scared to me.
+      - scene: corsoangry
+    - Oh, I see.:
+      - Me says: It's nice to know you're doing better now.
+      - Me says: My morning has been insane.
+      - Me says: So it's nice to see somebody else doing fine.
+      - scene: corsosteal
 
-leavecorso:
+corsosteal:
+  - show Corso: grin
+  - Corso says: We could fetch some drinks to cheer you up, you know?
+  - show Corso: normal
+  - Me says: I don't have any money with me.
+  - show Corso: eyesmile
+  - Corso says: Who said anything about paying?
+  - choice:
+    - Stealing is wrong!:
+      - scene: corsoangry
+    - I don't want to get in trouble.:
+      - scene: corsoboyfriend
+
+corsoboyfriend:
+  - show Corso: normal
+  - Me says: My boyfriend went to jail for stealing.
+  - Me says: I'd rather not follow him there.
+  - show Corso: flustered
+  - Corso says: Your boyfriend, huh?
+  - choice:
+    - Yes, we lived together until recently.:
+      - Corso says: Good for you. I guess.
+      - scene: corsoangry
+    - He's a poet like me.:
+      - Me says: I hope he's okay.
+      - scene: corsopoetry
+
+corsopoetry:
+  - show Corso: normal
+  - Corso says: I used to be in jail.
+  - Corso says: It's not that bad if you make the right friends, I guess.
+  - Corso says: And I told you this last time we met.
+  - Corso says: But I'm a poet too.
+  - show Corso: eyesmile
+  - Me says: That's cool.
+  - Me says: Me too!
+  - Me says: Can you show me your stuff?
+  - show Corso: normal
+  - Corso says: Sure, it's at the library, though.
+  - Corso says: I live there.
+  - show Corso: smile
+  - Me says: Really? That's so cool!
+  - Me says: I guess I have nowhere to live right now.
+  - show Corso: normal
+  - Corso says: You seem like a nice kid.
+  - Corso says: I guess it would do no harm to let you crash.
+  - Me says: Really!?
+  - Corso says: Yes, really.
+  - Me says: Thanks!
+  - Corso says: Let me know when you're ready to go.
+  - show Corso: smile
+  - Corso says: I'll be drinking over here.
+  - var corsolove: true
+  - hide Corso: WITH FADE
+  - scene: bar
+
+corsoangry:
+  - show Corso: angry
+  - Corso says: This is stupid.
+  - show Corso: frown
+  - Corso says: I'm out of here.
+  - hide Corso: WITH FADE
+  - Me says: You forgot your beer.
+  - show Corso: angry WITH FADE
+  - Corso says: Don't expect me to be grateful.
+  - hide Corso: WITH FADE
+  - scene: bar
+
 #   - play lovecats: WITH FADE
 #   - text: You...
 #   - text: Who are you?
@@ -302,7 +371,7 @@ leavecorso:
 #     position:
 #       x: 300
 #       y: 300
-#   - hide comb: WITH CUT
+#   - hide comb:
 #   - Cereza says: SPIKE!!!
 #   - effect: EXPLOSION
 #   - effect: SHAKE
