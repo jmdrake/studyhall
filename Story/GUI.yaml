@@ -6,7 +6,7 @@ simpleGUI:
       - elliotsix
       - exo
     images:
-      menuBackground: assets/gui/portada.jpg
+      menuBackground: assets/gui/MenuBG.png
       settingsBackground: assets/gui/SettingsBG.png
       sliderFull: assets/gui/SliderFull.png
       sliderEmpty: assets/gui/SliderEmpty.png
@@ -14,9 +14,9 @@ simpleGUI:
       nameBox: assets/gui/NameBox.png
       ctc: assets/gui/CTC.png
     spritesheets:
-      startButton: assets/gui/StartButton.png 214 54
-      loadButton: assets/gui/LoadButton.png 214 54
-      settingsButton: assets/gui/SettingsButton.png 214 54
+      startButton: assets/gui/MenuStart.png 249 97
+      loadButton: assets/gui/MenuLoad.png 254 96
+      settingsButton: assets/gui/MenuSettings.png 253 100
       returnButton: assets/gui/ReturnButton.png 214 54
       qmAutoButton: assets/gui/GuiButtonsAuto.png 100 27
       qmSkipButton: assets/gui/GuiButtonsSkip.png 100 27
@@ -56,9 +56,9 @@ simpleGUI:
       background: menuBackground 0 0
       music: bgm
       buttons: 
-        start: startButton 570 40
-        load: loadButton 570 100
-        settings: settingsButton 570 160
+        start: startButton 488 623
+        load: loadButton 149 624
+        settings: settingsButton 798 620
     settings:
       background: settingsBackground 0 0
       buttons:
