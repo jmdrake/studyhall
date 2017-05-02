@@ -238,8 +238,8 @@ function CharactersManager(){
     this.characters = {};
     this.showing = {};
 
-    this.add = function(name,speechColour,looks){
-        this.characters[name] = new Character(name,speechColour);
+    this.add = function(name,displayName,speechColour,looks){
+        this.characters[name] = new Character(displayName,speechColour);
         _.each(looks,function(filename,look){
             this.characters[name].addLook(look,name+"_"+look);
         },this);
@@ -276,7 +276,7 @@ function CharactersManager(){
     }
 
     this.say = function(name,text){
-        RenJS.dlgManager.show(text,name,this.characters[name].speechColour);
+        RenJS.dlgManager.show(text,this.characters[name].name,this.characters[name].speechColour);
     }
 }
 
@@ -468,8 +468,8 @@ function StoryManager(){
         this.behindCharactersSprites = game.add.group();
         this.characterSprites = game.add.group();
         _.each(RenJS.story.setup.characters,function(character,name){
-            // console.log("Adding "+name);
-            RenJS.chManager.add(name,character.speechColour,character.looks);
+            var displayName = character.displayName ? character.displayName : name;
+            RenJS.chManager.add(name,displayName,character.speechColour,character.looks);
         });
         this.cgsSprites = game.add.group();
     }

@@ -21,6 +21,7 @@ setup:
         normal: assets/characters/burroughs/m2_default.png
     Burroughs:
       speechColour: "#627578"
+      displayName: William
       looks:
         normal: assets/characters/burroughs/m2_default.png
         angry: assets/characters/burroughs/m2_angry.png
@@ -44,6 +45,7 @@ setup:
         wink: assets/characters/burroughs/m2_wink.png
     Kerouac:
       speechColour: "#294844"
+      displayName: Jack
       looks:
         normal: assets/characters/kerouac/m1_default.png
         angry: assets/characters/kerouac/m1_angry.png
@@ -66,6 +68,7 @@ setup:
         wink: assets/characters/kerouac/m1_wink.png
     Corso:
       speechColour: "#7B6D39"
+      displayName: Greg
       looks:
         normal: assets/characters/corso/m7_default.png
         angry: assets/characters/corso/m7_angry.png
