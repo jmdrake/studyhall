@@ -67,46 +67,52 @@ setup:
     Corso:
       speechColour: "#7B6D39"
       looks:
-        normal: assets/characters/corso/m5_default.png
-        angry: assets/characters/corso/m5_angry.png
-        blush: assets/characters/corso/m5_blush.png
-        cry: assets/characters/corso/m5_cry.png
-        downcast: assets/characters/corso/m5_downcast.png
-        dread: assets/characters/corso/m5_dread.png
-        evil: assets/characters/corso/m5_evil.png
-        eyesmile: assets/characters/corso/m5_eyesmile.png
-        flustered: assets/characters/corso/m5_flustered.png
-        frown: assets/characters/corso/m5_frown.png
-        grin: assets/characters/corso/m5_grin.png
-        pout: assets/characters/corso/m5_pout.png
-        sad: assets/characters/corso/m5_sad.png
-        scared: assets/characters/corso/m5_scared.png
-        shock: assets/characters/corso/m5_shock.png
-        smile: assets/characters/corso/m5_smile.png
-        surprised: assets/characters/corso/m5_surprised.png
+        normal: assets/characters/corso/m7_default.png
+        angry: assets/characters/corso/m7_angry.png
+        blush: assets/characters/corso/m7_blush.png
+        confused: assets/characters/corso/m7_confused.png
+        cry: assets/characters/corso/m7_cry.png
+        downcast: assets/characters/corso/m7_downcast.png
+        dread: assets/characters/corso/m7_dread.png
+        evil: assets/characters/corso/m7_evil.png
+        eyesmile: assets/characters/corso/m7_eyesmile.png
+        flustered: assets/characters/corso/m7_flustered.png
+        frown: assets/characters/corso/m7_frown.png
+        grin: assets/characters/corso/m7_grin.png
+        pout: assets/characters/corso/m7_pout.png
+        sad: assets/characters/corso/m7_sad.png
+        scared: assets/characters/corso/m7_scared.png
+        shock: assets/characters/corso/m7_shock.png
+        smile: assets/characters/corso/m7_smile.png
+        smirk: assets/characters/corso/m7_smirk.png
+        surprised: assets/characters/corso/m7_surprised.png
+        wink: assets/characters/corso/m7_wink.png
     Lucien:
       speechColour: "#37483C"
       looks:
-        normal: assets/characters/lucien/m7_default.png
-        angry: assets/characters/lucien/m7_angry.png
-        blush: assets/characters/lucien/m7_blush.png
-        confused: assets/characters/lucien/m7_confused.png
-        cry: assets/characters/lucien/m7_cry.png
-        downcast: assets/characters/lucien/m7_downcast.png
-        dread: assets/characters/lucien/m7_dread.png
-        evil: assets/characters/lucien/m7_evil.png
-        eyesmile: assets/characters/lucien/m7_eyesmile.png
-        flustered: assets/characters/lucien/m7_flustered.png
-        frown: assets/characters/lucien/m7_frown.png
-        grin: assets/characters/lucien/m7_grin.png
-        pout: assets/characters/lucien/m7_pout.png
-        sad: assets/characters/lucien/m7_sad.png
-        scared: assets/characters/lucien/m7_scared.png
-        shock: assets/characters/lucien/m7_shock.png
-        smile: assets/characters/lucien/m7_smile.png
-        smirk: assets/characters/lucien/m7_smirk.png
-        surprised: assets/characters/lucien/m7_surprised.png
-        wink: assets/characters/lucien/m7_wink.png
+        angry: assets/characters/lucien/m6_angry.png
+        annoyed: assets/characters/lucien/m6_annoyed.png
+        blush: assets/characters/lucien/m6_blush.png
+        chuckle: assets/characters/lucien/m6_chuckle.png
+        confused: assets/characters/lucien/m6_confused.png
+        cry: assets/characters/lucien/m6_cry.png
+        normal: assets/characters/lucien/m6_default.png        
+        downcast: assets/characters/lucien/m6_downcast.png
+        dread: assets/characters/lucien/m6_dread.png
+        evil: assets/characters/lucien/m6_evil.png
+        eyesmile: assets/characters/lucien/m6_eyesmile.png
+        flustered: assets/characters/lucien/m6_flustered.png
+        frown: assets/characters/lucien/m6_frown.png
+        grin: assets/characters/lucien/m6_grin.png
+        pout: assets/characters/lucien/m6_pout.png
+        sad: assets/characters/lucien/m6_sad.png
+        scared: assets/characters/lucien/m6_scared.png
+        shock: assets/characters/lucien/m6_shock.png
+        smile: assets/characters/lucien/m6_smile.png
+        smirk: assets/characters/lucien/m6_smirk.png
+        surprised: assets/characters/lucien/m6_surprised.png
+        tongue: assets/characters/lucien/m6_tongue.png
+        wink: assets/characters/lucien/m6_wink.png
   cgs:
     comb: assets/objects/Comb.png
     hairpin: assets/objects/Hairpin.png
