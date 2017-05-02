@@ -488,7 +488,7 @@ function StoryManager(){
         // RenJS.bgManager.hide();
         // RenJS.cgsManager.hide();
         // RenJS.audioManager.stop();
-        this.currentScene = RenJS.story[name];
+        this.currentScene = _.clone(RenJS.story[name]);
         RenJS.resolve();
         // this.interpretScene();        
     }
