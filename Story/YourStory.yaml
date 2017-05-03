@@ -99,7 +99,7 @@ setup:
         chuckle: assets/characters/lucien/m6_chuckle.png
         confused: assets/characters/lucien/m6_confused.png
         cry: assets/characters/lucien/m6_cry.png
-        normal: assets/characters/lucien/m6_default.png        
+        normal: assets/characters/lucien/m6_default.png
         downcast: assets/characters/lucien/m6_downcast.png
         dread: assets/characters/lucien/m6_dread.png
         evil: assets/characters/lucien/m6_evil.png
@@ -212,7 +212,7 @@ call:
 
 returnhome:
   - show house: WITH FADE
-  - Me says: Oh, no! They've taken Lucien away.
+  - Me says: Oh, no! They're taking Lucien away.
   - if: ({call} == true)
     ISTRUE:
       - show Lucien: eyesmile WITH FADE
@@ -253,6 +253,37 @@ kerouacbar:
 
 burroughsbar:
   - show Burroughs: evil WITH FADE
+  - Me says: ...
+  - show Burroughs: smirk
+  - Burroughs says: Oh, it's you Allen. Care to join me?
+  - show Burroughs: grin
+  - Burroughs says: I know it's a bit cramped in here, but I'm sure we'll make do.
+  - Me says: Sure.
+  - Me says: How're you doing William?
+  - show Burroughs: normal
+  - Burroughs says: I'm fine. More than fine actually.
+  - show burroughs: smirk
+  - Burroughs says: I've brought some really nice things from my last trip.
+  - show Burroughs: wink
+  - Burroughs says: Want to try some?
+  - choice:
+    - Sure.:
+      - scene: burroughshigh
+    - No, thanks. I don't really do drugs.:
+      - show Burroughs: frown
+      - Burroughs says: Then I've got no time for you, darling.
+      - scene: burroughsdismiss
+
+burroughshigh:
+  - show Burroughs: eyesmile
+
+burroughsdismiss:
+  - show Burroughs: evil
+  - Burroughs says: I'm too rotten for you.
+  - show Burroughs: dread
+  - Burroughs says: Find somebody else to pass the time.
+  - hide Burroughs: fade
+  - scene: bar
 
 corsobar:
   - show Corso: downcast WITH FADE
@@ -336,7 +367,10 @@ corsopoetry:
   - Me says: Me too!
   - Me says: Can you show me your stuff?
   - show Corso: normal
-  - Corso says: Sure, it's at the library, though.
+  - Corso says: Sure, I have some here.
+  - text: A couple of beers later.
+  - Me says: They're really good.
+  - Corso says: I can show you more, they're at the library, though.
   - Corso says: I live there.
   - show Corso: smile
   - Me says: Really? That's so cool!
