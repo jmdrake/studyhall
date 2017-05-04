@@ -262,7 +262,7 @@ burroughsbar:
   - Me says: How're you doing William?
   - show Burroughs: normal
   - Burroughs says: I'm fine. More than fine actually.
-  - show burroughs: smirk
+  - show Burroughs: smirk
   - Burroughs says: I've brought some really nice things from my last trip.
   - show Burroughs: wink
   - Burroughs says: Want to try some?

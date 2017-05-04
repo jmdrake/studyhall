@@ -594,8 +594,9 @@ function StoryManager(){
                 case "interrupt" : 
                     // debugger;
                     if (params == "stop"){
+                        console.log("interrupting");
                         RenJS.choiceManager.interrupting = false;
-                        RenJS.choiceManager.hide();
+                        RenJS.choiceManager.choose();
                     } else {
                         RenJS.choiceManager.interrupt(params);
                     }
