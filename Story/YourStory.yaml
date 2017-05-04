@@ -275,7 +275,46 @@ burroughsbar:
       - scene: burroughsdismiss
 
 burroughshigh:
+  - show Burroughs: normal
+  - Me says: So, what do I do?
   - show Burroughs: eyesmile
+  - Burroughs says: Put a little bit of this in your tongue.
+  - show Burroughs: normal
+  - Burroughs says: Let it dissolve slowly.
+  - show Burroughs: smile
+  - Burroughs says: Everything will go slowly now.
+  - show Burroughs: normal
+  - interrupt:
+    - I'm freaking out a bit.:
+      - show Burroughs: dread
+      - Burroughs says: Then we better stop now.
+      - scene: burroughsdismiss
+  - Burroughs says: The evening will pass ever so slowly.
+  - show Burroughs: smirk
+  - Burroughs says: So slowly we'll be able to feel ourselves age.
+  - Burroughs says: We can sink into this couch you and I.
+  - interrupt: stop
+  - Burroughs says: Eye to eye, so close that I could taste you.
+  - interrupt:
+    - Kiss him.:
+      - scene: burroughskiss
+  - show Burroughs: smile
+  - Burroughs says: And you'd surely be so sweet.
+  - show Burroughs: blush
+  - Burroughs says: Like all those boys I've tasted before you.
+  - Burroughs says: ...
+  - interrupt: stop
+  - show Burroughs: normal
+  - Burroughs says: But maybe you don't care about the boys.
+  - show Burroughs: smirk
+  - Burroughs says: Maybe you care about guns.
+  - show Burroughs: normal
+  - Burroughs says: Did you know I pack one?
+  - show Burroughs: smirk
+  - Burroughs says: Several actually.
+  - show Burroughs: scared
+  - Burroughs says: BARF
+  - Me says: BARF
 
 burroughsdismiss:
   - show Burroughs: evil
@@ -284,6 +323,10 @@ burroughsdismiss:
   - Burroughs says: Find somebody else to pass the time.
   - hide Burroughs: fade
   - scene: bar
+
+burroughskiss:
+  - show Burroughs: surprised
+
 
 corsobar:
   - show Corso: downcast WITH FADE
