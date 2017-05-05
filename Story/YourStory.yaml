@@ -117,9 +117,7 @@ setup:
         tongue: assets/characters/lucien/m6_tongue.png
         wink: assets/characters/lucien/m6_wink.png
   cgs:
-    comb: assets/objects/Comb.png
-    hairpin: assets/objects/Hairpin.png
-    remote: assets/objects/Remote.png
+    phone: assets/objects/Phone.png
   music:
     handsomedevil: assets/audio/handsomedevil.WAV
     lovecats: assets/audio/lovecats.WAV
@@ -202,6 +200,7 @@ shopping:
 
 call:
   - show street: WITH FADE
+  - show phone: WITH FADE AT 350,340
   - Me says: Lucien, please pick up...
   - Lucien says: Hello, who's this?
   - Me says: It's me Allen.

@@ -271,7 +271,7 @@ function CharactersManager(){
 
     this.hideAll = function(){
         _.each(this.showing,function(showing,name){
-            this.hide(name,RenJS.transition.FADEOUT);
+            this.hide(name,RenJS.transitions.CUT);
         },this);
     }
 
@@ -341,7 +341,8 @@ function CGSManager(){
     }
 
     this.hideAll = function(){
-
+        RenJS.storyManager.cgsSprites.removeAll(true);
+        this.cgs = {};
     }
 }
 
@@ -428,7 +429,7 @@ function BackgroundManager(){
     }
 
     this.hide = function(bg,transition){   
-        this.show(null,transition ? transition : RenJS.transition.FADEOUT);
+        this.show(null,transition ? transition : RenJS.transitions.FADEOUT);
     }
 }
 
@@ -484,9 +485,9 @@ function StoryManager(){
         // });
         // RenJS.bgManager.hide(RenJS.transitions.FADETOBLACK);
         // this.waitForContinue();
-        // RenJS.chManager.hideAll();
-        // RenJS.bgManager.hide();
-        // RenJS.cgsManager.hide();
+        RenJS.chManager.hideAll();
+        RenJS.bgManager.hide();
+        RenJS.cgsManager.hideAll();
         // RenJS.audioManager.stop();
         this.currentScene = _.clone(RenJS.story[name]);
         RenJS.resolve();
