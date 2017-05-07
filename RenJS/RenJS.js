@@ -509,6 +509,12 @@ function StoryManager(){
         if (_.has(RenJS.bgManager.backgrounds,actor)){
             return "bg";
         }
+        if (_.has(RenJS.audioManager.musicList,actor)){
+            return "bgm";
+        }
+        if (_.has(RenJS.audioManager.sfx,actor)){
+            return "sfx";
+        }
         return "cgs";
     }
 
@@ -541,12 +547,11 @@ function StoryManager(){
             if (_.contains(actionParams.withTransition,mainAction)){
                 str = params ? params.split(" ") : [];
                 if (str.indexOf("WITH")!=-1){
-                    action.transition = str[str.indexOf("WITH")+1];
-                    action.transition = RenJS.transitions[action.transition];
+                    action.transitionName = str[str.indexOf("WITH")+1];                    
                 } else {
-                    action.transition = RenJS.transitions[config.transitions[actorType]];
+                    action.transitionName = config.transitions[actorType];
                 }                
-                
+                action.transition = RenJS.transitions[action.transitionName];
             }
             if (params && _.contains(actionParams.withPosition,mainAction)){
                 str = params ? params.split(" ") : [];
@@ -599,7 +604,7 @@ function StoryManager(){
                 case "interrupt" : 
                     // debugger;
                     if (params == "stop"){
-                        console.log("interrupting");
+                        // console.log("interrupting");
                         RenJS.choiceManager.interrupting = false;
                         RenJS.choiceManager.choose();
                     } else {
@@ -610,7 +615,13 @@ function StoryManager(){
                     RenJS.dlgManager.show(params);
                     break;
                 case "play" :
-                    RenJS.audioManager.play(actor, "bgm", action.looped, action.transition);
+                    // debugger;
+                    if (actorType == "bgm"){
+                        RenJS.audioManager.play(actor, "bgm", action.looped, action.transitionName);
+                    } else {
+                        RenJS.audioManager.playSFX(actor);
+                        RenJS.resolve();
+                    }
                     break;
                 case "effect" :
                     RenJS.effects[params](action.sfx);
@@ -775,6 +786,9 @@ function AudioManager(){
 
     this.play = function(key,type,looped,transition){
         // debugger;
+        if (looped == undefined){
+            looped = true;
+        }
         var oldAudio = this.current[type];
         this.current[type] = this.musicList[key];
         if (!this.muted && this.current[type]) {
@@ -822,6 +836,7 @@ function AudioManager(){
         if (this.audioLoaded){
             // debugger;            
             this.sfx[key].play();    
+
         }
         
         // var fx = game.add.audio(key);

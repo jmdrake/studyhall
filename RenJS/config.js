@@ -33,7 +33,8 @@ var config = {
     transitions: {
         ch: "CUT",
         bg: "FADE",
-        cgs: "FADE"
+        cgs: "FADE",
+        bgm: "FADE"
     },
     //menu options
     menu: {
