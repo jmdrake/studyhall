@@ -24,7 +24,7 @@ simpleGUI:
       qmSaveButton: assets/gui/GuiButtonsSave.png 100 27
       choice: assets/gui/Choice.png 1136 74
     sound:
-      bgm: assets/audio/nowherefast.WAV
+      # bgm: assets/audio/nowherefast.WAV
   hud:
     message:
       box: textBox 0 572
@@ -54,7 +54,7 @@ simpleGUI:
   menus:
     main: 
       background: menuBackground 0 0
-      music: bgm
+      # music: bgm
       buttons: 
         start: startButton 488 623
         load: loadButton 149 624

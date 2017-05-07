@@ -1,5 +1,5 @@
 
-var game = new Phaser.Game(config.stageSize.w, config.stageSize.h, Phaser.CANVAS, "RenJS");
+var game = new Phaser.Game(config.stageSize.w, config.stageSize.h, Phaser.WEBGL, "RenJS");
 
 var RenJS = {};
 
@@ -70,6 +70,10 @@ RenJS.startGame = function(){
                 _.each(RenJS.story.setup.extra.spritesheets,function(file,key){
                     var str = file.split(" ");
                     game.load.spritesheet(key, str[0], parseInt(str[1]),parseInt(str[2]));
+                });
+                _.each(RenJS.story.setup.extra.scripts,function(file,key){
+                    console.log("loading "+key+ " "+file)
+                    game.load.script(key, file);
                 });
             }
         },
@@ -486,7 +490,7 @@ function StoryManager(){
         // RenJS.bgManager.hide(RenJS.transitions.FADETOBLACK);
         // this.waitForContinue();
         RenJS.chManager.hideAll();
-        RenJS.bgManager.hide();
+        // RenJS.bgManager.hide();
         RenJS.cgsManager.hideAll();
         // RenJS.audioManager.stop();
         this.currentScene = _.clone(RenJS.story[name]);
