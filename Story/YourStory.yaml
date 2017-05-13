@@ -177,7 +177,7 @@ breakfast:
   - wait: 300
   - Me says: Found it!
   - Me says: Where's the bread?
-  - Lucien says: I think we're out.  
+  - Lucien says: I think we're out.
   - Me says: Ok, guess I'll go get some.
   - Me says: Be right back.
   - scene: shopping
@@ -185,7 +185,7 @@ breakfast:
 shopping:
   - play policeBGM:
   - show street: WITH FADE
-  - ShortCop says: Is this the place?  
+  - ShortCop says: Is this the place?
   - TallCop says: Yeah, seems like it.
   - ShortCop says: How did he manage to steal a shipment of stolen TV sets?
   - TallCop says: Beats me, but we will figure out soon enough.
@@ -234,7 +234,7 @@ returnhome:
 bar:
   - play barBGM:
   - show bar: WITH FADE
-  - Me says: So...  
+  - Me says: So...
   - Me says: Jack is playing pool.
   - Me says: William is getting high in one of the couches.
   - Me says: And there's Greg, that guy from the other day.
@@ -252,6 +252,79 @@ bar:
 
 kerouacbar:
   - show Kerouac: eyesmile WITH FADE
+  - Kerouac says: Nice to see you here, Allen!
+  - show Kerouac: normal
+  - Me says: Nice to see you too.
+  - show Kerouac: pout
+  - Kerouac says: Have you read my latest manuscript yet?
+  - Me says: Sorry Allen, I'm still on it.
+  - show Kerouac: dread
+  - Kerouac says: What's keeping you?
+  - show Kerouac: normal
+  - Me says: You know...
+  - Me says: This whole my boyfriend being arrested and me having nowhere to stay thing.
+  - Me says: No biggie. I'll be sure to finish once that's sorted out.
+  - show Kerouac: flustered
+  - Kerouac says: Oh, sorry.
+  - Kerouac says: I didn't mean to...
+  - interrupt:
+    - It's fine.:
+      - Me says: I know how is it with you.
+      - show Kerouac: dread
+      - Kerouac says: And how is it with me?
+      - Me says: Nevermind.
+      - show Kerouac: normal
+    - I know.:
+      - Me says: I'm going through a rough time.
+      - Me says: That's all
+      - show Kerouac: normal
+  - Kerouac says: I just really care about what you have to say about my work.
+  - interrupt: stop
+  - show Kerouac: smile
+  - Kerouac says: Enough about me.
+  - show Kerouac: normal
+  - Kerouac says: What's up with you?
+  - Me says: Well, like I said.
+  - Me says: Lucien got arrested at the house.
+  - Me says: So I have nowhere to stay tonight.
+  - show Kerouac: sad
+  - Kerouac says: Sorry to hear that.
+  - show Kerouac: normal
+  - Kerouac says: I think Neal is around town.
+  - Kerouac says: Maybe he knows about somewhere to crash.
+  - show Kerouac: dread
+  - Kerouac says: He might even show you some short writings.
+  - show Kerouac: normal
+  - Kerouac says: What do you say?
+  - Me says: Are you tagging along?
+  - show Kerouac: dread
+  - Kerouac says: No, but I can tell you where he is and you can go on your own.
+  - show Kerouac: Normal
+  - choice:
+    - I guess I could give it a shot.:
+      - hide Kerouac: WITH FADE
+      - scene: nowhere
+    - No, I'd much rather stay with you, guys.:
+      - scene: kerouacpoetry
+
+nowhere:
+  - hide bar: WITH FADE
+  - Me says: Well, this seems to be the place.
+  - Me says: It looks like the middle of nowhere.
+  - Me says: But I'm sure Neal will show up if I just stay put.
+  - wait: 800
+  - Me says: Okay.
+  - Me says: I guess Neal isn't coming.
+  - Me says: I guess I should head back to the bar.
+  - show bar: WITH FADE
+  - Me says: Well...
+  - Me says: The bar is closed and everyone left.
+  - Me says: I guess I have nowhere to crash tonight.
+  - Me says: And I miss Lucien so much.
+  - hide bar: WITH FADE
+
+kerouacpoetry:
+  - show Kerouac: smile
 
 burroughsbar:
   - show Burroughs: evil WITH FADE
