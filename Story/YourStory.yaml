@@ -258,11 +258,12 @@ kerouacbar:
   - show Kerouac: pout
   - Kerouac says: Have you read my latest manuscript yet?
   - Me says: Sorry Allen, I'm still on it.
-  - show Kerouac: dread
+  - show Kerouac: angry
   - Kerouac says: What's keeping you?
   - show Kerouac: normal
   - Me says: You know...
-  - Me says: This whole my boyfriend being arrested and me having nowhere to stay thing.
+  - Me says: This whole thing with my boyfriend being arrested.
+  - Me says: And me having nowhere to stay.
   - Me says: No biggie. I'll be sure to finish once that's sorted out.
   - show Kerouac: flustered
   - Kerouac says: Oh, sorry.
@@ -270,13 +271,13 @@ kerouacbar:
   - interrupt:
     - It's fine.:
       - Me says: I know how is it with you.
-      - show Kerouac: dread
+      - show Kerouac: angry
       - Kerouac says: And how is it with me?
       - Me says: Nevermind.
       - show Kerouac: normal
     - I know.:
       - Me says: I'm going through a rough time.
-      - Me says: That's all
+      - Me says: That's all.
       - show Kerouac: normal
   - Kerouac says: I just really care about what you have to say about my work.
   - interrupt: stop
@@ -292,17 +293,17 @@ kerouacbar:
   - show Kerouac: normal
   - Kerouac says: I think Neal is around town.
   - Kerouac says: Maybe he knows about somewhere to crash.
-  - show Kerouac: dread
+  - show Kerouac: angry
   - Kerouac says: He might even show you some short writings.
   - show Kerouac: normal
   - Kerouac says: What do you say?
   - Me says: Are you tagging along?
-  - show Kerouac: dread
-  - Kerouac says: No, but I can tell you where he is and you can go on your own.
+  - show Kerouac: angry
+  - Kerouac says: No, but I can tell you where he is.
+  - Kerouac says: You can go on your own.
   - show Kerouac: Normal
   - choice:
     - I guess I could give it a shot.:
-      - hide Kerouac: WITH FADE
       - scene: nowhere
     - No, I'd much rather stay with you, guys.:
       - scene: kerouacpoetry
@@ -325,6 +326,56 @@ nowhere:
 
 kerouacpoetry:
   - show Kerouac: smile
+  - Kerouac says: We could talk about what I wrote.
+  - show Kerouac: normal
+  - Me says: But I told you I'm not done with your latest manuscript yet.
+  - show Kerouac: angry
+  - Kerouac says: I know!
+  - show Kerouac: normal
+  - Kerouac says: But you did read a little.
+  - show Kerouac: smile
+  - Kerouac says: And you have read some of my stuff before.
+  - show Kerouac: normal
+  - Me says: Well, yes.
+  - show Kerouac: smile
+  - Kerouac says: So, what do you say?
+  - choice:
+    - You already know I love your stuff.:
+      - scene: kerouacbored
+    - You need to put more work into it.:
+      - scene: kerouacpleased
+
+kerouacbored:
+  - show Kerouac: angry
+  - Kerouac says: Well, I guess that's nice of you to say.
+  - show Kerouac: normal
+  - Kerouac says: I was playing pool before you arrived.
+  - show Kerouac: flustered
+  - Kerouac says: I think I should finish.
+  - hide Kerouac: WITH FADE
+
+kerouacpleased:
+  - show Kerouac: normal
+  - Me says: I guess you're looking for thourough feedback.
+  - Me says: That's hard to do orally.
+  - Me says: But we could read your manuscripts together.
+  - Me says: And I could tell you what I think about them.
+  - show Kerouac: smile
+  - Kerouac says: That would be so nice of you!
+  - show Kerouac: normal
+  - Kerouac says: We could do this today!
+  - show Kerouac: smile
+  - Kerouac says: You can come to my aunt's for dinner.
+  - show Kerouac: normal
+  - Kerouac says: There's even room for you in the couch.
+  - Kerouac says: What do you think?
+  - Me says: Sure.
+  - Me says: Mind if I catch up with the guys before I go.
+  - show Kerouac: blush
+  - Kerouac says: Of course not!
+  - show Kerouac: normal
+  - Kerouac says: I'll wait for you here.
+  - hide Kerouac: WITH FADE
 
 burroughsbar:
   - show Burroughs: evil WITH FADE
@@ -401,7 +452,7 @@ burroughsdismiss:
   - Burroughs says: I'm too rotten for you.
   - show Burroughs: dread
   - Burroughs says: Find somebody else to pass the time.
-  - hide Burroughs: fade
+  - hide Burroughs: WITH FADE
   - scene: bar
 
 burroughskiss:
