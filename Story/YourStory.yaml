@@ -4,6 +4,7 @@ setup:
     street: assets/backgrounds/street.jpg
     bar: assets/backgrounds/bar.jpg
     dream: assets/backgrounds/dream.jpg
+    nowhere: assets/backgrounds/nowhere.jpg
   characters:
     Me:
       speechColour: "#483737"
@@ -139,25 +140,25 @@ setup:
       lightbeam: assets/ambient/LightBeam.js
 
 start:
-  - play morningBGM:
-  - show dream: WITH FADE
-  - Me says: I love you Lucien.
-  - show Lucien: blush AT RIGHT WITH FADE
-  - Lucien says: I know.
-  - show Lucien: smile AT RIGHT
-  - Me says: It's so nice to be around you Jack
-  - show Kerouac: eyesmile AT CENTER WITH FADE
-  - Kerouac says: I know, right?
-  - show Kerouac: smile AT CENTER
-  - Kerouac says: We have so much fun together
-  - show Burroughs: normal AT LEFT WITH FADE
-  - show Burroughs: wink AT LEFT
-  - hide Lucien: WITH FADE
-  - hide Kerouac: WITH FADE
-  - hide Burroughs: WITH FADE
-  - scene: breakfast
-
-breakfast:
+   - play morningBGM:
+#   - show dream: WITH FADE
+#   - Me says: I love you Lucien.
+#   - show Lucien: blush AT RIGHT WITH FADE
+#   - Lucien says: I know.
+#   - show Lucien: smile AT RIGHT
+#   - Me says: It's so nice to be around you Jack
+#   - show Kerouac: eyesmile AT CENTER WITH FADE
+#   - Kerouac says: I know, right?
+#   - show Kerouac: smile AT CENTER
+#   - Kerouac says: We have so much fun together
+#   - show Burroughs: normal AT LEFT WITH FADE
+#   - show Burroughs: wink AT LEFT
+#   - hide Lucien: WITH FADE
+#   - hide Kerouac: WITH FADE
+#   - hide Burroughs: WITH FADE
+#   - scene: breakfast
+#
+# breakfast:
   - show house: WITH FADE
   - show Lucien: smile AT CENTER WITH FADE
   - Lucien says: Good morning!
@@ -190,14 +191,15 @@ shopping:
   - ShortCop says: How did he manage to steal a shipment of stolen TV sets?
   - TallCop says: Beats me, but we will figure out soon enough.
   - Me says: Oh, no! Lucien is in danger!
-  - Me says: I have to do something!
-  - var call: false
-  - choice:
-    - Call Lucien.:
-      - var call: true
-      - scene: call
-    - Run back home.:
-      - scene: returnhome
+  - Me says: I better call Lucien!
+  - scene: call
+  # - var call: false
+  # - choice:
+  #   - Call Lucien.:
+  #     - var call: true
+  #     - scene: call
+  #   - Run back home.:
+  #     - scene: returnhome
 
 call:
   - show street: WITH FADE
@@ -214,18 +216,25 @@ call:
 returnhome:
   - show house: WITH FADE
   - Me says: Oh, no! They're taking Lucien away.
-  - if: ({call} == true)
-    ISTRUE:
-      - show Lucien: eyesmile WITH FADE
-      - Lucien says: The house is sparkling Allen!
-      - Me says: Lucien... that's not what I meant...
-      - hide Lucien: WITH FADE
-    ISFALSE:
-      - Me says: Shit! I didn't make it in time.
-      - Me says: Maybe I should have called.
-  - Me says: I need to find a place to crash.
-  - Me says: I think the guys were at the bar.
-  - Me says: They might be able to give me a hand.
+  # - if: ({call} == true)
+  #   ISTRUE:
+  - show Lucien: eyesmile WITH FADE
+  - Lucien says: The house is sparkling Allen!
+  - Me says: Lucien... that's not what I meant...
+  - show Lucien: dread
+  - Lucien says: Don't worry about me, Allen.
+  - show Lucien: normal
+  - Lucien says: You should go to the bar and see if you can crash with one of my friends.
+  - Me says: Are you sure, Lucien?
+  - show Lucien: smile
+  - Lucien says: Yes, this will sort itself out eventually.
+  - hide Lucien: WITH FADE
+    # ISFALSE:
+    #   - Me says: Shit! I didn't make it in time.
+    #   - Me says: Maybe I should have called.
+  - Me says: Okay, let's see if any of the guys at the bar can lend me a hand.
+  # - Me says: I think the guys were at the bar.
+  # - Me says: They might be able to give me a hand.
   - var talkkerouac: false
   - var talkburroughs: false
   - var talkcorso: false
@@ -257,7 +266,7 @@ kerouacbar:
   - Me says: Nice to see you too.
   - show Kerouac: pout
   - Kerouac says: Have you read my latest manuscript yet?
-  - Me says: Sorry Allen, I'm still on it.
+  - Me says: Sorry Jack, I'm still on it.
   - show Kerouac: angry
   - Kerouac says: What's keeping you?
   - show Kerouac: normal
@@ -310,6 +319,7 @@ kerouacbar:
 
 nowhere:
   - hide bar: WITH FADE
+  - show nowhere: WITH FADE
   - Me says: Well, this seems to be the place.
   - Me says: It looks like the middle of nowhere.
   - Me says: But I'm sure Neal will show up if I just stay put.
