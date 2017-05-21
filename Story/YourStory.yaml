@@ -4,7 +4,7 @@ setup:
     street: assets/backgrounds/street.jpg
     bar: assets/backgrounds/bar.jpg
     dream: assets/backgrounds/dream.jpg
-    nowhere: assets/backgrounds/nowhere.jpg
+    nowhere: assets/backgrounds/nowhere.png
   characters:
     Me:
       speechColour: "#483737"
@@ -159,29 +159,29 @@ start:
 #   - scene: breakfast
 #
 # breakfast:
-  - show house: WITH FADE
-  - show Lucien: smile AT CENTER WITH FADE
-  - Lucien says: Good morning!
-  - hide Lucien: WITH FADE
-  - Me says: I guess I was dreaming. It was so pretty though.
-  - Me says: Lucien, did you have breakfast yet?
-  - Lucien says: No, but I guess you can make some toast.
-  - Lucien says: I think the toaster is behind the pile of stolen tellies.
+   - show house: WITH FADE
+   - show Lucien: smile AT CENTER WITH FADE
+   - Lucien says: Good morning!
+   - hide Lucien: WITH FADE
+   - Me says: I guess I was dreaming. It was so pretty though.
+   - Me says: Lucien, did you have breakfast yet?
+   - Lucien says: No, but I guess you can make some toast.
+   - Lucien says: I think the toaster is behind the pile of stolen tellies.
   # this should be an interrupt
-  - choice:
-    - Are you a criminal Lucien!?:
-      - Lucien says: They've been here all week. How come you're so surprised.
-      - Me says: ...
-    - Oh, ok.:
-      - Me says: Lucien, you should tide up a bit. This is a mess.
-  - Me says: Mmmm, there's a lot of stuff in here.
-  - wait: 300
-  - Me says: Found it!
-  - Me says: Where's the bread?
-  - Lucien says: I think we're out.
-  - Me says: Ok, guess I'll go get some.
-  - Me says: Be right back.
-  - scene: shopping
+   - choice:
+     - Are you a criminal Lucien!?:
+       - Lucien says: They've been here all week. How come you're so surprised.
+       - Me says: ...
+     - Oh, ok.:
+       - Me says: Lucien, you should tide up a bit. This is a mess.
+   - Me says: Mmmm, there's a lot of stuff in here.
+   - wait: 300
+   - Me says: Found it!
+   - Me says: Where's the bread?
+   - Lucien says: I think we're out.
+   - Me says: Ok, guess I'll go get some.
+   - Me says: Be right back.
+   - scene: shopping
 
 shopping:
   - play policeBGM:
