@@ -10,7 +10,10 @@ var config = {
         align: "left"
     },
     settings: {
-        textSpeed: 150
+        textSpeed: 150,
+        skipping: false,
+        auto: false,
+        muted: true
     },
     splash: "assets/gui/Splash.png",
 
@@ -18,6 +21,7 @@ var config = {
 
     //miliseconds for fade transitions
     fadeTime : 750,
+    skipTime: 50,
     //miliseconds to wait before continuing
     timeout : 5000,
     //avoid continuous clicking by waiting a few miliseconds before accepting new "clicks"

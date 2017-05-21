@@ -97,12 +97,16 @@ RenJS.startGame = function(){
                     //     var localPosition = game.input.getLocalPosition(button, pointer);
                     //     return game.input.hitTest(button,pointer,localPosition);
                     // },this);  
-                    var buttonPressed = false;
-                    if (!buttonPressed) {
+                    // var buttonPressed = false;
+                    // if (!buttonPressed) {
                         RenJS.control.waitForClick = false;  
                         RenJS.control.lockClick();
                         RenJS.control.nextAction();
-                    }
+                    // }
+                }
+                if (config.settings.skipping || config.settings.auto){
+                    config.settings.skipping = false;
+                    config.settings.auto = false;
                 }
             }, this);
             RenJS.audioManager.init(function(){
@@ -364,41 +368,54 @@ function TweenManager(){
         }        
         tween.tweenables = tweenables;
         if (start){
-            this.current = [];
-            RenJS.storyManager.waitForClick(this.skip);
+            RenJS.tweenManager.current = [];
             tween.start();
+            if (!config.settings.auto) {
+                RenJS.storyManager.waitForClick(this.skip);    
+            }            
         }
-        this.current.push(tween);
+        RenJS.tweenManager.current.push(tween);
+        // if (config.settings.skipping){
+        //     this.skip();
+        // }
         return tween;
     }
 
     this.chain = function(tweens,time){
-        this.current = [];
+        var tm = RenJS.tweenManager;
+        tm.current = [];
         var lastTween = null;
         _.each(tweens,function(tween){
-            var tween = this.tween(tween.sprite,tween.tweenables,tween.callback,time/tweens.length,false);
+            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time/tweens.length,false);
             if (lastTween){
                 lastTween.chain(tween);
             }
             lastTween = tween;
-        },this);
-        RenJS.storyManager.waitForClick(this.skip);
-        this.current[0].start();
+        },tm);
+        tm.current[0].start();
+        if (!config.settings.auto) {
+            RenJS.storyManager.waitForClick(tm.skip);    
+        }
     }
 
     this.parallel = function(tweens,time){
-        this.current = [];
+        var tm = RenJS.tweenManager;
+        tm.current = [];
         _.each(tweens,function(tween){
-            var tween = this.tween(tween.sprite,tween.tweenables,tween.callback,time,false);
+            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time,false);
             tween.start();
-        },this);    
-        RenJS.storyManager.waitForClick(this.skip);    
+        },tm);
+        if (!config.settings.auto) {
+            RenJS.storyManager.waitForClick(tm.skip);    
+        }
     }
 
     this.skip = function(){
-        console.log("skipping");
-        var tweens = this.current;
-        this.current = [];
+        // debugger;
+
+        // console.log("skipping "+tweenManager.current.length);
+        var tweens = RenJS.tweenManager.current;
+        RenJS.tweenManager.current = [];
         _.each(tweens,function(tween){
             tween.stop(false);
             _.each(tween.tweenables,function (value,property) {
@@ -457,6 +474,18 @@ function StoryManager(){
         this.paused = false;
         RenJS.storyManager.startScene("start");
         RenJS.storyManager.interpret();
+    }
+
+    this.skip = function(){
+        config.settings.skipTime = 50;
+        config.settings.skipping = true;
+        console.log("skipping");
+    }
+
+    this.auto = function(){
+        config.settings.skipTime = 1000;
+        config.settings.auto = true;
+        console.log("autoplaying")
     }
 
     this.load = function(){
@@ -570,6 +599,8 @@ function StoryManager(){
             }
             action.manager = RenJS[actorType+"Manager"];
             RenJS.control.action = mainAction; 
+            RenJS.control.wholeAction = params; 
+            RenJS.control.nextAction = null; 
             console.log("Doing "+RenJS.control.action);
             switch(RenJS.control.action){
                 // case "custom": RenJS.control.action = "Custom fct"; action.execute(); break;
@@ -577,8 +608,8 @@ function StoryManager(){
                     RenJS.varsManager.setVar(actor,params);
                     break;
                 case "if" :
-                    console.log(params);
-                    console.log(action);
+                    // console.log(params);
+                    // console.log(action);
                     RenJS.varsManager.branch(params,action);
                     break;
                 case "show" :                     
@@ -598,7 +629,8 @@ function StoryManager(){
                     RenJS.cgsManager.animate(actor,action,action.time)
                     break;
                 case "choice" : 
-                    // debugger;s
+                    // debugger;
+                    config.settings.skipping = false;
                     RenJS.choiceManager.show(params);
                     break;
                 case "interrupt" : 
@@ -643,6 +675,7 @@ function StoryManager(){
     this.interpret = function() {
         return new Promise(function(resolve, reject) {
             if (RenJS.storyManager.currentScene.length == 0){
+                // console.log("Resolving somthing here");
                 resolve();
             } else {
                 var action = RenJS.storyManager.currentScene.shift();
@@ -661,15 +694,28 @@ function StoryManager(){
 
 
     this.waitForClick = function(callback){
-        RenJS.control.nextAction = callback ? callback : RenJS.resolve();
-        RenJS.control.waitForClick = true;
+        RenJS.control.nextAction = callback ? callback : RenJS.resolve;
+        if (config.settings.skipping || config.settings.auto){
+            var act = RenJS.control.wholeAction;
+            setTimeout(function(){
+                console.log("skipping action "+RenJS.control.action);
+                console.log(act);
+                RenJS.control.nextAction();
+            },config.settings.skipTime);
+        } else {
+            RenJS.control.waitForClick = true;
+        }
     }
 
     this.waitTimeout = function(time,callback){
-        RenJS.control.nextAction = callback ? callback : RenJS.resolve();
-        setTimeout(function(){
+        RenJS.control.nextAction = callback ? callback : RenJS.resolve;
+        if (config.settings.skipping){
             RenJS.control.nextAction();
-        },time ? time : RenJS.control.timeout);
+        } else {
+            setTimeout(function(){
+                RenJS.control.nextAction();
+            },time ? time : RenJS.control.timeout);
+        }        
     }
 
     this.waitForClickOrTimeout = function(time,callback){        
@@ -696,29 +742,34 @@ function StoryManager(){
 function ChoiceManager(){
 
     this.interrupt = function (choices) {
-        this.interrupting = true;
-        this.show(choices);
+        RenJS.choiceManager.interrupting = true;
+        RenJS.choiceManager.show(choices);
     };
 
     this.show = function(choices){
 
-        console.log(choices);
-        this.currentChoices = choices;     
+        // console.log(choices);
+        RenJS.choiceManager.currentChoices = choices;     
         RenJS.gui.showChoices(choices); 
-        if (this.interrupting){
+        // debugger;
+        if (RenJS.choiceManager.interrupting){
             RenJS.resolve();
         }
     }
 
     this.choose = function(index,chosenOption){
+        // console.log("choosing "+index);
+        // console.log(chosenOption);
         RenJS.gui.hideChoices();
         if (chosenOption){
-            var actions = this.currentChoices[index][chosenOption];
+            // debugger;
+            var actions = RenJS.choiceManager.currentChoices[index][chosenOption];
             RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
         }
-        if (this.interrupting){
-            this.interrupting = false;
+        if (RenJS.choiceManager.interrupting){
+            RenJS.choiceManager.interrupting = false;
         } else {
+            // console.log("resolving");
             RenJS.resolve();
         }
     }
@@ -730,7 +781,7 @@ function AudioManager(){
     this.musicList = {};
     this.sfx = {};
 
-    this.muted = false;
+    // this.muted = false;
     this.audioLoaded = false;
 
     this.current = {
@@ -763,7 +814,7 @@ function AudioManager(){
     }
 
     this.mute = function(){
-        this.muted = true;
+        config.settings.muted = true;
         if (this.current.bgm) {
             this.current.bgm.stop();
         }
@@ -774,7 +825,7 @@ function AudioManager(){
     }
 
     this.unmute = function(){
-        this.muted = false;
+        config.settings.muted = false;
         if (this.current.bgm) {
             this.current.bgm.stop();
         }
@@ -791,7 +842,7 @@ function AudioManager(){
         }
         var oldAudio = this.current[type];
         this.current[type] = this.musicList[key];
-        if (!this.muted && this.current[type]) {
+        if (!config.settings.muted && this.current[type]) {
             if (transition == "FADE") {
                 this.current[type].fadeIn(1500,looped);
                 if (oldAudio) {
@@ -853,6 +904,7 @@ function DialogueManager(){
     this.show = function(text,title,colour){
         var t = RenJS.varsManager.parseVars(text);
         RenJS.gui.showText(t,title,colour,function(){
+            console.log("Waiting for click")
             RenJS.storyManager.waitForClick(RenJS.dlgManager.hide);
         });
     };

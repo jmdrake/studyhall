@@ -99,7 +99,7 @@ function SimpleGUI(meta){
         this.menus[name].group.visible = false;
         var sprite = this.getSpriteInfo(menu.background);
         this.menus[name].background = game.add.image(sprite.x,sprite.y,sprite.key,0,this.menus[name].group);
-        if (menu.music){
+        if (menu.music && !config.settings.muted){
             // console.log("adding music");
             this.menus[name].music = game.add.audio(menu.music);
             this.menus[name].music.onDecoded.add(function(){
@@ -136,7 +136,7 @@ function SimpleGUI(meta){
             RenJS.gui.showHUD();
             RenJS.storyManager.load();
         },
-        auto: RenJS.storyManager.autoplay,
+        auto: RenJS.storyManager.auto,
         skip: RenJS.storyManager.skip,
         save: RenJS.storyManager.save,
         settings: function(){
@@ -243,30 +243,43 @@ function SimpleGUI(meta){
         // if (this.hud.ctc){
         //     this.hud.ctc.visible = true;
         // }
-        var textObj = this.hud.text
+        if (config.settings.skipping || config.settings.textSpeed < 10){
+            this.hud.text.text = text;
+            this.hud.textBox.visible = true;
+            RenJS.gui.showCTC();
+            callback();
+            return;
+        }
+        var textObj = this.hud.text;        
         textObj.text = "";
         var words = text.split(" ");
         var count = 0;
         var loop = setInterval(function(){
-            if (count >= words.length-1){
-                clearTimeout(loop);
-                RenJS.gui.showCTC();
-                callback();
-            }            
+                     
             textObj.text += (words[count]+" ");
             count++;
+            if (count >= words.length){
+                clearTimeout(loop);
+                // debugger;
+                RenJS.gui.showCTC();
+                callback();
+            }   
         }, config.settings.textSpeed);
         // this.hud.group.visible = true;
         this.hud.textBox.visible = true;
-        RenJS.storyManager.waitForClick(function(){
-            clearTimeout(loop);
-            textObj.text = text;
-            RenJS.gui.showCTC();
-            callback();
-        });
+        if (!config.settings.auto){
+            RenJS.storyManager.waitForClick(function(){
+                clearTimeout(loop);
+                textObj.text = text;
+                RenJS.gui.showCTC();
+                callback();
+            });    
+        }
+        
     }
 
     this.hideText = function(){
+        console.log("hiding text");
         this.hud.textBox.visible = false;
         if (this.hud.ctc && this.hud.ctc.tween){
             this.hud.ctc.alpha = 0;
@@ -275,6 +288,7 @@ function SimpleGUI(meta){
     }
 
     this.showCTC = function(){
+        console.log("Showing ctc");
         var ctc = RenJS.gui.hud.ctc;
         ctc.alpha = 0;
         ctc.visible = true;
