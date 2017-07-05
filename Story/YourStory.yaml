@@ -141,7 +141,7 @@ setup:
 
 start:
    - play morningBGM:
-  
+
 #   - show dream: WITH FADE
 #   - Me says: I love you Lucien.
 #   - show Lucien: blush AT RIGHT WITH FADE
@@ -163,36 +163,39 @@ start:
    - show house: WITH FADE
    - show Lucien: smile AT CENTER WITH FADE
    - Lucien says: Good morning!
-   - Lucien says: Is 5 less than 10?!
-   - if (5 < 10):
-     - show Lucien: eyesmile
-     - Me says: yes
-     - Lucien says: No shit
-   - else: 
-     - Me says: no
-     - Lucien says: WAT?
-   - hide Lucien: WITH FADE
-   - Me says: I guess I was dreaming. It was so pretty though.
-   - Me says: Lucien, did you have breakfast yet?
+  #  - Lucien says: Is 5 less than 10?!
+  #  - if (5 < 10):
+  #    - show Lucien: eyesmile
+  #    - Me says: yes
+  #    - Lucien says: No shit
+  #  - else:
+  #    - Me says: no
+  #    - Lucien says: WAT?
+  #  - hide Lucien: WITH FADE
+   - Me says: Yawn
+   - Me says: Good morning, Lucien.
+   - Me says: Did you have breakfast yet?
+   - show Lucien: normal
    - Lucien says: No, but I guess you can make some toast.
-   - Lucien says: I think the toaster is behind the pile of stolen tellies.
+   - Lucien says: I think the toaster is behind the pile of stolen TVs.
+   - hide Lucien: WITH FADE
   # this should be an interrupt
-   - var flag: false
+  #  - var flag: false
    - choice:
      - "Are you a criminal Lucien!?":
        - Lucien says: They've been here all week. How come you're so surprised.
        - Me says: ...
      - Oh, ok.:
        - Me says: Lucien, you should tide up a bit. This is a mess.
-     - Only if flag !if ({flag}):
-       - Me says: asdf
-     - Only if !flag !if (!{flag}):
-       - Me says: qwer
-
+    #  - Only if flag !if ({flag}):
+    #    - Me says: asdf
+    #  - Only if !flag !if (!{flag}):
+    #    - Me says: qwer
    - Me says: Mmmm, there's a lot of stuff in here.
    - wait: 300
    - Me says: Found it!
    - Me says: Where's the bread?
+   - show Lucien: normal AT CENTER WITH FADE
    - Lucien says: I think we're out.
    - Me says: Ok, guess I'll go get some.
    - Me says: Be right back.
@@ -231,46 +234,50 @@ call:
 returnhome:
   - show house: WITH FADE
   - Me says: Oh, no! They're taking Lucien away.
-  - if ({call} == true):
-    - show Lucien: eyesmile WITH FADE
-    - Lucien says: The house is sparkling Allen!
-    - Me says: Lucien... that's not what I meant...
-    - show Lucien: dread
-    - Lucien says: Don't worry about me, Allen.
-    - show Lucien: normal
-    - Lucien says: You should go to the bar and see if you can crash with one of my friends.
-    - Me says: Are you sure, Lucien?
-    - show Lucien: smile
-    - Lucien says: Yes, this will sort itself out eventually.
-    - hide Lucien: WITH FADE
-  - else:
-    - Me says: Shit! I didn't make it in time.
-    - Me says: Maybe I should have called.
-  - Me says: Okay, let's see if any of the guys at the bar can lend me a hand.
-  # - Me says: I think the guys were at the bar.
-  # - Me says: They might be able to give me a hand.
-  - var talkkerouac: false
-  - var talkburroughs: false
-  - var talkcorso: false
+  - show Lucien: eyesmile WITH FADE
+  - Lucien says: The house is sparkling Allen!
+  - Me says: Lucien... that's not what I meant...
+  - show Lucien: dread
+  - Lucien says: Don't worry about me, Allen.
+  - show Lucien: normal
+  - Lucien says: You should go to the bar.
+  - Lucien says: See if you can crash with one of my friends.
+  - Me says: Are you sure, Lucien?
+  - show Lucien: smile
+  - Lucien says: Yes, this will sort itself out eventually.
+  - hide Lucien: WITH FADE
+  - Me says: Let's hope one of the guys at the bar can lend me a hand.
+  - var kerouac: false
+  - var kerouacscore: 0
+  - var burroughs: false
+  - var burroughsscore: 0
+  - var corso: false
+  - var corsoscore: 0
   - scene: bar
 
 bar:
   - play barBGM:
   - show bar: WITH FADE
   - Me says: So...
+#  if !{{kerouac}}:
   - Me says: Jack is playing pool.
+  - show Kerouac: AT LEFT WITH FADE
+#  if !{{burroughs}}:
   - Me says: William is getting high in one of the couches.
+  - show Burroughs: AT CENTER WITH FADE
+#  if !{{corso}}:
   - Me says: And there's Greg, that guy from the other day.
   - Me says: I hope he's doing fine now.
+  - show Corso: AT RIGHT WITH FADE
   - choice:
-    - Talk to Jack.:
-      - var talkkerouac: true
+    - Talk to Jack. !if (!{kerouac}):
+      - var kerouac: true
       - scene: kerouacbar
-    - Talk to William.:
-      - var talkburroughs: true
+    - Talk to William. !if (!{burroughs}):
+      - var burroughs: true
       - scene: burroughsbar
-    - Talk to Greg.:
-      - var talkcorso: true
+    - Talk to Greg. !if (!{corso}):
+      - var corso: true
       - scene: corsobar
 
 kerouacbar:
@@ -285,7 +292,7 @@ kerouacbar:
   - Kerouac says: What's keeping you?
   - show Kerouac: normal
   - Me says: You know...
-  - Me says: This whole thing with my boyfriend being arrested.
+  - Me says: This whole thing with Lucien being arrested.
   - Me says: And me having nowhere to stay.
   - Me says: No biggie. I'll be sure to finish once that's sorted out.
   - show Kerouac: flustered
@@ -548,10 +555,10 @@ corsosteal:
 
 corsoboyfriend:
   - show Corso: normal
-  - Me says: My boyfriend went to jail for stealing.
+  - Me says: Lucien went to jail for stealing.
   - Me says: I'd rather not follow him there.
   - show Corso: flustered
-  - Corso says: Your boyfriend, huh?
+  - Corso says: Lucien, huh?
   - choice:
     - Yes, we lived together until recently.:
       - Corso says: Good for you. I guess.
