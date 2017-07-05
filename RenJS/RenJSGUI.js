@@ -112,6 +112,38 @@ function SimpleGUI(meta){
         },this);
 
         this.menus[name].buttons = this.initButtons(menu.buttons,this.menus[name].group);
+        this.initSliders(menu.sliders,this.menus[name].group);
+
+    }
+
+    this.initSliders = function(slidersMeta,group){
+        _.each(slidersMeta,function(slider,prop){
+            var se = this.getSpriteInfo(slider.empty);
+            game.add.image(se.x,se.y,se.key,0,group);
+            var sf = this.getSpriteInfo(slider.full);
+            var sliderFull = game.add.image(sf.x,sf.y,sf.key,0,group);
+            var sliderMask = game.add.graphics(sf.x,sf.y,group);
+            sliderMask.beginFill(0xffffff);
+            
+            var currentVal = config.settings[prop];
+            console.log("currentVal");
+            console.log(currentVal);
+            var maskWidth = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
+            console.log("maskWidth");
+            console.log(maskWidth);
+            // sliderMask.width = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
+            sliderMask.drawRect(0,0,maskWidth,sliderFull.height);
+            sliderFull.mask = sliderMask;
+            sliderFull.inputEnabled=true;
+            sliderFull.meta = slider;
+            sliderFull.prop = prop;
+            sliderFull.events.onInputDown.add(function(sprite,pointer){
+                var val = (pointer.x-sprite.x);
+                sprite.mask.width = val;
+                var newVal = (val/sprite.width)*(sprite.meta.max - sprite.meta.min)+sprite.meta.min;
+                this.sliderValueChanged[sprite.prop](newVal);
+            }, this);
+        },this);
     }
 
     this.initButtons = function(buttonsMeta,group){
@@ -124,26 +156,47 @@ function SimpleGUI(meta){
         return buttons;
     }
 
+    this.sliderValueChanged = {
+        textSpeed: function(newVal){
+            config.settings.textSpeed = newVal;
+        },
+        autoSpeed: function(newVal){
+            config.settings.autoSpeed = newVal;
+        },
+        bgmv: function(newVal){
+            config.settings.bgmv = newVal;
+            RenJS.audioManager.changeVolume("bgm",newVal);
+        },
+        sfxv: function(newVal){
+            config.settings.sfxv = newVal;
+            // RenJS.audioManager.changeVolume("sfx",newVal);
+        },
+    }
     //quick menu actions
     this.buttonActions = {
         start: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
+            RenJS.control.paused = false;
             RenJS.storyManager.start();
         },
         load: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
+            RenJS.control.paused = false;
             RenJS.storyManager.load();
         },
         auto: RenJS.storyManager.auto,
         skip: RenJS.storyManager.skip,
         save: RenJS.storyManager.save,
         settings: function(){
+            RenJS.control.paused = true;
             RenJS.gui.showMenu("settings");
         },
         return: function(){
-            RenJS.gui.hideMenu();    
+            RenJS.control.paused = false;
+            RenJS.gui.hideMenu();  
+            RenJS.gui.showHUD();  
         }
         
     }
@@ -252,11 +305,11 @@ function SimpleGUI(meta){
         }
         var textObj = this.hud.text;        
         textObj.text = "";
-        var words = text.split(" ");
+        var words = text.split("");
         var count = 0;
         var loop = setInterval(function(){
                      
-            textObj.text += (words[count]+" ");
+            textObj.text += (words[count]);
             count++;
             if (count >= words.length){
                 clearTimeout(loop);

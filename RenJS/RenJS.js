@@ -91,7 +91,9 @@ RenJS.startGame = function(){
             
             RenJS.gui.init();
             game.input.onTap.add(function(pointer,doubleTap){
-                              
+                if (RenJS.control.paused){
+                    return;
+                }
                 if (RenJS.control.waitForClick && !RenJS.control.clickLocked){
                     // var buttonPressed = _.find(RenJS.tbManager.buttons,function(button){
                     //     var localPosition = game.input.getLocalPosition(button, pointer);
@@ -130,6 +132,7 @@ RenJS.positions = {
 }
 
 RenJS.control = {
+    paused: false,
     fadeTime : config.fadeTime,
     timeout : config.timeout,
     waitForClick : false,
@@ -851,6 +854,11 @@ function AudioManager(){
             this.current.bgs.stop();
         }
         RenJS.resolve();
+    }
+
+    this.changeVolume = function(type,volume){
+        console.log("changing value to "+volume);
+        game.sound.volume = volume;
     }
 
     this.unmute = function(){

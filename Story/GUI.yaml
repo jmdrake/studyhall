@@ -7,17 +7,18 @@ simpleGUI:
       - exo
     images:
       menuBackground: assets/gui/MenuBG.png
-      settingsBackground: assets/gui/SettingsBG.png
-      sliderFull: assets/gui/SliderFull.png
-      sliderEmpty: assets/gui/SliderEmpty.png
+      settingsBackground: assets/gui/settingsBG.png
+      sliderFull: assets/gui/sliderfull.png
+      sliderEmpty: assets/gui/sliderempty.png
       textBox: assets/gui/TextBox.png
       nameBox: assets/gui/NameBox.png
       ctc: assets/gui/CTC.png
     spritesheets:
       startButton: assets/gui/MenuStart.png 249 97
       loadButton: assets/gui/MenuLoad.png 254 96
+      saveButton: assets/gui/MenuSave.png 248 107
       settingsButton: assets/gui/MenuSettings.png 253 100
-      returnButton: assets/gui/ReturnButton.png 214 54
+      returnButton: assets/gui/MenuReturn.png 266 112
       qmAutoButton: assets/gui/GuiButtonsAuto.png 100 27
       qmSkipButton: assets/gui/GuiButtonsSkip.png 100 27
       qmSettingsButton: assets/gui/GuiButtonsMenu.png 100 27
@@ -62,20 +63,28 @@ simpleGUI:
     settings:
       background: settingsBackground 0 0
       buttons:
-        return: returnButton 72 507
-        start: startButton 299 507
-        load: loadButton 525 507
+        return: returnButton 810 501
+        start: startButton 512 516
+        load: loadButton 209 515
       sliders:
         textSpeed: 
-          full: sliderFull 425 245
-          empty: sliderEmpty 425 245
+          full: sliderFull 724 312
+          empty: sliderEmpty 724 312
+          min: 10
+          max: 150
         autoSpeed:
-          full: sliderFull 425 395
-          empty: sliderEmpty 425 395
+          full: sliderFull 724 450
+          empty: sliderEmpty 724 450
+          min: 50
+          max: 300
         bgmv:
-          full: sliderFull 90 245
-          empty: sliderEmpty 90 245
+          full: sliderFull 228 312
+          empty: sliderEmpty 228 312
+          min: 0
+          max: 1
         sfxv:
-          full: sliderFull 90 395
-          empty: sliderEmpty 90 395
+          full: sliderFull 228 450
+          empty: sliderEmpty 228 450
+          min: 0
+          max: 1
    

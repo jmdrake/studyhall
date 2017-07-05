@@ -10,10 +10,13 @@ var config = {
         align: "left"
     },
     settings: {
-        textSpeed: 150,
+        textSpeed: 50,
+        autoSpeed: 150,
+        bgmv: 1,
+        sfxv: 1,
         skipping: false,
         auto: false,
-        muted: true
+        muted: false
     },
     splash: "assets/gui/Splash.png",
 
