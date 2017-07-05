@@ -198,6 +198,7 @@ start:
    - show Lucien: normal AT CENTER WITH FADE
    - Lucien says: I think we're out.
    - Me says: Ok, guess I'll go get some.
+   - show Lucien: smile
    - Me says: Be right back.
    - scene: shopping
 
