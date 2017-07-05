@@ -141,6 +141,7 @@ setup:
 
 start:
    - play morningBGM:
+  
 #   - show dream: WITH FADE
 #   - Me says: I love you Lucien.
 #   - show Lucien: blush AT RIGHT WITH FADE
@@ -162,18 +163,32 @@ start:
    - show house: WITH FADE
    - show Lucien: smile AT CENTER WITH FADE
    - Lucien says: Good morning!
+   - Lucien says: Is 5 less than 10?!
+   - if (5 < 10):
+     - show Lucien: eyesmile
+     - Me says: yes
+     - Lucien says: No shit
+   - else: 
+     - Me says: no
+     - Lucien says: WAT?
    - hide Lucien: WITH FADE
    - Me says: I guess I was dreaming. It was so pretty though.
    - Me says: Lucien, did you have breakfast yet?
    - Lucien says: No, but I guess you can make some toast.
    - Lucien says: I think the toaster is behind the pile of stolen tellies.
   # this should be an interrupt
+   - var flag: false
    - choice:
-     - Are you a criminal Lucien!?:
+     - "Are you a criminal Lucien!?":
        - Lucien says: They've been here all week. How come you're so surprised.
        - Me says: ...
      - Oh, ok.:
        - Me says: Lucien, you should tide up a bit. This is a mess.
+     - Only if flag !if ({flag}):
+       - Me says: asdf
+     - Only if !flag !if (!{flag}):
+       - Me says: qwer
+
    - Me says: Mmmm, there's a lot of stuff in here.
    - wait: 300
    - Me says: Found it!
@@ -216,22 +231,21 @@ call:
 returnhome:
   - show house: WITH FADE
   - Me says: Oh, no! They're taking Lucien away.
-  # - if: ({call} == true)
-  #   ISTRUE:
-  - show Lucien: eyesmile WITH FADE
-  - Lucien says: The house is sparkling Allen!
-  - Me says: Lucien... that's not what I meant...
-  - show Lucien: dread
-  - Lucien says: Don't worry about me, Allen.
-  - show Lucien: normal
-  - Lucien says: You should go to the bar and see if you can crash with one of my friends.
-  - Me says: Are you sure, Lucien?
-  - show Lucien: smile
-  - Lucien says: Yes, this will sort itself out eventually.
-  - hide Lucien: WITH FADE
-    # ISFALSE:
-    #   - Me says: Shit! I didn't make it in time.
-    #   - Me says: Maybe I should have called.
+  - if ({call} == true):
+    - show Lucien: eyesmile WITH FADE
+    - Lucien says: The house is sparkling Allen!
+    - Me says: Lucien... that's not what I meant...
+    - show Lucien: dread
+    - Lucien says: Don't worry about me, Allen.
+    - show Lucien: normal
+    - Lucien says: You should go to the bar and see if you can crash with one of my friends.
+    - Me says: Are you sure, Lucien?
+    - show Lucien: smile
+    - Lucien says: Yes, this will sort itself out eventually.
+    - hide Lucien: WITH FADE
+  - else:
+    - Me says: Shit! I didn't make it in time.
+    - Me says: Maybe I should have called.
   - Me says: Okay, let's see if any of the guys at the bar can lend me a hand.
   # - Me says: I think the guys were at the bar.
   # - Me says: They might be able to give me a hand.

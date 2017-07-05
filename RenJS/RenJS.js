@@ -186,22 +186,27 @@ function VariablesManager(){
         RenJS.resolve();
     }
 
-    this.branch = function(expression,branches){
+    this.evalExpression = function(expression){
         expression = expression+"";
         expression = this.parseVars(expression);
-        // debugger;
         try {
-            var val = eval(expression);
-            if (val && branches.ISTRUE){
-                var actions = branches.ISTRUE;
-                RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-            } 
-            if (!val && branches.ISFALSE){
-                var actions = branches.ISFALSE;
-                RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-            }
+            return eval(expression);
         } catch(e) {
             console.log("couldn-t eval");
+            return false;
+        }
+    }
+
+    this.branch = function(expression,branches){
+        var val = this.evalExpression(expression);
+            // debugger;
+        if (val && branches.ISTRUE){
+            var actions = branches.ISTRUE;
+            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
+        } 
+        if (!val && branches.ISFALSE){
+            var actions = branches.ISFALSE;
+            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
         }
         RenJS.resolve();
     }
@@ -210,7 +215,7 @@ function VariablesManager(){
         var vars = text.match(/\{(.*?)\}/g);
         if (vars) {
             _.each(vars,function(v){
-                var varName = v.substring(1,v.length-1);
+                var varName = v.substring(1,v.length-1);this.evalExpression
                 text = text.replace(v,this.vars[varName]);
             },this);
         }
@@ -558,9 +563,12 @@ function StoryManager(){
             withTransition: ["show","hide","play"],
             withPosition: ["show"]
         }
+        function getKey(act){
+            return _.keys(act)[0];
+        }
         return new Promise(function(resolve, reject) {
             RenJS.control.resolve = resolve;
-            var key = _.keys(action)[0];
+            var key = getKey(action);
             var str = key.split(" ");
             var mainAction,actor;
             if (str[1] == "says") {
@@ -608,9 +616,16 @@ function StoryManager(){
                     RenJS.varsManager.setVar(actor,params);
                     break;
                 case "if" :
-                    // console.log(params);
-                    // console.log(action);
-                    RenJS.varsManager.branch(params,action);
+                    var condition = key.substr(key.indexOf("("));
+                    var branches = {
+                        ISTRUE: action[key]
+                    };
+                    var next = _.first(RenJS.storyManager.currentScene);
+                    if (next && getKey(next) == "else"){
+                        branches.ISFALSE = next.else;
+                        RenJS.storyManager.currentScene.shift();
+                    }
+                    RenJS.varsManager.branch(condition,branches);
                     break;
                 case "show" :                     
                     action.manager.show(actor,action.transition,action);
@@ -640,7 +655,8 @@ function StoryManager(){
                         RenJS.choiceManager.interrupting = false;
                         RenJS.choiceManager.choose();
                     } else {
-                        RenJS.choiceManager.interrupt(params);
+                        RenJS.choiceManager.interrupting = true;
+                        RenJS.choiceManager.show(params);
                     }
                     break;
                 case "text" :
@@ -741,14 +757,27 @@ function StoryManager(){
 
 function ChoiceManager(){
 
-    this.interrupt = function (choices) {
-        RenJS.choiceManager.interrupting = true;
-        RenJS.choiceManager.show(choices);
-    };
+    this.evalChoice = function(choice){
+        var choiceText = _.keys(choice)[0];
+        var params = choiceText.split("!if");
+        if (params.length > 1){
+            var val = RenJS.varsManager.evalExpression(params[1]);
+            if (val) {
+                var next = choice[choiceText];
+                delete choice[choiceText];
+                choice[params[0]] = next;
+            }
+            return val;
+        }
+        return true; //unconditional choice
+    }
 
     this.show = function(choices){
-
-        // console.log(choices);
+        console.log("before");
+        console.log(choices);
+        var choices = _.filter(choices,this.evalChoice);
+        console.log("after");
+        console.log(choices);
         RenJS.choiceManager.currentChoices = choices;     
         RenJS.gui.showChoices(choices); 
         // debugger;
@@ -871,7 +900,7 @@ function AudioManager(){
         }
         var oldAudio = this.current[type];
         this.current[type] = null;
-        if (!this.muted) {
+        if (!config.settings.muted) {
             if (transition == "FADE") {
                 oldAudio.fadeOut(1500);
             } else {
@@ -884,7 +913,7 @@ function AudioManager(){
     }
 
     this.playSFX = function(key){
-        if (this.audioLoaded){
+        if (this.audioLoaded && !config.settings.muted){
             // debugger;            
             this.sfx[key].play();    
 
