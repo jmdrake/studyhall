@@ -118,6 +118,7 @@ setup:
         tongue: assets/characters/lucien/m6_tongue.png
         wink: assets/characters/lucien/m6_wink.png
   cgs:
+    stolen: assets/objects/Stolen.png
     phone: assets/objects/Phone.png
   music:
     policeBGM: assets/audio/Evan_Schaeffer_-_13_-_Stick.mp3
@@ -162,7 +163,7 @@ start:
 # breakfast:
    - show house: WITH FADE
    - show Lucien: smile AT CENTER WITH FADE
-   - Lucien says: Good morning!
+   - Lucien says: Good morning, Allen!
   #  - Lucien says: Is 5 less than 10?!
   #  - if (5 < 10):
   #    - show Lucien: eyesmile
@@ -179,6 +180,7 @@ start:
    - Lucien says: No, but I guess you can make some toast.
    - Lucien says: I think the toaster is behind the pile of stolen TVs.
    - hide Lucien: WITH FADE
+   - show stolen: WITH FADE AT 775,290
   # this should be an interrupt
   #  - var flag: false
    - choice:
@@ -195,7 +197,7 @@ start:
    - wait: 300
    - Me says: Found it!
    - Me says: Where's the bread?
-   - show Lucien: normal AT CENTER WITH FADE
+   - show Lucien: normal AT LEFT WITH FADE
    - Lucien says: I think we're out.
    - Me says: Ok, guess I'll go get some.
    - show Lucien: smile
@@ -248,38 +250,73 @@ returnhome:
   - Lucien says: Yes, this will sort itself out eventually.
   - hide Lucien: WITH FADE
   - Me says: Let's hope one of the guys at the bar can lend me a hand.
-  - var kerouac: false
-  - var kerouacscore: 0
-  - var burroughs: false
-  - var burroughsscore: 0
-  - var corso: false
-  - var corsoscore: 0
+  - var talkkerouac: false
+  - var pickkerouac: false
+  - var talkburroughs: false
+  - var pickburroughs: false
+  - var talkcorso: false
+  - var pickcorso: false
+  - var pickneal: false
   - scene: bar
 
 bar:
   - play barBGM:
   - show bar: WITH FADE
   - Me says: So...
-#  if !{{kerouac}}:
+#  if !{{talkkerouac}}:
   - Me says: Jack is playing pool.
   - show Kerouac: AT LEFT WITH FADE
-#  if !{{burroughs}}:
+#  if !{{talkburroughs}}:
   - Me says: William is getting high in one of the couches.
   - show Burroughs: AT CENTER WITH FADE
-#  if !{{corso}}:
+#  if !{{talkcorso}}:
   - Me says: And there's Greg, that guy from the other day.
   - Me says: I hope he's doing fine now.
   - show Corso: AT RIGHT WITH FADE
+#  if {{pickkerouac}}:
+  # - Me says: Jack wants me to go to his house.
+  # - show Kerouac: AT LEFT WITH FADE
+  # - show Kerouac: eyesmile
+#  if {{pickburroughs}}:
+  # - Me says: I could hook up with William.
+  # - show Burroughs: AT CENTER WITH FADE
+  # - show Burroughs: wink
+#  if {{pickcorso}}:
+  # - Me says: I could check Greg's place out.
+  # - show Corso: AT RIGHT WITH FADE
+  # - show Corso: smile
+#  if {{pickneal}}:
+  # - Me says: I could pick up Neal.
+  # - Me says: But it's so far away...
   - choice:
-    - Talk to Jack. !if (!{kerouac}):
-      - var kerouac: true
+    - Talk to Jack. !if (!{talkkerouac}):
+      - var talkkerouac: true
       - scene: kerouacbar
-    - Talk to William. !if (!{burroughs}):
-      - var burroughs: true
+    - Talk to William. !if (!{talkburroughs}):
+      - var talkburroughs: true
       - scene: burroughsbar
-    - Talk to Greg. !if (!{corso}):
-      - var corso: true
+    - Talk to Greg. !if (!{talkcorso}):
+      - var talkcorso: true
       - scene: corsobar
+    # TODO: Fix issues with variables so this plays out.
+    # - Leave with Jack. !if ({pickkerouac}):
+    #   - scene: gowithkerouac
+    # - Leave with William. !if ({pickburroughs}):
+    #   - scene: gowithburroughs
+    # - Leave with Greg. !if ({pickcorso}):
+    #   - scene: gowithcorso
+    # - Pick up Neal. !if ({pickneal}):
+    #   - Me says: If I pick up Neal...
+    #   - Me says: I might not make it back here before it closes.
+    #   - Me says: Should I stay or should I go?
+    #   - choice:
+    #     - Stay Here.:
+    #       - scene: bar
+    #     - Leave:
+    #       - scene: nowhere
+    # if {talkcorso} && {talkkerouac} && {talkburroughs} && !{pickcorso} && !{pickkerouac} && !{pickburroughs}:
+    #   - Me says: I guess I made everyone angry.
+    #   - Me says: I will have to sleep on the streets tonight.
 
 kerouacbar:
   - show Kerouac: eyesmile WITH FADE
@@ -335,7 +372,10 @@ kerouacbar:
   - show Kerouac: Normal
   - choice:
     - I guess I could give it a shot.:
-      - scene: nowhere
+      - Me says: Let me think about it.
+      - Me says: Fow now I'll see what the others are up to.
+      - var pickneal: true
+      - scene: bar
     - No, I'd much rather stay with you, guys.:
       - scene: kerouacpoetry
 
@@ -385,6 +425,7 @@ kerouacbored:
   - show Kerouac: flustered
   - Kerouac says: I think I should finish.
   - hide Kerouac: WITH FADE
+  - scene: bar
 
 kerouacpleased:
   - show Kerouac: normal
@@ -408,6 +449,8 @@ kerouacpleased:
   - show Kerouac: normal
   - Kerouac says: I'll wait for you here.
   - hide Kerouac: WITH FADE
+  - var pickkerouac: true
+  - scene: bar
 
 burroughsbar:
   - show Burroughs: evil WITH FADE
@@ -494,8 +537,10 @@ burroughskiss:
   - show Burroughs: smile
   - Burroughs says: We should go to my place, don't you think?
   - show Burroughs: wink
+  - Me says: That sounds be lovely, but let me think about it.
+  - var pickburroughs: true
   - hide Burroughs: WITH FADE
-  - hide bar: WITH FADE
+  - scene: bar
 
 corsobar:
   - show Corso: downcast WITH FADE
@@ -596,7 +641,7 @@ corsopoetry:
   - Corso says: Let me know when you're ready to go.
   - show Corso: smile
   - Corso says: I'll be drinking over here.
-  - var corsolove: true
+  - var pickcorso: true
   - hide Corso: WITH FADE
   - scene: bar
 
