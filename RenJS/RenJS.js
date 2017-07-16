@@ -151,6 +151,7 @@ RenJS.control = {
 RenJS.resolve = function(){
     if (RenJS.control.resolve != null){
         // debugger;
+        RenJS.control.waitForClick = false; 
         var resolve = RenJS.control.resolve;
         RenJS.control.resolve = null;     
         console.log("Resolving "+RenJS.control.action);
@@ -649,7 +650,7 @@ function StoryManager(){
                 case "choice" : 
                     // debugger;
                     config.settings.skipping = false;
-                    RenJS.choiceManager.show(params);
+                    RenJS.choiceManager.show(_.clone(params));
                     break;
                 case "interrupt" : 
                     // debugger;
@@ -659,7 +660,7 @@ function StoryManager(){
                         RenJS.choiceManager.choose();
                     } else {
                         RenJS.choiceManager.interrupting = true;
-                        RenJS.choiceManager.show(params);
+                        RenJS.choiceManager.show(_.clone(params));
                     }
                     break;
                 case "text" :
@@ -776,13 +777,16 @@ function ChoiceManager(){
     }
 
     this.show = function(choices){
-        console.log("before");
-        console.log(choices);
-        var choices = _.filter(choices,this.evalChoice);
-        console.log("after");
-        console.log(choices);
-        RenJS.choiceManager.currentChoices = choices;     
-        RenJS.gui.showChoices(choices); 
+        // console.log("before");
+        // console.log(choices);
+        var ch = _.map(choices,_.clone);
+        ch = _.filter(ch,this.evalChoice);
+        // console.log("ch");
+        // console.log(ch);
+        // console.log("choices");
+        // console.log(choices);
+        RenJS.choiceManager.currentChoices = ch;     
+        RenJS.gui.showChoices(ch); 
         // debugger;
         if (RenJS.choiceManager.interrupting){
             RenJS.resolve();
