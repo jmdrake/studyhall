@@ -3,8 +3,7 @@ setup:
     house: assets/backgrounds/house.jpg
     street: assets/backgrounds/street.jpg
     bar: assets/backgrounds/bar.jpg
-    dream: assets/backgrounds/dream.jpg
-    nowhere: assets/backgrounds/nowhere.png
+    nowhere: assets/backgrounds/nowhere.jpg
   characters:
     Me:
       speechColour: "#483737"
