@@ -236,13 +236,21 @@ bar:
   - if (!{talkkerouac}):
     - Me says: Jack is playing pool.
     - show Kerouac: AT LEFT WITH FADE
+  - if ({talkkerouac} && !{pickkerouac}):
+    - Me says: Jack seems busy.
   - if (!{talkburroughs}):
     - Me says: William is getting high in one of the couches.
     - show Burroughs: AT CENTER WITH FADE
+  - if ({talkburroughs} && !{pickburroughs}):
+    - Me says: William seems upset.
+    - Me says: It might be better not to bother him.
   - if (!{talkcorso}):
-    - Me says: And there's Greg, that guy from the other day.
+    - Me says: There's Greg, that guy from the other day.
     - Me says: I hope he's doing fine now.
     - show Corso: AT RIGHT WITH FADE
+  - if ({talkcorso} && !{pickcorso}):
+    - Me says: Greg seems mad at me.
+    - Me says: I'd rather leave him alone.
   - if ({pickkerouac}):
     - Me says: Jack wants me to go to his house.
     - show Kerouac: AT LEFT WITH FADE
@@ -258,35 +266,37 @@ bar:
   - if ({pickneal}):
     - Me says: I could pick up Neal.
     - Me says: But it's so far away...
-  - choice:
-    - Talk to Jack. !if (!{talkkerouac}):
-      - var talkkerouac: true
-      - scene: kerouacbar
-    - Talk to William. !if (!{talkburroughs}):
-      - var talkburroughs: true
-      - scene: burroughsbar
-    - Talk to Greg. !if (!{talkcorso}):
-      - var talkcorso: true
-      - scene: corsobar
-    # TODO: Fix issues with variables so this plays out.
-    - Leave with Jack. !if ({pickkerouac}):
-      - scene: gowithkerouac
-    - Leave with William. !if ({pickburroughs}):
-      - scene: gowithburroughs
-    - Leave with Greg. !if ({pickcorso}):
-      - scene: gowithcorso
-    - Pick up Neal. !if ({pickneal}):
-      - Me says: If I pick up Neal...
-      - Me says: I might not make it back here before it closes.
-      - Me says: Should I stay or should I go?
-      - choice:
-        - Stay Here.:
-          - scene: bar
-        - Leave:
-          - scene: nowhere
-  - if ({talkcorso} && {talkkerouac} && {talkburroughs} && !{pickcorso} && !{pickkerouac} && !{pickburroughs}):
+  - if ({talkcorso} && {talkkerouac} && {talkburroughs} && !{pickcorso} && !{pickkerouac} && !{pickburroughs} && !{pickneal}):
     - Me says: I guess I made everyone angry.
     - Me says: I will have to sleep on the streets tonight.
+    - hide bar: WITH FADE
+  - else:
+    - choice:
+      - Talk to Jack. !if (!{talkkerouac}):
+        - var talkkerouac: true
+        - scene: kerouacbar
+      - Talk to William. !if (!{talkburroughs}):
+        - var talkburroughs: true
+        - scene: burroughsbar
+      - Talk to Greg. !if (!{talkcorso}):
+        - var talkcorso: true
+        - scene: corsobar
+      - Leave with Jack. !if ({pickkerouac}):
+        - scene: gowithkerouac
+      - Leave with William. !if ({pickburroughs}):
+        - scene: gowithburroughs
+      - Leave with Greg. !if ({pickcorso}):
+        - scene: gowithcorso
+      - Pick up Neal. !if ({pickneal}):
+        - Me says: If I pick up Neal...
+        - Me says: I might not make it back here before it closes.
+        - Me says: Should I stay or should I go?
+        - choice:
+          - Stay Here.:
+            - var pickneal: false
+            - scene: bar
+          - Leave:
+            - scene: nowhere
 
 kerouacbar:
   - show Kerouac: eyesmile WITH FADE
@@ -422,6 +432,17 @@ kerouacpleased:
   - var pickkerouac: true
   - scene: bar
 
+gowithkerouac:
+  - show Kerouac: smile
+  - Kerouac says: Dinner is ready at my aunt's.
+  - show Kerouac: normal
+  - Kerouac says: Shall we go?
+  - Me says: Yes, I'm starving!
+  - hide bar: WITH FADE
+  - Me says: Jack's aunt is pretty great.
+  - Me says: She cooked us dinner and I'm stuffed.
+  - Me says: But I wished I could have spent the evening just with Jack.
+
 burroughsbar:
   - show Burroughs: evil WITH FADE
   - Me says: ...
@@ -507,10 +528,25 @@ burroughskiss:
   - show Burroughs: smile
   - Burroughs says: We should go to my place, don't you think?
   - show Burroughs: wink
-  - Me says: That sounds be lovely, but let me think about it.
+  - Me says: That sounds lovely, but let me think about it.
   - var pickburroughs: true
   - hide Burroughs: WITH FADE
+  - ambient: CLEAR
   - scene: bar
+
+gowithburroughs:
+  - ambient: DRUGS
+  - show Burroughs: normal
+  - Burroughs says: I think we should continue this at my place.
+  - Burroughs says: What do you think?
+  - show Burroughs: wink
+  - Me says: I don't see why not.
+  - show Burroughs: blush
+  - hide bar: WITH FADE
+  - Me says: I spent the night with William.
+  - Me says: It was pretty wild.
+  - Me says: I loved every second of it.
+  - Me says: I hope we can hook up again.
 
 corsobar:
   - show Corso: downcast WITH FADE
@@ -577,6 +613,7 @@ corsoboyfriend:
   - Corso says: Lucien, huh?
   - choice:
     - Yes, we lived together until recently.:
+      - Me says: I think I really like him.
       - Corso says: Good for you. I guess.
       - scene: corsoangry
     - He's a poet like me.:
@@ -626,3 +663,11 @@ corsoangry:
   - Corso says: Don't expect me to be grateful.
   - hide Corso: WITH FADE
   - scene: bar
+
+gowithcorso:
+  - show Corso: eyesmile
+  - Corso says: So, are you ready to go?
+  - Me says: Yes, let's do this!
+  - hide bar: WITH FADE
+  - Me says: I spent the night with Greg at the library.
+  - Me says: It was lovely.
