@@ -474,18 +474,81 @@ burroughshigh:
   - show Burroughs: normal
   - Burroughs says: Let it dissolve slowly.
   - show Burroughs: smile
-  - Burroughs says: Everything will go slowly now.
-  - show Burroughs: normal
   - ambient: DRUGS
+  - show Burroughs: normal
+  - Burroughs says: I don't think this is doing anything for me yet.
+  - Burroughs says: What about you?
+  - choice:
+    - I'm fine.:
+      - show Burroughs: smile
+      - Burroughs says: Oh, you're so though, aren't you?
+      - show Burroughs: normal
+      - Me says: Not really...
+    - I feel sort of dizzy.:
+      - Burroughs says: I can help you with that.
+      - show Burroughs: wink
+      - Me says: I think I can take it.
+      - show Burroughs: normal
+  - Burroughs says: If you ever feel uncomfortable.
+  - Burroughs says: Know that we can stop whenever you want.
+  - Burroughs says: If you ever feel brave.
+  - Burroughs says: You can interrupt me.
+  - interrupt:
+    - Like this?:
+      - show Burroughs: smile
+      - Burroughs says: Exactly.
+      - show Burroughs: normal
+      - Burroughs says: But I think...
+      - Burroughs says: You can also listen to what I'm saying with no interruptions.
+  - Burroughs says: Go on.
+  - Burroughs says: Don't be shy.
+  - interrupt: stop
+  - Burroughs says: Since we're in on this.
+  - show Burroughs: dread
+  - Burroughs says: I might as well let you in on a little secret.
+  - show Burroughs: eyesmile
+  - Burroughs says: I found a magical method for perfect book publishing.
+  - Burroughs says: Did you know?
+  - Burroughs says: I bet you didn't!
   - interrupt:
     - I'm freaking out a bit.:
       - show Burroughs: dread
       - Burroughs says: Then we better stop now.
       - ambient: CLEAR
       - scene: burroughsdismiss
-  - Burroughs says: The evening will pass ever so slowly.
+  - Burroughs says: Aren't you excited?
+  - show Burroughs: normal
+  - Me says: Maybe?
+  - show Burroughs: dread
+  - Burroughs says: Well, you should be!
+  - Burroughs says: You're the first person I'm telling this to.
+  - show Burroughs: normal
+  - Burroughs says: First, you blow a publisher.
+  - Burroughs says: He might give you a publishing deal.
   - show Burroughs: smirk
-  - Burroughs says: So slowly we'll be able to feel ourselves age.
+  - Burroughs says: But you have to pick the right one.
+  - Me says: How do I know?
+  - show Burroughs: normal
+  - Burroughs says: I can't help you with that.
+  - Burroughs says: Just follow your gut.
+  - Me says: Okay.
+  - show Burroughs: smile
+  - Burroughs says: What you write is not what matters most.
+  - show Burroughs: normal
+  - Burroughs says: The important thing is for it to have seven pages.
+  - Me says: Shouldn't pages be multiples of four?
+  - show Burroughs: dread
+  - Burroughs says: NO!
+  - Burroughs says: Seven is the number of perfection!
+  - show Burroughs: smirk
+  - Burroughs says: Perfection is of the essence!
+  - show Burroughs: normal
+  - Burroughs says: You might know too much now.
+  - Burroughs says: You know my secret at the very least.
+  - show Burroughs: smirk
+  - Burroughs says: Now we're definitely in this together.
+  - show Burroughs: normal
+  - Burroughs says: We should enjoy our time together.
   - Burroughs says: We can sink into this couch you and I.
   - interrupt: stop
   - Burroughs says: Eye to eye, so close that I could taste you.
@@ -500,13 +563,29 @@ burroughshigh:
   - interrupt: stop
   - show Burroughs: normal
   - Burroughs says: But maybe you don't care about the boys.
+  - Burroughs says: Maybe I disgust you because I'm queer.
   - show Burroughs: flustered
-  - ambient: BADTRIP
-  - Burroughs says: Maybe you care about guns.
+  - Me says: No, no. I like boys as well.
+  - show Burroughs: dread
+  - Burroughs says: Did anyone ever try to mess with you for being queer?
   - show Burroughs: normal
-  - Burroughs says: Did you know I pack one?
+  - Me says: A little bit.
+  - Burroughs says: Well, when they try to mess with me.
+  - Burroughs says: I show them I'm packing.
   - show Burroughs: flustered
-  - Burroughs says: Several actually.
+  - Burroughs says: I'm not talking about my dick here.
+  - show Burroughs: normal
+  - Burroughs says: I'm talking about a real gun.
+  - Burroughs says: Seeing that I'm packing really shooks them up.
+  - Burroughs says: Makes them think twice before messing with me.
+  - Burroughs says: Do you know what I mean?
+  - Me says: I guess.
+  - Burroughs says: Maybe guns scare you.
+  - ambient: BADTRIP
+  - show Burroughs: evil
+  - Burroughs says: If they do, we can use knives.
+  - Burroughs says: Everything is so much cleaner with a knife.
+  - Burroughs says: Knives are so slick.
   - show Burroughs: scared
   - Burroughs says: BARF
   - Me says: BARF
@@ -545,7 +624,6 @@ gowithburroughs:
   - hide bar: WITH FADE
   - Me says: I spent the night with William.
   - Me says: It was pretty wild.
-  - Me says: I loved every second of it.
   - Me says: I hope we can hook up again.
 
 corsobar:
