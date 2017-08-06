@@ -151,7 +151,7 @@ start:
    - Lucien says: No, but I guess you can make some toast.
    - Lucien says: I think the toaster is behind the pile of stolen TVs.
    - hide Lucien: WITH FADE
-   - show stolen: WITH FADE AT 775,290
+   - show stolen: WITH FADE AT 775,368
   # this should be an interrupt
    - choice:
      - "Are you a criminal Lucien!?":
@@ -423,7 +423,7 @@ kerouacpleased:
   - Kerouac says: There's even room for you in the couch.
   - Kerouac says: What do you think?
   - Me says: Sure.
-  - Me says: Mind if I catch up with the guys before I go.
+  - Me says: Mind if I catch up with the guys before I go?
   - show Kerouac: blush
   - Kerouac says: Of course not!
   - show Kerouac: normal
