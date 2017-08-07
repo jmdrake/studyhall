@@ -4,6 +4,9 @@ setup:
     street: assets/backgrounds/street.jpg
     bar: assets/backgrounds/bar.jpg
     nowhere: assets/backgrounds/nowhere.jpg
+    over: assets/backgrounds/over.png
+    heart: assets/backgrounds/heart.png
+    credits: assets/backgrounds/credits.png
   characters:
     Me:
       speechColour: "#483737"
@@ -267,9 +270,13 @@ bar:
     - Me says: I could pick up Neal.
     - Me says: But it's so far away...
   - if ({talkcorso} && {talkkerouac} && {talkburroughs} && !{pickcorso} && !{pickkerouac} && !{pickburroughs} && !{pickneal}):
+    - hide bar: WITH FADE
+    - show over: WITH FADE
     - Me says: I guess I made everyone angry.
     - Me says: I will have to sleep on the streets tonight.
-    - hide bar: WITH FADE
+    - hide over: WITH FADE
+    - show credits: WITH FADE
+
   - else:
     - choice:
       - Talk to Jack. !if (!{talkkerouac}):
@@ -372,9 +379,13 @@ nowhere:
   - show bar: WITH FADE
   - Me says: Well...
   - Me says: The bar is closed and everyone left.
+  - hide bar: WITH FADE
+  - show over: WITH FADE
   - Me says: I guess I have nowhere to crash tonight.
   - Me says: And I miss Lucien so much.
-  - hide bar: WITH FADE
+  - hide over: WITH FADE
+  - show credits: WITH FADE
+
 
 kerouacpoetry:
   - show Kerouac: smile
@@ -439,9 +450,13 @@ gowithkerouac:
   - Kerouac says: Shall we go?
   - Me says: Yes, I'm starving!
   - hide bar: WITH FADE
+  - show heart: WITH FADE
   - Me says: Jack's aunt is pretty great.
   - Me says: She cooked us dinner and I'm stuffed.
   - Me says: But I wished I could have spent the evening just with Jack.
+  - hide Kerouac: WITH FADE
+  - hide heart: WITH FADE
+  - show credits: WITH FADE
 
 burroughsbar:
   - show Burroughs: evil WITH FADE
@@ -622,9 +637,13 @@ gowithburroughs:
   - Me says: I don't see why not.
   - show Burroughs: blush
   - hide bar: WITH FADE
+  - show heart: WITH FADE
   - Me says: I spent the night with William.
   - Me says: It was pretty wild.
   - Me says: I hope we can hook up again.
+  - hide Burroughs: WITH FADE
+  - hide heart: WITH FADE
+  - show credits: WITH FADE
 
 corsobar:
   - show Corso: downcast WITH FADE
@@ -747,5 +766,9 @@ gowithcorso:
   - Corso says: So, are you ready to go?
   - Me says: Yes, let's do this!
   - hide bar: WITH FADE
+  - show heart: WITH FADE
   - Me says: I spent the night with Greg at the library.
   - Me says: It was lovely.
+  - hide Corso: WITH FADE
+  - hide heart: WITH FADE
+  - show credits: WITH FADE
