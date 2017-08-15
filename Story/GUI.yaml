@@ -22,6 +22,7 @@ simpleGUI:
       qmAutoButton: assets/gui/GuiButtonsAuto.png 100 27
       qmSkipButton: assets/gui/GuiButtonsSkip.png 100 27
       qmSettingsButton: assets/gui/GuiButtonsMenu.png 100 27
+      qmMuteButton: assets/gui/Mute.png 50 50
       qmSaveButton: assets/gui/GuiButtonsSave.png 100 27
       choice: assets/gui/Choice.png 1136 74
     sound:
@@ -51,6 +52,7 @@ simpleGUI:
       skip: qmSkipButton 1175 647
       save: qmSaveButton 1175 679
       settings: qmSettingsButton 1175 615
+      # mute: qmMuteButton 1175 60
     ctc: ctc 1116 62
   menus:
     main: 

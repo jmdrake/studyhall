@@ -1,8 +1,10 @@
 var config = {
     //name of the game
     name: "RenJS-GAME",
-    story: "Story/YourStory.yaml",
-    gui: "Story/GUI.yaml",
+    storyFiles: [
+        "Story/YourStory.yaml",
+        "Story/GUI.yaml"
+    ],
     stageSize : {w:1280,h:720},
     textDefaults: {
         font: "bold 16pt Arial",
@@ -16,7 +18,7 @@ var config = {
         sfxv: 1,
         skipping: false,
         auto: false,
-        muted: false
+        muted: true
     },
     splash: "assets/gui/Splash.png",
 

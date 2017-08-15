@@ -128,12 +128,6 @@ setup:
     barBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3
   sfx:
     phoneSFX: assets/audio/Short_Dial_Tone-SoundBible.com-1911037576.mp3
-    # catwarning: assets/audio/angry6.wav
-    # miau: assets/audio/cat2.wav
-    # magic: assets/audio/magic.wav
-    # throw: assets/audio/throw.wav
-    # explosionSound: assets/audio/throw.wav
-    # staticSound: assets/audio/static.mp3
   extra:
     spritesheets:
       explosion: assets/effects/explosion.png 450 274
@@ -145,6 +139,9 @@ setup:
 start:
    - play morningBGM:
    - show house: WITH FADE
+   - call helloworld:
+       param1: asdf
+       param2: qwer
    - show Lucien: smile AT CENTER WITH FADE
    - Lucien says: Good morning, Allen!
    - Me says: Yawn
@@ -160,6 +157,20 @@ start:
      - "Are you a criminal Lucien!?":
        - Lucien says: They've been here all week. How come you're so surprised.
        - Me says: ...
+       - Me says: asdf 1
+       - Me says: asdf 2
+       - if (5 > 6):
+         - Me says: qwer 1
+         - Me says: qwer 2
+         - Me says: qwer 3
+         - Me says: qwer 4
+       - else:
+         - Me says: zxcv 1
+         - Me says: zxcv 2
+         - Me says: zxcv 3
+         - Me says: zxcv 4
+       - Me says: asdf 3
+       - Me says: asdf 4
      - Oh, ok.:
        - Me says: Lucien, you should tide up a bit. This is a mess.
    - Me says: Mmmm, there's a lot of stuff in here.

@@ -6,24 +6,29 @@ var RenJS = {};
 RenJS.startGame = function(){        
     game.state.add("preload", {
         preload: function(){
-            game.load.text('RenJS_Story', config.story);
-            game.load.text('RenJS_GUI', config.gui);
+            _.each(config.storyFiles,function (file,index) {
+                game.load.text("story"+index, file);
+            });
             game.load.image('splash', config.splash);
         },
         create: function(){
             game.scale.pageAlignHorizontally = true;
             game.scale.pageAlignVertically = true;
             game.scale.refresh(); 
-                       
-            RenJS.story = jsyaml.load(game.cache.getText('RenJS_Story'));
-            var guiSetup = jsyaml.load(game.cache.getText('RenJS_GUI'));
-            if (guiSetup.simpleGUI){
-                RenJS.gui = new SimpleGUI(guiSetup.simpleGUI);    
+            RenJS.splash = game.add.image(0,0,"splash");
+            var story = {};
+            _.each(config.storyFiles,function (file,index) {
+                var text = jsyaml.load(game.cache.getText("story"+index));
+                story = _.extend(story,text);
+            });
+            RenJS.story = story;
+            if (story.simpleGUI){
+                RenJS.gui = new SimpleGUI(story.simpleGUI);    
             } else {
                 // this.gui = new RenJS.story.gui.customGUI();
             }    
             //preload the fontss
-            _.each(guiSetup.simpleGUI.assets.fonts,function(font){
+            _.each(story.simpleGUI.assets.fonts,function(font){
                 console.log("loading" + font)
                 game.add.text(20, 20, font, {font: '42px '+font});
             });
@@ -85,10 +90,8 @@ RenJS.startGame = function(){
 
     game.state.add("story", {
         create:function(){            
-            RenJS.splash = game.add.image(0,0,"splash");
+            // RenJS.splash = game.add.image(0,0,"splash");
             RenJS.storyManager.setupStory();
-            // RenJS.dlgManager.init();
-            
             RenJS.gui.init();
             game.input.onTap.add(function(pointer,doubleTap){
                 if (RenJS.control.paused){
@@ -132,6 +135,7 @@ RenJS.positions = {
 }
 
 RenJS.control = {
+    execStack:[{c:-1}],
     paused: false,
     fadeTime : config.fadeTime,
     timeout : config.timeout,
@@ -164,306 +168,9 @@ RenJS.portrait = config.portrait;
 
 
 
-function VariablesManager(){
-    this.vars = {};
-    this.setVar = function(name,value){
-        value = value+"";
-        value = this.parseVars(value);
-        try {
-           var val = eval(value);
-           this.vars[name] = val;
-        } catch(e) {
-            this.vars[name] = value;
-        }
-        // if (isNaN(value)){
-            
-        // } else {
-        //     // debugger;
-        //     // if (value.indexOf("+") != -1){
-        //     //     this.vars[name] += parseInt(value);
-        //     // } else if (value.indexOf("-") != -1){
-        //     //     this.vars[name] -= parseInt(value);
-        //     // } else {
-        //         this.vars[name] = value;
-        //     // }
-        // }
-        RenJS.resolve();
-    }
 
-    this.evalExpression = function(expression){
-        expression = expression+"";
-        expression = this.parseVars(expression);
-        try {
-            return eval(expression);
-        } catch(e) {
-            console.log("couldn-t eval");
-            return false;
-        }
-    }
-
-    this.branch = function(expression,branches){
-        var val = this.evalExpression(expression);
-            // debugger;
-        if (val && branches.ISTRUE){
-            var actions = branches.ISTRUE;
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-        } 
-        if (!val && branches.ISFALSE){
-            var actions = branches.ISFALSE;
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-        }
-        RenJS.resolve();
-    }
-
-    this.parseVars = function(text){
-        var vars = text.match(/\{(.*?)\}/g);
-        if (vars) {
-            _.each(vars,function(v){
-                var varName = v.substring(1,v.length-1);this.evalExpression
-                text = text.replace(v,this.vars[varName]);
-            },this);
-        }
-        return text;
-    }
-}
-
-RenJS.varsManager = new VariablesManager();
 
 // RenJS.characters = {};
-
-function Character(name,speechColour){
-    
-    this.name = name;
-    // RenJS.characters[this.name] = this;
-    this.looks = {};
-    this.currentLook = null;
-    this.speechColour = speechColour;
-
-    this.addLook = function(lookName,image){        
-        var look = RenJS.storyManager.characterSprites.create(RenJS.positions.CENTER.x,RenJS.positions.CENTER.y,(image ? image : lookName));
-        look.anchor.set(0.5,1);
-        look.alpha = 0;
-        look.name = lookName;
-        this.looks[lookName] = look;
-        if (!this.currentLook){
-            this.currentLook = this.looks[lookName];
-        }
-    }
-}
-
-function CharactersManager(){
-    this.characters = {};
-    this.showing = {};
-
-    this.add = function(name,displayName,speechColour,looks){
-        this.characters[name] = new Character(displayName,speechColour);
-        _.each(looks,function(filename,look){
-            this.characters[name].addLook(look,name+"_"+look);
-        },this);
-    }
-
-    this.show = function(name,transition,props){        
-        var ch = this.characters[name];
-        var oldLook = ch.currentLook;
-        ch.currentLook = props.look ? ch.looks[props.look] : ch.looks.normal;
-        if (!props.position){
-            props.position = (oldLook != null) ? {x:oldLook.x,y:oldLook.y} : RenJS.positions.CENTER;
-        }
-        var scaleX = oldLook != null ? oldLook.scale.x : 1;
-        if (props.flipped != undefined){
-            scaleX = props.flipped ? -1 : 1;
-        }
-        this.showing[name] = true;
-        transition(oldLook,ch.currentLook,props.position,scaleX);
-    }
-
-    this.hide = function(name,transition){
-        var ch = this.characters[name];
-        var oldLook = ch.currentLook;        
-        ch.currentLook = null;
-        delete this.showing[name];
-        // console.log("hiding ch "+name);
-        transition(oldLook,null);
-    }
-
-    this.hideAll = function(){
-        _.each(this.showing,function(showing,name){
-            this.hide(name,RenJS.transitions.CUT);
-        },this);
-    }
-
-    this.say = function(name,text){
-        RenJS.dlgManager.show(text,this.characters[name].name,this.characters[name].speechColour);
-    }
-}
-
-RenJS.chManager = new CharactersManager();
-
-
-function CGSManager(){
-    this.cgs = {};
-
-    this.show = function(name,transition,props){
-        console.log(name);
-        console.log(transition);
-        console.log(props);
-        var position = props.position ? props.position : {x:game.world.centerX,y:game.world.centerY};
-        
-        this.cgs[name] = RenJS.storyManager.cgsSprites.create(position.x,position.y,name);            
-        this.cgs[name].anchor.set(0.5);        
-        this.cgs[name].alpha = 0;
-        if (props.zoom){
-            this.cgs[name].scale.set(props.zoom);    
-        }        
-        if (props.angle){
-            this.cgs[name].angle = props.angle;
-        }        
-        transition(null,this.cgs[name],position);
-    }
-
-    this.animate = function(name,toTween,time){
-        // debugger;
-        var tweenables = {};
-        if (toTween.alpha != undefined && toTween.alpha != null) {
-            tweenables.alpha = toTween.alpha;
-        }
-        if (toTween.angle != undefined && toTween.angle != null) {
-            tweenables.angle = toTween.angle;
-        }
-        if (toTween.position != undefined && toTween.position != null) {
-            tweenables.x = toTween.position.x;
-            tweenables.y = toTween.position.y;
-        }
-        if (toTween.zoom != undefined && toTween.zoom != null) {
-            RenJS.tweenManager.parallel([
-                {sprite:this.cgs[name],tweenables:tweenables},
-                {sprite:this.cgs[name].scale,tweenables:{x:toTween.zoom,y:toTween.zoom},callback:RenJS.resolve},
-            ],time);
-        } else {
-            RenJS.tweenManager.tween(this.cgs[name],tweenables,RenJS.resolve,time,true);
-        }
-    }
-
-    this.hide = function(name,transition){
-        if (this.cgs[name]){
-            RenJS.control.nextAction = function(){
-                this.cgs[name].destroy();
-                delete this.cgs[name];
-                RenJS.resolve();
-            }
-            transition(this.cgs[name],null);
-        } else {
-            RenJS.resolve();
-        }
-    }
-
-    this.hideAll = function(){
-        RenJS.storyManager.cgsSprites.removeAll(true);
-        this.cgs = {};
-    }
-}
-
-RenJS.cgsManager = new CGSManager();
-
-function TweenManager(){
-    this.current = [];
-
-    this.tween = function(sprite,tweenables,callback,time,start){
-        var tween = game.add.tween(sprite);
-        tween.to(tweenables, time, Phaser.Easing.Linear.None);
-        if(callback){
-            tween.onComplete.add(callback, this);
-            tween.callbackOnComplete = callback;
-        }        
-        tween.tweenables = tweenables;
-        if (start){
-            RenJS.tweenManager.current = [];
-            tween.start();
-            if (!config.settings.auto) {
-                RenJS.storyManager.waitForClick(this.skip);    
-            }            
-        }
-        RenJS.tweenManager.current.push(tween);
-        // if (config.settings.skipping){
-        //     this.skip();
-        // }
-        return tween;
-    }
-
-    this.chain = function(tweens,time){
-        var tm = RenJS.tweenManager;
-        tm.current = [];
-        var lastTween = null;
-        _.each(tweens,function(tween){
-            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time/tweens.length,false);
-            if (lastTween){
-                lastTween.chain(tween);
-            }
-            lastTween = tween;
-        },tm);
-        tm.current[0].start();
-        if (!config.settings.auto) {
-            RenJS.storyManager.waitForClick(tm.skip);    
-        }
-    }
-
-    this.parallel = function(tweens,time){
-        var tm = RenJS.tweenManager;
-        tm.current = [];
-        _.each(tweens,function(tween){
-            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time,false);
-            tween.start();
-        },tm);
-        if (!config.settings.auto) {
-            RenJS.storyManager.waitForClick(tm.skip);    
-        }
-    }
-
-    this.skip = function(){
-        // debugger;
-
-        // console.log("skipping "+tweenManager.current.length);
-        var tweens = RenJS.tweenManager.current;
-        RenJS.tweenManager.current = [];
-        _.each(tweens,function(tween){
-            tween.stop(false);
-            _.each(tween.tweenables,function (value,property) {
-                tween.target[property] = value;
-            });
-            if (tween.callbackOnComplete){
-                tween.callbackOnComplete();
-            }            
-        });        
-    }
-}
-
-RenJS.tweenManager = new TweenManager();
-
-function BackgroundManager(){
-
-    this.backgrounds = {};
-    this.current = null;
-
-    this.add = function(name,image){
-        this.backgrounds[name] = RenJS.storyManager.backgroundSprites.create(game.world.centerX,game.world.centerY,(image ? image : name));
-        this.backgrounds[name].anchor.set(0.5);
-        this.backgrounds[name].alpha = 0;
-    }
-
-    this.show = function(name,transition){   
-        var oldBg = this.current;
-        this.current = name ? this.backgrounds[name] : null;
-        // console.log("showing bg "+name);
-        // debugger;
-        transition(oldBg,this.current,{x:game.world.centerX,y:game.world.centerY});        
-    }
-
-    this.hide = function(bg,transition){   
-        this.show(null,transition ? transition : RenJS.transitions.FADEOUT);
-    }
-}
-
-RenJS.bgManager = new BackgroundManager();
 
 function StoryManager(){
 
@@ -497,8 +204,78 @@ function StoryManager(){
         console.log("autoplaying")
     }
 
-    this.load = function(){
-        this.start();
+    this.save = function(slot) {
+        if (!slot){
+            slot = 0;
+        }
+        var data = {
+            background: RenJS.bgManager.current.name,
+            characters: RenJS.chManager.showing,
+            audio: RenJS.audioManager.current,
+            cgs: RenJS.cgsManager.current,
+            stack: RenJS.control.execStack,
+            vars: RenJS.logicManager.vars
+        }
+        
+        if (RenJS.customContent.save){
+            RenJS.customContent.save(data);
+        }
+        console.log("SAVING");
+        console.log(data);
+        var data = JSON.stringify(data);
+        console.log(data);
+        localStorage.setItem("RenJSDATA"+slot,data);
+    } 
+
+    this.load = function(slot){
+        if (!slot){
+            slot = 0;
+        }
+        console.log("LOADING slot "+slot);
+        var data = localStorage.getItem("RenJSDATA"+slot);
+        if (!data){
+            this.start();    
+            return;
+        } 
+        console.log(data);
+        data = JSON.parse(data);
+        console.log(data);
+        // RenJS.transitions.FADETOCOLOUROVERLAY(0x000000);
+        RenJS.bgManager.set(data.background);
+        RenJS.chManager.set(data.characters);
+        RenJS.audioManager.set(data.audio);
+        RenJS.cgsManager.set(data.cgs);
+        RenJS.logicManager.vars = data.vars;
+        var stack = _.last(data.stack);
+        var scene = stack.scene;
+        var allActions = _.clone(RenJS.story[scene]);
+        var actions = allActions.slice(stack.c+1);
+        if(data.stack.length != 1){
+            for (var i = data.stack.length-2;i>=0;i--){
+                var nestedAction = allActions[stack.c];
+                stack = data.stack[i];                
+                switch(stack.action){
+                    case "interrupt":
+                        nestedAction = allActions[data.stack[i+1].interrupting];
+                        allActions = nestedAction.interrupt[stack.index][stack.op];
+                        break;
+                    case "choice":
+                        allActions = nestedAction.choice[stack.index][stack.op];
+                        break;
+                    case "if":
+                        var action = _.keys(nestedAction)[0];
+                        allActions = nestedAction[action];
+
+                }
+                var newActions = allActions.slice(stack.c+1);;
+                actions = newActions.concat(actions);
+            }            
+        }
+        RenJS.control.execStack = data.stack;
+        RenJS.storyManager.currentScene = actions;
+        // RenJS.transitions.FADEOUTCOLOUROVERLAY();
+        RenJS.control.paused = false;
+        RenJS.storyManager.interpret();
     }
 
     this.setupStory = function(){        
@@ -522,6 +299,7 @@ function StoryManager(){
     // }
 
     this.startScene = function(name){
+        RenJS.control.execStack = [{c:-1,scene:name}];
         // _.each(RenJS.characters,function(character,name){
         //     character.hide();
         // });
@@ -532,6 +310,7 @@ function StoryManager(){
         RenJS.cgsManager.hideAll();
         // RenJS.audioManager.stop();
         this.currentScene = _.clone(RenJS.story[name]);
+        
         RenJS.resolve();
         // this.interpretScene();        
     }
@@ -617,7 +396,7 @@ function StoryManager(){
             switch(RenJS.control.action){
                 // case "custom": RenJS.control.action = "Custom fct"; action.execute(); break;
                 case "var" :
-                    RenJS.varsManager.setVar(actor,params);
+                    RenJS.logicManager.setVar(actor,params);
                     break;
                 case "if" :
                     var condition = key.substr(key.indexOf("("));
@@ -629,7 +408,10 @@ function StoryManager(){
                         branches.ISFALSE = next.else;
                         RenJS.storyManager.currentScene.shift();
                     }
-                    RenJS.varsManager.branch(condition,branches);
+                    RenJS.logicManager.branch(condition,branches);
+                    break;
+                case "else" :
+                    RenJS.resolve();
                     break;
                 case "show" :                     
                     action.manager.show(actor,action.transition,action);
@@ -638,7 +420,7 @@ function StoryManager(){
                     action.manager.hide(actor,action.transition);
                     break;
                 case "say" : 
-                    RenJS.chManager.say(actor,params);
+                    RenJS.textManager.say(actor,params);
                     break;
                 case "wait" : 
                     RenJS.storyManager.waitTimeout(parseInt(params));
@@ -650,21 +432,21 @@ function StoryManager(){
                 case "choice" : 
                     // debugger;
                     config.settings.skipping = false;
-                    RenJS.choiceManager.show(_.clone(params));
+                    RenJS.logicManager.showChoices(_.clone(params));
                     break;
                 case "interrupt" : 
                     // debugger;
                     if (params == "stop"){
                         // console.log("interrupting");
-                        RenJS.choiceManager.interrupting = false;
-                        RenJS.choiceManager.choose();
+                        RenJS.logicManager.interrupting = false;
+                        RenJS.logicManager.choose();
                     } else {
-                        RenJS.choiceManager.interrupting = true;
-                        RenJS.choiceManager.show(_.clone(params));
+                        RenJS.logicManager.interrupting = true;
+                        RenJS.logicManager.showChoices(_.clone(params));
                     }
                     break;
                 case "text" :
-                    RenJS.dlgManager.show(params);
+                    RenJS.textManager.show(params);
                     break;
                 case "play" :
                     // debugger;
@@ -684,6 +466,9 @@ function StoryManager(){
                 case "scene" :
                     RenJS.storyManager.startScene(params);
                     break;
+                case "call" :
+                    RenJS.customContent[actor](params);
+                    break;
                 case "jsScript" :
                     params();
                     break;
@@ -699,6 +484,14 @@ function StoryManager(){
                 resolve();
             } else {
                 var action = RenJS.storyManager.currentScene.shift();
+                RenJS.control.execStack[0].c++;
+                // console.log("Stack is");
+                // console.log(RenJS.control.execStack[0]);
+                if (RenJS.control.execStack[0].c == RenJS.control.execStack[0].total){
+                    RenJS.control.execStack.shift();
+                    // console.log("Stack is");
+                    // console.log(RenJS.control.execStack[0]);
+                }
                 console.log("About to do");
                 console.log(action);
                 RenJS.storyManager.interpretAction(action).then(function(){
@@ -759,209 +552,18 @@ function StoryManager(){
 
 // function 
 
-function ChoiceManager(){
 
-    this.evalChoice = function(choice){
-        var choiceText = _.keys(choice)[0];
-        var params = choiceText.split("!if");
-        if (params.length > 1){
-            var val = RenJS.varsManager.evalExpression(params[1]);
-            if (val) {
-                var next = choice[choiceText];
-                delete choice[choiceText];
-                choice[params[0]] = next;
-            }
-            return val;
-        }
-        return true; //unconditional choice
-    }
 
-    this.show = function(choices){
-        // console.log("before");
-        // console.log(choices);
-        var ch = _.map(choices,_.clone);
-        ch = _.filter(ch,this.evalChoice);
-        // console.log("ch");
-        // console.log(ch);
-        // console.log("choices");
-        // console.log(choices);
-        RenJS.choiceManager.currentChoices = ch;     
-        RenJS.gui.showChoices(ch); 
-        // debugger;
-        if (RenJS.choiceManager.interrupting){
-            RenJS.resolve();
-        }
-    }
 
-    this.choose = function(index,chosenOption){
-        // console.log("choosing "+index);
-        // console.log(chosenOption);
-        RenJS.gui.hideChoices();
-        if (chosenOption){
-            // debugger;
-            var actions = RenJS.choiceManager.currentChoices[index][chosenOption];
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-        }
-        if (RenJS.choiceManager.interrupting){
-            RenJS.choiceManager.interrupting = false;
-        } else {
-            // console.log("resolving");
-            RenJS.resolve();
-        }
-    }
-}
 
-RenJS.choiceManager = new ChoiceManager();
-
-function AudioManager(){
-    this.musicList = {};
-    this.sfx = {};
-
-    // this.muted = false;
-    this.audioLoaded = false;
-
-    this.current = {
-        bgm : null,
-        bgs : null
-    }
-
-    this.init = function(callback){
-        var audioList = [];
-        _.each(RenJS.story.setup.music,function(filename,key){
-            this.musicList[key] = game.add.audio(key);
-            audioList.push(this.musicList[key]);
-            // music.onDecoded.add(function(){
-            //     console.log("adding music");
-            //     console.log(key);
-            //     console.log(music);
-            //     this.musicList[key] = music;
-            // }, this);
-        },this);
-        
-        _.each(RenJS.story.setup.sfx,function(filename,key){
-            this.sfx[key] = game.add.audio(key);            
-            audioList.push(this.sfx[key]);
-        },this);
-        game.sound.setDecodedCallback(audioList, function(){
-            console.log("Audio loaded");
-            this.audioLoaded = true;
-            callback();
-        }, this);
-    }
-
-    this.mute = function(){
-        config.settings.muted = true;
-        if (this.current.bgm) {
-            this.current.bgm.stop();
-        }
-        if (this.current.bgs) {
-            this.current.bgs.stop();
-        }
-        RenJS.resolve();
-    }
-
-    this.changeVolume = function(type,volume){
-        console.log("changing value to "+volume);
-        game.sound.volume = volume;
-    }
-
-    this.unmute = function(){
-        config.settings.muted = false;
-        if (this.current.bgm) {
-            this.current.bgm.stop();
-        }
-        if (this.current.bgs) {
-            this.current.bgs.stop();
-        }
-        RenJS.resolve();
-    }
-
-    this.play = function(key,type,looped,transition){
-        // debugger;
-        if (looped == undefined){
-            looped = true;
-        }
-        var oldAudio = this.current[type];
-        this.current[type] = this.musicList[key];
-        if (!config.settings.muted && this.current[type]) {
-            if (transition == "FADE") {
-                this.current[type].fadeIn(1500,looped);
-                if (oldAudio) {
-                    oldAudio.fadeOut(1500);
-                };
-            } else {
-                if (oldAudio) {
-                    oldAudio.stop();
-                }
-                this.current[type].play("",0,1,looped);
-            }
-        }
-        if (type == "bgm") {
-            RenJS.resolve();    
-        }
-    }
-
-    this.stopAll = function(){
-        this.stop("bgs","FADE");
-        this.stop("bgm","FADE");
-    }
-
-    this.stop = function(type, transition){
-        if (!this.current[type]){
-            return;
-        }
-        var oldAudio = this.current[type];
-        this.current[type] = null;
-        if (!config.settings.muted) {
-            if (transition == "FADE") {
-                oldAudio.fadeOut(1500);
-            } else {
-                oldAudio.stop();
-            }
-        }
-        if (type == "bgm") {
-            RenJS.resolve();    
-        }
-    }
-
-    this.playSFX = function(key){
-        if (this.audioLoaded && !config.settings.muted){
-            // debugger;            
-            this.sfx[key].play();    
-
-        }
-        
-        // var fx = game.add.audio(key);
-        // fx.onStop.add(function(){
-        //     RenJS.resolve();
-        // });
-    }
-}
-
+RenJS.bgManager = new BackgroundManager();
+RenJS.chManager = new CharactersManager();
 RenJS.audioManager = new AudioManager();
+RenJS.cgsManager = new CGSManager();
+RenJS.textManager = new TextManager();
+RenJS.tweenManager = new TweenManager();
+RenJS.logicManager = new LogicManager();
 
-function DialogueManager(){
-
-    this.show = function(text,title,colour){
-        var t = RenJS.varsManager.parseVars(text);
-        RenJS.gui.showText(t,title,colour,function(){
-            console.log("Waiting for click")
-            RenJS.storyManager.waitForClick(RenJS.dlgManager.hide);
-        });
-    };
-
-    this.showCTC = function(){
-        var ctc = RenJS.dlgManager.clickToContinue;
-        ctc.tween = game.add.tween(ctc).to({ alpha: 1 }, 250, Phaser.Easing.Linear.None,true,0,-1);
-    }
-
-    this.hide = function(){
-        RenJS.gui.hideText();
-        RenJS.resolve();
-    }
-}
-
-RenJS.dlgManager = new DialogueManager();
 
 RenJS.storyManager = new StoryManager();
 

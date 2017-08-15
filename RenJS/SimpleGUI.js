@@ -177,18 +177,18 @@ function SimpleGUI(meta){
         start: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
-            RenJS.control.paused = false;
             RenJS.storyManager.start();
         },
         load: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
-            RenJS.control.paused = false;
-            RenJS.storyManager.load();
+            RenJS.storyManager.load(0);
         },
         auto: RenJS.storyManager.auto,
         skip: RenJS.storyManager.skip,
-        save: RenJS.storyManager.save,
+        save: function (argument) {
+            RenJS.storyManager.save(0);
+        },
         settings: function(){
             RenJS.control.paused = true;
             RenJS.gui.showMenu("settings");
@@ -197,6 +197,9 @@ function SimpleGUI(meta){
             RenJS.control.paused = false;
             RenJS.gui.hideMenu();  
             RenJS.gui.showHUD();  
+        },
+        mute: function (argument) {
+            RenJS.audioManager.mute();
         }
         
     }
@@ -258,8 +261,8 @@ function SimpleGUI(meta){
             var y = game.world.centerY - yOffset + this.hud.choices.h*index;
             var choiceText = _.keys(choice)[0];
             var chBox = game.add.button(game.world.centerX, y, this.hud.choices.key, function(){
-                RenJS.choiceManager.choose(index,choiceText);
-            }, RenJS.choiceManager, 0,1,0,1,this.hud.choices.boxes);
+                RenJS.logicManager.choose(index,choiceText);
+            }, RenJS.logicManager, 0,1,0,1,this.hud.choices.boxes);
             chBox.anchor.set(0.5,0);
             var chText = game.add.text(0,0, choiceText, this.hud.choices.style);
             chText.setTextBounds(-chBox.width/2,0, chBox.width, chBox.height);
