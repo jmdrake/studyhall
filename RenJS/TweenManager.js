@@ -12,12 +12,12 @@ function TweenManager(){
         if (start){
             RenJS.tweenManager.current = [];
             tween.start();
-            if (!config.settings.auto) {
-                RenJS.storyManager.waitForClick(this.skip);    
+            if (!RenJS.control.auto) {
+                RenJS.waitForClick(this.skip);    
             }            
         }
         RenJS.tweenManager.current.push(tween);
-        // if (config.settings.skipping){
+        // if (RenJS.control.skipping){
         //     this.skip();
         // }
         return tween;
@@ -35,8 +35,8 @@ function TweenManager(){
             lastTween = tween;
         },tm);
         tm.current[0].start();
-        if (!config.settings.auto) {
-            RenJS.storyManager.waitForClick(tm.skip);    
+        if (!RenJS.control.auto) {
+            RenJS.waitForClick(tm.skip);    
         }
     }
 
@@ -47,8 +47,8 @@ function TweenManager(){
             var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time,false);
             tween.start();
         },tm);
-        if (!config.settings.auto) {
-            RenJS.storyManager.waitForClick(tm.skip);    
+        if (!RenJS.control.auto) {
+            RenJS.waitForClick(tm.skip);    
         }
     }
 

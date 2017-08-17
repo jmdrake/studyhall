@@ -4,7 +4,7 @@ function TextManager(){
         var t = RenJS.logicManager.parseVars(text);
         RenJS.gui.showText(t,title,colour,function(){
             console.log("Waiting for click")
-            RenJS.storyManager.waitForClick(RenJS.textManager.hide);
+            RenJS.waitForClick(RenJS.textManager.hide);
         });
     };
 

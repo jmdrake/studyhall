@@ -7,7 +7,7 @@ function Character(name,speechColour){
     this.speechColour = speechColour;
 
     this.addLook = function(lookName,image){        
-        var look = RenJS.storyManager.characterSprites.create(RenJS.positions.CENTER.x,RenJS.positions.CENTER.y,(image ? image : lookName));
+        var look = RenJS.storyManager.characterSprites.create(config.positions.CENTER.x,config.positions.CENTER.y,(image ? image : lookName));
         look.anchor.set(0.5,1);
         look.alpha = 0;
         look.name = lookName;
@@ -34,7 +34,7 @@ function CharactersManager(){
         var oldLook = ch.currentLook;
         ch.currentLook = props.look ? ch.looks[props.look] : ch.looks.normal;
         if (!props.position){
-            props.position = (oldLook != null) ? {x:oldLook.x,y:oldLook.y} : RenJS.positions.CENTER;
+            props.position = (oldLook != null) ? {x:oldLook.x,y:oldLook.y} : config.positions.CENTER;
         }
         var scaleX = oldLook != null ? oldLook.scale.x : 1;
         if (props.flipped != undefined){

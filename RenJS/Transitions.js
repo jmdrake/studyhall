@@ -27,16 +27,16 @@ RenJS.transitions = {
                 to.scale.x = scaleX ? scaleX : to.scale.x;
             }},
             {sprite:to,tweenables:{alpha:1},callback:RenJS.resolve}
-        ],RenJS.control.fadeTime);               
+        ],config.fadetime);               
     },
     FADEOUT: function(from){
-        RenJS.tweenManager.tween(from,{ alpha: 0 },RenJS.resolve,RenJS.control.fadeTime,true);
+        RenJS.tweenManager.tween(from,{ alpha: 0 },RenJS.resolve,config.fadetime,true);
     },
     FADEIN: function(to,position,scaleX){
         to.x = position.x;
         to.y = position.y;
         to.scale.x = scaleX ? scaleX : to.scale.x;
-        RenJS.tweenManager.tween(to,{ alpha: 1 },RenJS.resolve,RenJS.control.fadeTime,true);        
+        RenJS.tweenManager.tween(to,{ alpha: 1 },RenJS.resolve,config.fadetime,true);        
     },
     FUSION: function(from,to,position,scaleX){
         if (!from || !to){
@@ -49,7 +49,7 @@ RenJS.transitions = {
         RenJS.tweenManager.parallel([
             {sprite:from,tweenables:{alpha:0}},
             {sprite:to,tweenables:{alpha:1},callback:RenJS.resolve}
-        ],RenJS.control.fadeTime);
+        ],config.fadetime);
     },
     MOVE: function(from,to,position,scaleX){
         if (!from || !to){
@@ -63,14 +63,14 @@ RenJS.transitions = {
             from.alpha = 0;
             to.alpha = 1;
             RenJS.resolve();
-        },RenJS.control.fadeTime,true);
+        },config.fadetime,true);
     },
 
     FADETOCOLOUR: function(from,to,position,scaleX,colour){
         var spr_bg = game.add.graphics(0, 0);
         // this.fadeColor = fadeColor ? fadeColor : 0x000000;
         spr_bg.beginFill(colour, 1);
-        spr_bg.drawRect(0, 0, config.stageSize.w, config.stageSize.h);
+        spr_bg.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
         spr_bg.alpha = 0;
         spr_bg.endFill();
         RenJS.tweenManager.chain([
@@ -89,7 +89,7 @@ RenJS.transitions = {
                 spr_bg.destroy();
                 RenJS.resolve();
             }}
-        ],RenJS.control.fadeTime);
+        ],config.fadetime);
     },
     FADETOBLACK: function(from,to,position){
         RenJS.transitions.FADETOCOLOUR(from,to,position,0x000000)
@@ -100,18 +100,18 @@ RenJS.transitions = {
     FADETOCOLOUROVERLAY: function (colour) {
         RenJS.transitions.overlay = new Phaser.Graphics(0, 0);
         RenJS.transitions.overlay.beginFill(colour, 1);
-        RenJS.transitions.overlay.drawRect(0, 0, config.stageSize.w, config.stageSize.h);
+        RenJS.transitions.overlay.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
         RenJS.transitions.overlay.alpha = 0;
         RenJS.transitions.overlay.endFill();
         RenJS.storyManager.cgsSprites.add(RenJS.transitions.overlay);
-        RenJS.tweenManager.tween(RenJS.transitions.overlay,{ alpha: 1 },function() {},RenJS.control.fadeTime,true);  
+        RenJS.tweenManager.tween(RenJS.transitions.overlay,{ alpha: 1 },function() {},config.fadetime,true);  
     },
     FADEOUTCOLOUROVERLAY: function () {
         if (RenJS.transitions.overlay){
             RenJS.tweenManager.tween(RenJS.transitions.overlay,{ alpha: 1 },function() {
                 RenJS.transitions.overlay.destroy();
                 RenJS.transitions.overlay = null;
-            },RenJS.control.fadeTime,true);  
+            },config.fadetime,true);  
         }
     }
 }

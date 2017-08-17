@@ -39,7 +39,7 @@ function SimpleGUI(meta){
     this.initChoices = function(){
         var choiceSprite = this.elements.hud.choice.box;
         var dimensions = this.getSpriteInfo(this.elements.assets.spritesheets[choiceSprite]);
-        var choiceStyle = _.extend(config.textDefaults,this.elements.hud.choice.text);
+        var choiceStyle = _.extend(config.defaultTextStyle,this.elements.hud.choice.text);
         this.hud.choices = {
             key: choiceSprite,
             w: dimensions.x,
@@ -59,7 +59,7 @@ function SimpleGUI(meta){
         this.hud.textBox = game.add.image(textBox.x,textBox.y,textBox.key,0,this.hud.group);
         this.hud.textBox.visible = false;
         textBox = this.getBoundingBoxInfo(this.elements.hud.message.text.boundingBox);
-        var textStyle = _.extend(config.textDefaults,
+        var textStyle = _.extend(config.defaultTextStyle,
             this.elements.hud.message.text,
             {wordWrap:true, wordWrapWidth:textBox.w});
         
@@ -76,7 +76,7 @@ function SimpleGUI(meta){
             this.hud.nameBox = game.add.image(nameBox.x,nameBox.y,nameBox.key,0,this.hud.group);            
             this.hud.nameBox.visible = false;
             this.hud.textBox.addChild(this.hud.nameBox);
-            var nameStyle = _.extend(config.textDefaults,this.elements.hud.name.text);
+            var nameStyle = _.extend(config.defaultTextStyle,this.elements.hud.name.text);
             this.hud.name = game.add.text(0,0, "", nameStyle,this.hud.group);
             this.hud.name.setTextBounds(0,0, this.hud.nameBox.width, this.hud.nameBox.height);   
             this.hud.nameBox.addChild(this.hud.name);
@@ -126,11 +126,11 @@ function SimpleGUI(meta){
             sliderMask.beginFill(0xffffff);
             
             var currentVal = config.settings[prop];
-            console.log("currentVal");
-            console.log(currentVal);
+            // console.log("currentVal");
+            // console.log(currentVal);
             var maskWidth = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
-            console.log("maskWidth");
-            console.log(maskWidth);
+            // console.log("maskWidth");
+            // console.log(maskWidth);
             // sliderMask.width = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
             sliderMask.drawRect(0,0,maskWidth,sliderFull.height);
             sliderFull.mask = sliderMask;
@@ -177,17 +177,17 @@ function SimpleGUI(meta){
         start: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
-            RenJS.storyManager.start();
+            RenJS.start();
         },
         load: function(){
             RenJS.gui.hideMenu();
             RenJS.gui.showHUD();
-            RenJS.storyManager.load(0);
+            RenJS.load(0);
         },
-        auto: RenJS.storyManager.auto,
-        skip: RenJS.storyManager.skip,
+        auto: RenJS.auto,
+        skip: RenJS.skip,
         save: function (argument) {
-            RenJS.storyManager.save(0);
+            RenJS.save(0);
         },
         settings: function(){
             RenJS.control.paused = true;
@@ -206,7 +206,7 @@ function SimpleGUI(meta){
 
     //show menu
     this.showMenu = function(menu){
-        RenJS.storyManager.pause();
+        RenJS.pause();
         this.previousMenu = this.currentMenu;
         this.currentMenu = menu;
         this.menus[menu].group.visible = true;
@@ -299,7 +299,7 @@ function SimpleGUI(meta){
         // if (this.hud.ctc){
         //     this.hud.ctc.visible = true;
         // }
-        if (config.settings.skipping || config.settings.textSpeed < 10){
+        if (RenJS.control.skipping || config.settings.textSpeed < 10){
             this.hud.text.text = text;
             this.hud.textBox.visible = true;
             RenJS.gui.showCTC();
@@ -323,8 +323,8 @@ function SimpleGUI(meta){
         }, config.settings.textSpeed);
         // this.hud.group.visible = true;
         this.hud.textBox.visible = true;
-        if (!config.settings.auto){
-            RenJS.storyManager.waitForClick(function(){
+        if (!RenJS.control.auto){
+            RenJS.waitForClick(function(){
                 clearTimeout(loop);
                 textObj.text = text;
                 RenJS.gui.showCTC();
