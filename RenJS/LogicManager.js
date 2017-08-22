@@ -28,18 +28,19 @@ function LogicManager(){
     this.branch = function(expression,branches){
         var val = this.evalExpression(expression);
             // debugger;
+        var actions;
         if (val && branches.ISTRUE){
-            var actions = branches.ISTRUE;
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-            
+            actions = branches.ISTRUE;
         } 
         if (!val && branches.ISFALSE){
             RenJS.control.execStack[0].c++;
-            var actions = branches.ISFALSE;
-            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
-
+            actions = branches.ISFALSE;
         }
-        RenJS.control.execStack.unshift({c:-1,total:actions.length,action: "if"});
+        if(actions){
+            RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
+            RenJS.control.execStack.unshift({c:-1,total: actions.length, action: "if"});
+        }
+        
         RenJS.resolve();
     }
 

@@ -4,7 +4,7 @@ var phaserConfig = {
   mode: "WEBGL",
   splash: "assets/gui/Splash.png", //splash background
   loading: "assets/gui/LoadingBar.png", //loading bar image
-  loadingPosition: [151,123], //loading bar size
+  loadingPosition: [149,123], //loading bar size
   storyFiles: [
         "Story/YourStory.yaml",
         "Story/GUI.yaml"
