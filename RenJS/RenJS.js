@@ -10,9 +10,30 @@ var RenJS = {
         RenJS.gui.showHUD();
     },
 
+    setBlackOverlay: function(){
+        this.blackOverlay = game.add.graphics(0, 0);
+        this.blackOverlay.beginFill(0x000000, 1);
+        this.blackOverlay.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
+        this.blackOverlay.endFill();
+    },
+
+    removeBlackOverlay: function(){
+        if (this.blackOverlay){
+            console.log("Removing black overlay");
+            var tween = game.add.tween(this.blackOverlay);
+            tween.onComplete.addOnce(function(){            
+                this.blackOverlay.destroy();
+                this.blackOverlay = null;
+            }, this);  
+            tween.to({ alpha: 0 }, RenJS.control.fadetime*2, Phaser.Easing.Linear.None, true);
+        }
+    },
+
     start: function(){
+        this.setBlackOverlay();
         RenJS.control.paused = false;
         RenJS.storyManager.startScene("start");
+        this.removeBlackOverlay();
         RenJS.storyManager.interpret();
     },
 
@@ -64,12 +85,14 @@ var RenJS = {
         console.log(data);
         data = JSON.parse(data);
         console.log(data);
+        this.setBlackOverlay();
         // RenJS.transitions.FADETOCOLOUROVERLAY(0x000000);
         RenJS.bgManager.set(data.background);
         RenJS.chManager.set(data.characters);
         RenJS.audioManager.set(data.audio);
         RenJS.cgsManager.set(data.cgs);
         RenJS.logicManager.vars = data.vars;
+        RenJS.gui.clear();
         var stack = _.last(data.stack);
         var scene = stack.scene;
         var allActions = _.clone(RenJS.story[scene]);
@@ -97,7 +120,7 @@ var RenJS = {
         }
         RenJS.control.execStack = data.stack;
         RenJS.storyManager.currentScene = actions;
-        // RenJS.transitions.FADEOUTCOLOUROVERLAY();
+        this.removeBlackOverlay();
         RenJS.control.paused = false;
         RenJS.storyManager.interpret();
     },
@@ -186,7 +209,7 @@ var config = _.clone(defaults);
 RenJS.control = {
     execStack:[{c:-1}],
     paused: false,
-    fadeTime : config.fadeTime,
+    fadetime : config.fadetime,
     timeout : config.timeout,
     waitForClick : false,
     resolve : null,

@@ -61,7 +61,7 @@ function StoryManager(){
         //     "choice":[]
         // };
         var actionParams = {
-            withTransition: ["show","hide","play"],
+            withTransition: ["show","hide","play","stop"],
             withPosition: ["show"]
         }
         function getKey(act){
@@ -175,11 +175,13 @@ function StoryManager(){
                         RenJS.resolve();
                     }
                     break;
+                case "stop" :
+                    RenJS.audioManager.stop("bgm",action.transitionName);
                 case "effect" :
-                    RenJS.effects[params](action.sfx);
+                    RenJS.effects[actor](action);
                     break;
                 case "ambient" :
-                    RenJS.ambient[params](action.sfx);
+                    RenJS.ambient[actor](action.sfx);
                     break;
                 case "scene" :
                     RenJS.storyManager.startScene(params);

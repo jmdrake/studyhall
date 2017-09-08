@@ -1,11 +1,12 @@
 function TweenManager(){
     this.current = [];
 
-    this.tween = function(sprite,tweenables,callback,time,start){
+    this.tween = function(sprite,tweenables,callback,time,start,delay){
         var tween = game.add.tween(sprite);
-        tween.to(tweenables, time, Phaser.Easing.Linear.None);
+        delay = !delay ? 0 : delay;
+        tween.to(tweenables, time, Phaser.Easing.Linear.None,false,delay);
         if(callback){
-            tween.onComplete.add(callback, this);
+            tween.onComplete.addOnce(callback, this);
             tween.callbackOnComplete = callback;
         }        
         tween.tweenables = tweenables;
@@ -27,8 +28,8 @@ function TweenManager(){
         var tm = RenJS.tweenManager;
         tm.current = [];
         var lastTween = null;
-        _.each(tweens,function(tween){
-            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time/tweens.length,false);
+        _.each(tweens,function(tw){
+            var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,time/tweens.length,false,tw.delay);
             if (lastTween){
                 lastTween.chain(tween);
             }
@@ -43,8 +44,8 @@ function TweenManager(){
     this.parallel = function(tweens,time){
         var tm = RenJS.tweenManager;
         tm.current = [];
-        _.each(tweens,function(tween){
-            var tween = tm.tween(tween.sprite,tween.tweenables,tween.callback,time,false);
+        _.each(tweens,function(tw){
+            var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,time,false,tw.delay);
             tween.start();
         },tm);
         if (!RenJS.control.auto) {

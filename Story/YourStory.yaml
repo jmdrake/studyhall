@@ -1,785 +1,475 @@
-setup:
-  backgrounds:
-    house: assets/backgrounds/house.jpg
-    street: assets/backgrounds/street.jpg
-    bar: assets/backgrounds/bar.jpg
-    nowhere: assets/backgrounds/nowhere.jpg
-    over: assets/backgrounds/over.png
-    heart: assets/backgrounds/heart.png
-    credits: assets/backgrounds/credits.png
-  characters:
-    Me:
-      speechColour: "#483737"
-      looks:
-        normal: assets/characters/burroughs/m2_default.png
-    TallCop:
-      displayName: Tall Cop
-      speechColour: "#546160"
-      looks:
-        normal: assets/characters/burroughs/m2_default.png
-    ShortCop:
-      displayName: Short Cop
-      speechColour: "#546160"
-      looks:
-        normal: assets/characters/burroughs/m2_default.png
-    Burroughs:
-      speechColour: "#627578"
-      displayName: William
-      looks:
-        normal: assets/characters/burroughs/m2_default.png
-        angry: assets/characters/burroughs/m2_angry.png
-        blush: assets/characters/burroughs/m2_blush.png
-        confused: assets/characters/burroughs/m2_confused.png
-        cry: assets/characters/burroughs/m2_cry.png
-        downcast: assets/characters/burroughs/m2_downcast.png
-        dread: assets/characters/burroughs/m2_dread.png
-        evil: assets/characters/burroughs/m2_evil.png
-        eyesmile: assets/characters/burroughs/m2_eyesmile.png
-        flustered: assets/characters/burroughs/m2_flustered.png
-        frown: assets/characters/burroughs/m2_frown.png
-        grin: assets/characters/burroughs/m2_grin.png
-        pout: assets/characters/burroughs/m2_pout.png
-        sad: assets/characters/burroughs/m2_sad.png
-        scared: assets/characters/burroughs/m2_scared.png
-        shock: assets/characters/burroughs/m2_shock.png
-        smile: assets/characters/burroughs/m2_smile.png
-        smirk: assets/characters/burroughs/m2_smirk.png
-        surprised: assets/characters/burroughs/m2_surprised.png
-        wink: assets/characters/burroughs/m2_wink.png
-    Kerouac:
-      speechColour: "#294844"
-      displayName: Jack
-      looks:
-        normal: assets/characters/kerouac/m1_default.png
-        angry: assets/characters/kerouac/m1_angry.png
-        blush: assets/characters/kerouac/m1_blush.png
-        confused: assets/characters/kerouac/m1_confused.png
-        cry: assets/characters/kerouac/m1_cry.png
-        dread: assets/characters/kerouac/m1_dread.png
-        evil: assets/characters/kerouac/m1_evil.png
-        eyesmile: assets/characters/kerouac/m1_eyesmile.png
-        flustered: assets/characters/kerouac/m1_flustered.png
-        frown: assets/characters/kerouac/m1_frown.png
-        grin: assets/characters/kerouac/m1_grin.png
-        pout: assets/characters/kerouac/m1_pout.png
-        sad: assets/characters/kerouac/m1_sad.png
-        scared: assets/characters/kerouac/m1_scared.png
-        shock: assets/characters/kerouac/m1_shock.png
-        smile: assets/characters/kerouac/m1_smile.png
-        smirk: assets/characters/kerouac/m1_smirk.png
-        surprised: assets/characters/kerouac/m1_surprised.png
-        wink: assets/characters/kerouac/m1_wink.png
-    Corso:
-      speechColour: "#7B6D39"
-      displayName: Greg
-      looks:
-        normal: assets/characters/corso/m7_default.png
-        angry: assets/characters/corso/m7_angry.png
-        blush: assets/characters/corso/m7_blush.png
-        confused: assets/characters/corso/m7_confused.png
-        cry: assets/characters/corso/m7_cry.png
-        downcast: assets/characters/corso/m7_downcast.png
-        dread: assets/characters/corso/m7_dread.png
-        evil: assets/characters/corso/m7_evil.png
-        eyesmile: assets/characters/corso/m7_eyesmile.png
-        flustered: assets/characters/corso/m7_flustered.png
-        frown: assets/characters/corso/m7_frown.png
-        grin: assets/characters/corso/m7_grin.png
-        pout: assets/characters/corso/m7_pout.png
-        sad: assets/characters/corso/m7_sad.png
-        scared: assets/characters/corso/m7_scared.png
-        shock: assets/characters/corso/m7_shock.png
-        smile: assets/characters/corso/m7_smile.png
-        smirk: assets/characters/corso/m7_smirk.png
-        surprised: assets/characters/corso/m7_surprised.png
-        wink: assets/characters/corso/m7_wink.png
-    Lucien:
-      speechColour: "#37483C"
-      looks:
-        angry: assets/characters/lucien/m6_angry.png
-        annoyed: assets/characters/lucien/m6_annoyed.png
-        blush: assets/characters/lucien/m6_blush.png
-        chuckle: assets/characters/lucien/m6_chuckle.png
-        confused: assets/characters/lucien/m6_confused.png
-        cry: assets/characters/lucien/m6_cry.png
-        normal: assets/characters/lucien/m6_default.png
-        downcast: assets/characters/lucien/m6_downcast.png
-        dread: assets/characters/lucien/m6_dread.png
-        evil: assets/characters/lucien/m6_evil.png
-        eyesmile: assets/characters/lucien/m6_eyesmile.png
-        flustered: assets/characters/lucien/m6_flustered.png
-        frown: assets/characters/lucien/m6_frown.png
-        grin: assets/characters/lucien/m6_grin.png
-        pout: assets/characters/lucien/m6_pout.png
-        sad: assets/characters/lucien/m6_sad.png
-        scared: assets/characters/lucien/m6_scared.png
-        shock: assets/characters/lucien/m6_shock.png
-        smile: assets/characters/lucien/m6_smile.png
-        smirk: assets/characters/lucien/m6_smirk.png
-        surprised: assets/characters/lucien/m6_surprised.png
-        tongue: assets/characters/lucien/m6_tongue.png
-        wink: assets/characters/lucien/m6_wink.png
-  cgs:
-    stolen: assets/objects/Stolen.png
-    phone: assets/objects/Phone.png
-  music:
-    policeBGM: assets/audio/Evan_Schaeffer_-_13_-_Stick.mp3
-    morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
-    barBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3
-  sfx:
-    phoneSFX: assets/audio/Short_Dial_Tone-SoundBible.com-1911037576.mp3
-  extra:
-    spritesheets:
-      explosion: assets/effects/explosion.png 450 274
-      static: assets/ambient/static.png 320 256
-    scripts:
-      marble: assets/ambient/Marble.js
-      lightbeam: assets/ambient/LightBeam.js
 
 start:
-   - play morningBGM:
-   - show house: WITH FADE
-   - call helloworld:
-       param1: asdf
-       param2: qwer
-   - show Lucien: smile AT CENTER WITH FADE
-   - Lucien says: Good morning, Allen!
-   - Me says: Yawn
-   - Me says: Good morning, Lucien.
-   - Me says: Did you have breakfast yet?
-   - show Lucien: normal
-   - Lucien says: No, but I guess you can make some toast.
-   - Lucien says: I think the toaster is behind the pile of stolen TVs.
-   - hide Lucien: WITH FADE
-   - show stolen: WITH FADE AT 775,368
-  # this should be an interrupt
-   - choice:
-     - "Are you a criminal Lucien!?":
-       - Lucien says: They've been here all week. How come you're so surprised.
-       - Me says: ...
-       - Me says: asdf 1
-       - Me says: asdf 2
-       - if (5 > 6):
-         - Me says: qwer 1
-         - Me says: qwer 2
-         - Me says: qwer 3
-         - Me says: qwer 4
-       - else:
-         - Me says: zxcv 1
-         - Me says: zxcv 2
-         - Me says: zxcv 3
-         - Me says: zxcv 4
-       - Me says: asdf 3
-       - Me says: asdf 4
-     - Oh, ok.:
-       - Me says: Lucien, you should tide up a bit. This is a mess.
-   - Me says: Mmmm, there's a lot of stuff in here.
-   - wait: 300
-   - Me says: Found it!
-   - Me says: Where's the bread?
-   - show Lucien: normal AT LEFT WITH FADE
-   - Lucien says: I think we're out.
-   - Me says: Ok, guess I'll go get some.
-   - show Lucien: smile
-   - Me says: Be right back.
-   - scene: shopping
-
-shopping:
-  - play policeBGM:
-  - show street: WITH FADE
-  - ShortCop says: Is this the place?
-  - TallCop says: Yeah, seems like it.
-  - ShortCop says: How did he manage to steal a shipment of stolen TV sets?
-  - TallCop says: Beats me, but we will figure out soon enough.
-  - Me says: Oh, no! Lucien is in danger!
-  - Me says: I better call Lucien!
-  - scene: call
-   # - Only if flag !if ({flag}):
-   #     - Me says: asdf
-   #   - Only if !flag !if (!{flag}):
-   #     - Me says: qwer
-  # - var call: false
-  # - choice:
-  #   - Call Lucien.:
-  #     - var call: true
-  #     - scene: call
-  #   - Run back home.:
-  #     - scene: returnhome
-
-call:
-  - show street: WITH FADE
-  - show phone: WITH FADE AT 350,340
-  - play phoneSFX:
-  - Me says: Lucien, please pick up...
-  - Lucien says: Hello, who's this?
-  - Me says: It's me Allen.
-  - Me says: The cops are coming to your house.
-  - Me says: Lucien, you need to clean up.
-  - Lucien says: Sure, thanks for the heads up!
-  - scene: returnhome
-
-returnhome:
-  - show house: WITH FADE
-  - Me says: Oh, no! They're taking Lucien away.
-  - show Lucien: eyesmile WITH FADE
-  - Lucien says: The house is sparkling Allen!
-  - Me says: Lucien... that's not what I meant...
-  - show Lucien: dread
-  - Lucien says: Don't worry about me, Allen.
-  - show Lucien: normal
-  - Lucien says: You should go to the bar.
-  - Lucien says: See if you can crash with one of my friends.
-  - Me says: Are you sure, Lucien?
-  - show Lucien: smile
-  - Lucien says: Yes, this will sort itself out eventually.
-  - hide Lucien: WITH FADE
-  - Me says: Let's hope one of the guys at the bar can lend me a hand.
-  - var talkkerouac: false
-  - var pickkerouac: false
-  - var talkburroughs: false
-  - var pickburroughs: false
-  - var talkcorso: false
-  - var pickcorso: false
-  - var pickneal: false
-  - scene: bar
-
-bar:
-  - play barBGM:
-  - show bar: WITH FADE
-  - Me says: So...
-  - if (!{talkkerouac}):
-    - Me says: Jack is playing pool.
-    - show Kerouac: AT LEFT WITH FADE
-  - if ({talkkerouac} && !{pickkerouac}):
-    - Me says: Jack seems busy.
-  - if (!{talkburroughs}):
-    - Me says: William is getting high in one of the couches.
-    - show Burroughs: AT CENTER WITH FADE
-  - if ({talkburroughs} && !{pickburroughs}):
-    - Me says: William seems upset.
-    - Me says: It might be better not to bother him.
-  - if (!{talkcorso}):
-    - Me says: There's Greg, that guy from the other day.
-    - Me says: I hope he's doing fine now.
-    - show Corso: AT RIGHT WITH FADE
-  - if ({talkcorso} && !{pickcorso}):
-    - Me says: Greg seems mad at me.
-    - Me says: I'd rather leave him alone.
-  - if ({pickkerouac}):
-    - Me says: Jack wants me to go to his house.
-    - show Kerouac: AT LEFT WITH FADE
-    - show Kerouac: eyesmile
-  - if ({pickburroughs}):
-    - Me says: I could hook up with William.
-    - show Burroughs: AT CENTER WITH FADE
-    - show Burroughs: wink
-  - if ({pickcorso}):
-    - Me says: I could check Greg's place out.
-    - show Corso: AT RIGHT WITH FADE
-    - show Corso: smile
-  - if ({pickneal}):
-    - Me says: I could pick up Neal.
-    - Me says: But it's so far away...
-  - if ({talkcorso} && {talkkerouac} && {talkburroughs} && !{pickcorso} && !{pickkerouac} && !{pickburroughs} && !{pickneal}):
-    - hide bar: WITH FADE
-    - show over: WITH FADE
-    - Me says: I guess I made everyone angry.
-    - Me says: I will have to sleep on the streets tonight.
-    - hide over: WITH FADE
-    - show credits: WITH FADE
-
-  - else:
-    - choice:
-      - Talk to Jack. !if (!{talkkerouac}):
-        - var talkkerouac: true
-        - scene: kerouacbar
-      - Talk to William. !if (!{talkburroughs}):
-        - var talkburroughs: true
-        - scene: burroughsbar
-      - Talk to Greg. !if (!{talkcorso}):
-        - var talkcorso: true
-        - scene: corsobar
-      - Leave with Jack. !if ({pickkerouac}):
-        - scene: gowithkerouac
-      - Leave with William. !if ({pickburroughs}):
-        - scene: gowithburroughs
-      - Leave with Greg. !if ({pickcorso}):
-        - scene: gowithcorso
-      - Pick up Neal. !if ({pickneal}):
-        - Me says: If I pick up Neal...
-        - Me says: I might not make it back here before it closes.
-        - Me says: Should I stay or should I go?
-        - choice:
-          - Stay Here.:
-            - var pickneal: false
-            - scene: bar
-          - Leave:
-            - scene: nowhere
-
-kerouacbar:
-  - show Kerouac: eyesmile WITH FADE
-  - Kerouac says: Nice to see you here, Allen!
-  - show Kerouac: normal
-  - Me says: Nice to see you too.
-  - show Kerouac: pout
-  - Kerouac says: Have you read my latest manuscript yet?
-  - Me says: Sorry Jack, I'm still on it.
-  - show Kerouac: angry
-  - Kerouac says: What's keeping you?
-  - show Kerouac: normal
-  - Me says: You know...
-  - Me says: This whole thing with Lucien being arrested.
-  - Me says: And me having nowhere to stay.
-  - Me says: No biggie. I'll be sure to finish once that's sorted out.
-  - show Kerouac: flustered
-  - Kerouac says: Oh, sorry.
-  - Kerouac says: I didn't mean to...
-  - interrupt:
-    - It's fine.:
-      - Me says: I know how is it with you.
-      - show Kerouac: angry
-      - Kerouac says: And how is it with me?
-      - Me says: Nevermind.
-      - show Kerouac: normal
-    - I know.:
-      - Me says: I'm going through a rough time.
-      - Me says: That's all.
-      - show Kerouac: normal
-  - Kerouac says: I just really care about what you have to say about my work.
-  - interrupt: stop
-  - show Kerouac: smile
-  - Kerouac says: Enough about me.
-  - show Kerouac: normal
-  - Kerouac says: What's up with you?
-  - Me says: Well, like I said.
-  - Me says: Lucien got arrested at the house.
-  - Me says: So I have nowhere to stay tonight.
-  - show Kerouac: sad
-  - Kerouac says: Sorry to hear that.
-  - show Kerouac: normal
-  - Kerouac says: I think Neal is around town.
-  - Kerouac says: Maybe he knows about somewhere to crash.
-  - show Kerouac: angry
-  - Kerouac says: He might even show you some short writings.
-  - show Kerouac: normal
-  - Kerouac says: What do you say?
-  - Me says: Are you tagging along?
-  - show Kerouac: angry
-  - Kerouac says: No, but I can tell you where he is.
-  - Kerouac says: You can go on your own.
-  - show Kerouac: Normal
+  - play morningBGM:
+  - show school_morning: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome to the Tutorial Game!
+  - deuzi says: My name is Deuzilene and I'll be your guide
+  - show deuzi: normal
+  - deuzi says: So you want to make a Visual Novel
+  - deuzi says: With RenJS you can easily make games just like this one
+  - deuzi says: RenJS is inspired by Renpy and based on PhaserJS
+  - deuzi says: If you already know any of those you have and advantage
+  - deuzi says: And if not
+  - show deuzi: happy
+  - deuzi says: No problem!
+  - deuzi says: RenJS is made so the text of your story is written intuitively like a script 
+  - show deuzi: normal
+  - deuzi says: Once you learn the structure, there's no limit to what you can create
+  - deuzi says: So let's start with
+  - effect SHOWTITLE: 
+    title: Chapter 1
+    subtitle: The basics 
+  - deuzi says: First thing we'll check is the file structure
+  - deuzi says: That is, all the files you need for your game to work properly
+  - deuzi says: We'll use this game as an example
+  - deuzi says: Have you downloaded it yet?
   - choice:
-    - I guess I could give it a shot.:
-      - Me says: Let me think about it.
-      - Me says: Fow now I'll see what the others are up to.
-      - var pickneal: true
-      - scene: bar
-    - No, I'd much rather stay with you, guys.:
-      - scene: kerouacpoetry
-
-nowhere:
-  - hide bar: WITH FADE
-  - show nowhere: WITH FADE
-  - Me says: Well, this seems to be the place.
-  - Me says: It looks like the middle of nowhere.
-  - Me says: But I'm sure Neal will show up if I just stay put.
-  - wait: 800
-  - Me says: Okay.
-  - Me says: I guess Neal isn't coming.
-  - Me says: I guess I should head back to the bar.
-  - show bar: WITH FADE
-  - Me says: Well...
-  - Me says: The bar is closed and everyone left.
-  - hide bar: WITH FADE
-  - show over: WITH FADE
-  - Me says: I guess I have nowhere to crash tonight.
-  - Me says: And I miss Lucien so much.
-  - hide over: WITH FADE
-  - show credits: WITH FADE
-
-
-kerouacpoetry:
-  - show Kerouac: smile
-  - Kerouac says: We could talk about what I wrote.
-  - show Kerouac: normal
-  - Me says: But I told you I'm not done with your latest manuscript yet.
-  - show Kerouac: angry
-  - Kerouac says: I know!
-  - show Kerouac: normal
-  - Kerouac says: But you did read a little.
-  - show Kerouac: smile
-  - Kerouac says: And you have read some of my stuff before.
-  - show Kerouac: normal
-  - Me says: Well, yes.
-  - show Kerouac: smile
-  - Kerouac says: So, what do you say?
+    - I have it!:
+      - show deuzi: happy
+      - deuzi says: Great! What a hardworking student
+    - Not yet:
+      - show deuzi: angry
+      - deuzi says: What are you waiting for!?
+      - deuzi says: Go do it, I'll wait...
+      - choice:
+        - I have it!:
+          - show deuzi: happy
+          - deuzi says: Good! Let's continue
+  - show deuzi: normal
+  - deuzi says: Now, open the root folder of this game
+  - deuzi says: It should look like this
+  - show deuzi: AT LEFT WITH MOVE
+  - show folders: AT 550,300 WITH FADE
+  - deuzi says: There are four folders and a file
+  - deuzi says: RenJS is web based, that means the game runs as a webpage
+  - deuzi says: index.html is the page that contains this game
+  - deuzi says: You can play the game locally by opening this file with a browser
+  - deuzi says: The folder named RenJS is where the engine's files are located
+  - deuzi says: And the folder libs contains the engine's external dependencies, like PhaserJS
+  - deuzi says: If you're making a simple game, you shouldn't worry about any of this
+  - deuzi says: The files that concern you as a writer are inside the folder Story
+  - deuzi says: These yaml files are what make your game
+  - deuzi says: YAML is a human readable data serialization language
+  - deuzi says: That means that the files contain data in a structure that you can read easily
+  - deuzi says: And how do you open and edit them?
+  - show deuzi: happy
+  - deuzi says: With your favourite text processor!
+  - deuzi says: Mine is Sublime Text, a lightweight, open source and multiplatform text processor
+  - show deuzi: normal
+  - deuzi says: In any case, the most important thing about YAML files is that indentation is super important
+  - deuzi says: If you screw up the indentation the game won't even load!
+  - show deuzi: angry
+  - deuzi says: So be very careful about it. Only two spaces per level!
+  - show deuzi: normal
+  - deuzi says: Ok, that was a lot of information, don't you think?
   - choice:
-    - You already know I love your stuff.:
-      - scene: kerouacbored
-    - You need to put more work into it.:
-      - scene: kerouacpleased
+    - Yes, I'm already tired:
+      - show deuzi: happy
+      - deuzi says: I was hoping you'd say that!
+      - deuzi says: You can save from the quick menu here on the side and return later!
+    - No, I want to know more:
+      - show deuzi: happy
+      - deuzi says: I knew it!
+      - deuzi says: I have a feeling you're not stopping until you write your first story
+      - deuzi says: Isn't that exciting?
+  - show deuzi: normal
+  - deuzi says: All right, I'm going to take a break anyways
+  - deuzi says: But I'll let you in good hands
+  - show deuzi: happy
+  - deuzi says: Good luck!
+  - hide deuzi: WITH FADE
+  - scene: storySetup
 
-kerouacbored:
-  - show Kerouac: angry
-  - Kerouac says: Well, I guess that's nice of you to say.
-  - show Kerouac: normal
-  - Kerouac says: I was playing pool before you arrived.
-  - show Kerouac: flustered
-  - Kerouac says: I think I should finish.
-  - hide Kerouac: WITH FADE
-  - scene: bar
-
-kerouacpleased:
-  - show Kerouac: normal
-  - Me says: I guess you're looking for thourough feedback.
-  - Me says: That's hard to do orally.
-  - Me says: But we could read your manuscripts together.
-  - Me says: And I could tell you what I think about them.
-  - show Kerouac: smile
-  - Kerouac says: That would be so nice of you!
-  - show Kerouac: normal
-  - Kerouac says: We could do this today!
-  - show Kerouac: smile
-  - Kerouac says: You can come to my aunt's for dinner.
-  - show Kerouac: normal
-  - Kerouac says: There's even room for you in the couch.
-  - Kerouac says: What do you think?
-  - Me says: Sure.
-  - Me says: Mind if I catch up with the guys before I go?
-  - show Kerouac: blush
-  - Kerouac says: Of course not!
-  - show Kerouac: normal
-  - Kerouac says: I'll wait for you here.
-  - hide Kerouac: WITH FADE
-  - var pickkerouac: true
-  - scene: bar
-
-gowithkerouac:
-  - show Kerouac: smile
-  - Kerouac says: Dinner is ready at my aunt's.
-  - show Kerouac: normal
-  - Kerouac says: Shall we go?
-  - Me says: Yes, I'm starving!
-  - hide bar: WITH FADE
-  - show heart: WITH FADE
-  - Me says: Jack's aunt is pretty great.
-  - Me says: She cooked us dinner and I'm stuffed.
-  - Me says: But I wished I could have spent the evening just with Jack.
-  - hide Kerouac: WITH FADE
-  - hide heart: WITH FADE
-  - show credits: WITH FADE
-
-burroughsbar:
-  - show Burroughs: evil WITH FADE
-  - Me says: ...
-  - show Burroughs: smirk
-  - Burroughs says: Oh, it's you Allen. Care to join me?
-  - show Burroughs: grin
-  - Burroughs says: I know it's a bit cramped in here, but I'm sure we'll make do.
-  - Me says: Sure.
-  - Me says: How're you doing William?
-  - show Burroughs: normal
-  - Burroughs says: I'm fine. More than fine actually.
-  - show Burroughs: smirk
-  - Burroughs says: I've brought some really nice things from my last trip.
-  - show Burroughs: wink
-  - Burroughs says: Want to try some?
-  - choice:
-    - Sure.:
-      - scene: burroughshigh
-    - No, thanks. I don't really do drugs.:
-      - show Burroughs: frown
-      - Burroughs says: Then I've got no time for you, darling.
-      - scene: burroughsdismiss
-
-burroughshigh:
-  - show Burroughs: normal
-  - Me says: So, what do I do?
-  - show Burroughs: eyesmile
-  - Burroughs says: Put a little bit of this in your tongue.
-  - show Burroughs: normal
-  - Burroughs says: Let it dissolve slowly.
-  - show Burroughs: smile
-  - ambient: DRUGS
-  - show Burroughs: normal
-  - Burroughs says: I don't think this is doing anything for me yet.
-  - Burroughs says: What about you?
-  - choice:
-    - I'm fine.:
-      - show Burroughs: smile
-      - Burroughs says: Oh, you're so though, aren't you?
-      - show Burroughs: normal
-      - Me says: Not really...
-    - I feel sort of dizzy.:
-      - Burroughs says: I can help you with that.
-      - show Burroughs: wink
-      - Me says: I think I can take it.
-      - show Burroughs: normal
-  - Burroughs says: If you ever feel uncomfortable.
-  - Burroughs says: Know that we can stop whenever you want.
-  - Burroughs says: If you ever feel brave.
-  - Burroughs says: You can interrupt me.
-  - interrupt:
-    - Like this?:
-      - show Burroughs: smile
-      - Burroughs says: Exactly.
-      - show Burroughs: normal
-      - Burroughs says: But I think...
-      - Burroughs says: You can also listen to what I'm saying with no interruptions.
-  - Burroughs says: Go on.
-  - Burroughs says: Don't be shy.
-  - interrupt: stop
-  - Burroughs says: Since we're in on this.
-  - show Burroughs: dread
-  - Burroughs says: I might as well let you in on a little secret.
-  - show Burroughs: eyesmile
-  - Burroughs says: I found a magical method for perfect book publishing.
-  - Burroughs says: Did you know?
-  - Burroughs says: I bet you didn't!
-  - interrupt:
-    - I'm freaking out a bit.:
-      - show Burroughs: dread
-      - Burroughs says: Then we better stop now.
-      - ambient: CLEAR
-      - scene: burroughsdismiss
-  - Burroughs says: Aren't you excited?
-  - show Burroughs: normal
-  - Me says: Maybe?
-  - show Burroughs: dread
-  - Burroughs says: Well, you should be!
-  - Burroughs says: You're the first person I'm telling this to.
-  - show Burroughs: normal
-  - Burroughs says: First, you blow a publisher.
-  - Burroughs says: He might give you a publishing deal.
-  - show Burroughs: smirk
-  - Burroughs says: But you have to pick the right one.
-  - Me says: How do I know?
-  - show Burroughs: normal
-  - Burroughs says: I can't help you with that.
-  - Burroughs says: Just follow your gut.
-  - Me says: Okay.
-  - show Burroughs: smile
-  - Burroughs says: What you write is not what matters most.
-  - show Burroughs: normal
-  - Burroughs says: The important thing is for it to have seven pages.
-  - Me says: Shouldn't pages be multiples of four?
-  - show Burroughs: dread
-  - Burroughs says: NO!
-  - Burroughs says: Seven is the number of perfection!
-  - show Burroughs: smirk
-  - Burroughs says: Perfection is of the essence!
-  - show Burroughs: normal
-  - Burroughs says: You might know too much now.
-  - Burroughs says: You know my secret at the very least.
-  - show Burroughs: smirk
-  - Burroughs says: Now we're definitely in this together.
-  - show Burroughs: normal
-  - Burroughs says: We should enjoy our time together.
-  - Burroughs says: We can sink into this couch you and I.
-  - interrupt: stop
-  - Burroughs says: Eye to eye, so close that I could taste you.
-  - interrupt:
-    - Kiss him.:
-      - scene: burroughskiss
-  - show Burroughs: smile
-  - Burroughs says: And you'd surely be so sweet.
-  - show Burroughs: blush
-  - Burroughs says: Like all those boys I've tasted before you.
-  - Burroughs says: ...
-  - interrupt: stop
-  - show Burroughs: normal
-  - Burroughs says: But maybe you don't care about the boys.
-  - Burroughs says: Maybe I disgust you because I'm queer.
-  - show Burroughs: flustered
-  - Me says: No, no. I like boys as well.
-  - show Burroughs: dread
-  - Burroughs says: Did anyone ever try to mess with you for being queer?
-  - show Burroughs: normal
-  - Me says: A little bit.
-  - Burroughs says: Well, when they try to mess with me.
-  - Burroughs says: I show them I'm packing.
-  - show Burroughs: flustered
-  - Burroughs says: I'm not talking about my dick here.
-  - show Burroughs: normal
-  - Burroughs says: I'm talking about a real gun.
-  - Burroughs says: Seeing that I'm packing really shooks them up.
-  - Burroughs says: Makes them think twice before messing with me.
-  - Burroughs says: Do you know what I mean?
-  - Me says: I guess.
-  - Burroughs says: Maybe guns scare you.
-  - ambient: BADTRIP
-  - show Burroughs: evil
-  - Burroughs says: If they do, we can use knives.
-  - Burroughs says: Everything is so much cleaner with a knife.
-  - Burroughs says: Knives are so slick.
-  - show Burroughs: scared
-  - Burroughs says: BARF
-  - Me says: BARF
-  - hide Burroughs: WITH FADE
-  - hide bar: WITH FADE
-
-burroughsdismiss:
-  - show Burroughs: evil
-  - Burroughs says: I'm too rotten for you.
-  - show Burroughs: dread
-  - Burroughs says: Find somebody else to pass the time.
-  - hide Burroughs: WITH FADE
-  - scene: bar
-
-burroughskiss:
-  - show Burroughs: surprised
-  - show Burroughs: blush
-  - Burroughs says: This is so nice of you, Allen.
-  - show Burroughs: smile
-  - Burroughs says: We should go to my place, don't you think?
-  - show Burroughs: wink
-  - Me says: That sounds lovely, but let me think about it.
-  - var pickburroughs: true
-  - hide Burroughs: WITH FADE
-  - ambient: CLEAR
-  - scene: bar
-
-gowithburroughs:
-  - ambient: DRUGS
-  - show Burroughs: normal
-  - Burroughs says: I think we should continue this at my place.
-  - Burroughs says: What do you think?
-  - show Burroughs: wink
-  - Me says: I don't see why not.
-  - show Burroughs: blush
-  - hide bar: WITH FADE
-  - show heart: WITH FADE
-  - Me says: I spent the night with William.
-  - Me says: It was pretty wild.
-  - Me says: I hope we can hook up again.
-  - hide Burroughs: WITH FADE
-  - hide heart: WITH FADE
-  - show credits: WITH FADE
-
-corsobar:
-  - show Corso: downcast WITH FADE
-  - Corso says: Could you move a little bit?
-  - show Corso: angry
-  - Me says: Is that your beer?
-  - show Corso: normal
-  - Corso says: Sort of.
-  - Corso says: I made a deal with the barman.
-  - Corso says: I can have whatever is left over.
-  - Corso says: It's easier to clean the glasses that way.
-  - show Corso: smile
-  - Me says: So...
-  - Me says: Last time I saw you, you were a little bit...
+storySetup:
+  - show school_morning:
+  - show jair:
+  - jair says: So you're the new student
+  - jair says: I've heard lots of you from Deuzi
+  - jair says: She gets easily excited
+  - show jair: angry
+  - jair says: But to me, you'll have to prove yourself first
+  - jair says: Do you have what it takes to be a visual novel writer?
+  - show jair: normal
+  - jair says: We'll see
+  - jair says: I'm Jair btw
+  - jair says: But you should know that, since my name is on display right above the text box
+  - jair says: I'm here to show you how to setup your story
+  - effect SHOWTITLE: 
+    title: Chapter 2
+    subtitle: Setting up the story
+  - jair says: The setup is all contained in the Setup.yaml file
+  - jair says: What this means is
+  - jair says: All your characters, things, music, sfx and everything you're going to use on the story
+  - jair says: Needs to be declared on this file
+  - jair says: And of course, you need to know everything before even starting to write your story
+  - jair says: What kind of writer doesn't though...
   - wait: 300
-  - Me says: Agitated.
-  - show Corso: scared
-  - Me says: Are you feeling better?
-  - show Corso: normal
-  - Corso says: Yeah, I'm doing much better now.
+  - show jair: happy
+  - jair says: Just joking!
+  - jair says: You won't always know what things you need on a story
+  - jair says: So every time you add something, remember to also add it to the setup file
+  - show jair: normal
+  - jair says: Let's see how it's made
+  - show jair: AT RIGHT WITH MOVE
+  - show setupbg: AT 400,350 WITH FADE
+  - jair says: First tag you need is setup
+  - jair says: Inside the setup, indented by two spaces you declare each kind of object
+  - jair says: The first we have is backgrounds
+  - jair says: Each background has a tag, the name that will be used to refer to that background on the story
+  - jair says: And the path to where the background image is located
+  - jair says: If you go to the game's assets folder, you'll find there all the images
+  - show jair: happy
+  - jair says: Seems like we have an afternoon background
+  - jair says: Let's check it so I can go home sooner
+  - show school_afternoon: WITH FUSION
+  - hide setupbg: WITH FADE
+  - jair says: Well, time to go home
+  - jair says: See you
+  - show jair: normal AT LEFT WITH MOVE
+  - show deuzi: angry AT RIGHT
+    flipped: true
+  - deuzi says: Not so fast!
+  - show jair: normal
+    flipped: true
+  - jair says: Uh oh
+  - deuzi says: Where do you think you're going? There's a lot more to say about the setup!
+  - jair says: Your student is smart enought to get it without my help
+  - deuzi says: What? Do you agree with that?
   - choice:
-    - That's nice. I'm not doing so good though.:
-          - scene: corsosteal
-    - So... What made you act like that?:
-          - scene: corsolies
+    - Yeah, I checked the file by myself:
+      - show deuzi: normal
+      - deuzi says: Alright, I guess you can continue with more advanced lessons then...
+      - show jair: happy
+      - jair says: See, told you not to treat 'em like a baby
+      - show deuzi: angry
+      - deuzi says: Shut up you! We'll have a talk later
+      - hide jair: WITH FADE
+      - show deuzi: normal
+      - deuzi says: Ok, next lesson starts soon, maybe you should save and rest before continuing
+      - deuzi says: It's going to be long, but probably easy for you
+      - show deuzi: happy
+      - deuzi says: And the teacher is great! She's my best friend
+      - deuzi says: Good luck!
+      - scene: writingTheStory
+    - We barely saw the first part!:
+      - deuzi says: Come back here you ratbag, and finish the lesson!
+      - jair says: Ok boss, don't worry
+      - hide deuzi: WITH FADE
+  - show jair: angry
+  - jair says: What a snitch
+  - show jair: normal
+  - jair says: Anyway, let's see the next part
+  - jair says: Characters
+  - jair says: The characters are... you know what a character is, come on
+  - show setupch: AT 400,300 WITH FADE
+  - jair says: Ok so, inside the characters tag, each character is declared after its own tag
+  - jair says: Same as the backgrounds, this tag will be used to refer to this character on the text of your story
+  - jair says: Every time you need to use Deuzilene, you will use her tag, deuzi
+  - jair says: Characters also have a display name, that's the name that will apear on the name box when we talk
+  - jair says: The display name can have whitespaces, accents and whatever you want
+  - jair says: If you omit it, the tag will be used as the name
+  - jair says: The speech colour is the colour to write the name in the name box
+  - jair says: And then you have a list of looks
+  - jair says: A look is an image representing a state of the character
+  - jair says: You always need a normal look, that will be the default
+  - jair says: And you can have as many additional looks as you want
+  - jair says: Deuzi here can be happy or angry
+  - show jair: happy
+  - jair says: Her range of emotions is infinite though
+  - jair says: Believe me
+  - show jair: normal
+  - hide setupch:
+  - jair says: Next up is cgs
+  - show setupcgs: 400,350 WITH FADE
+  - jair says: CGs stands for Computer Graphics
+  - jair says: It's an image that you can display and animate
+  - show jair: angry
+  - jair says: It should have a better name, I know
+  - jair says: But for now, it's what we have
+  - show jair: normal
+  - jair says: Same as always, you have the cgs tag, and then each cgs has a tag and an image file
+  - jair says: We have two phones
+  - jair says: Could one of those be mine?
+  - show phone1: AT 600,300
+  - show phone2: AT 380,300
+  - jair says: I don't think so!
+  - hide phone1:
+  - hide phone2:
+  - hide setupcgs:
+  - jair says: "And to finish: audio"
+  - show setupaudio: AT 400,350
+  - jair says: You can have music, and you can have sfx
+  - jair says: The music will usually be looped, while the sfx will play just once
+  - jair says: For example, the current background music is morningBGM
+  - jair says: Let's make a phone call and check the ringtone...
+  - show phone1: AT 400,300
+  - play ringtoneSFX:
+  - text: Tururu Ruru Ruru Ruruuuu
+  - jair says: This has to be Deuzi's
+  - show deuzi: angry AT RIGHT
+    flipped: true
+  - deuzi says: Hey! That's my phone!
+  - hide phone1:
+  - hide deuzi: WITH FADE
+  - show jair: happy
+  - jair says: I knew it!
+  - show jair: normal
+  - jair says: Anyway, that's it, lesson over
+  - hide setupaudio:
+  - jair says: I'm going to try and find the place where this bar music is playing
+  - show jair: happy
+  - jair says: You're not entirely bad
+  - jair says: See you around
+  - jair says: And don't get lost, your next class is over there!
+  - hide jair: WITH FADE
+  - scene: writingTheStory
 
-corsolies:
-  - show Corso: flustered
-  - Corso says: Well, it didn't feel right, you know?
-  - show Corso: normal
-  - Corso says: I was trying to be a gentleman.
-  - show Corso: blush
-  - Corso says: Doing what I did was the most gentlemanly thing to do.
-  - show Corso: normal
-  - Corso says: All things considered.
+writingTheStory:
+  - show school_afternoon:
+  - show liz: normal
+  - liz says: Hi! I'm Liz and I'll be your writing mentor
+  - liz says: Here we'll see how to actually write the story
+  - show liz: happy
+  - liz says: Are you ready!?
+  - effect SHOWTITLE: 
+    title: Chapter 3
+    subtitle: Writing Part 1
+  - show liz: normal
+  - liz says: First thing you need to know about a story is, it's divided in scenes
+  - liz says: Each scene is a list of orders that will be executed from first to last
+  - liz says: Inside a scene you can show backgrounds, characters, make them talk, show choices, call other scenes, and a lot more
+  - liz says: The scenes are all contained in the file YourStory.yaml
+  - liz says: And each one has a tag name. This name can be anything, but you always need a scene called start
+  - liz says: That will be, of course, the starting scene
+  - show liz: happy
+  - liz says: Really easy, don't you think?
+  - show liz: normal
+  - liz says: So, let's see what's the content of a scene
+  - show liz: AT RIGHT WITH MOVE
+  - show scenestart:
+  - liz says: This is the starting scene of this game
+  - liz says: First thing we do is play music
+  - liz says: Notice the dash symbol
+  - liz says: That dash indicates that this is a single action
+  - liz says: Every action starts with a dash
+  - liz says: Also, after declaring the basic action, you add a colon
+  - liz says: After this, you can add additional parameters
+  - liz says: But sometimes you don't need anything, like in this case
+  - liz says: Still, the colon is important
+  - liz says: Next line we have another action, notice the starting dash
+  - liz says: This one shows the background whose tag is school_morning
+  - liz says: You were there this morning, remember?
+  - liz says: The background takes some aditional parameters
+  - liz says: The uppercase text WITH is a special word to indicate a transition
+  - liz says: And FADE is the name of that transition
+  - liz says: There are a few transitions included with RenJS, like CUT, FADE, FUSION, MOVE, FADETOBLACK and FADETOWHITE
+  - liz says: You can add your own transitions if you feel adventurous
+  - show liz: happy
+  - liz says: Or you can ask your programmer friend to code them for you!
+  - show liz: normal
+  - liz says: The transitions aren't just for backgrounds but also for characters and cgs
+  - liz says: The next line shows a character appearing on the screen
+  - show liz: happy
+  - liz says: Deuzilene, my best friend
+  - show liz: normal
+  - liz says: The first aditional parameter is her look. She was happy to welcome you!
+  - liz says: Also, notice another special word AT, used to designate the position
+  - liz says: The position can be LEFT, CENTER, RIGHT, or it can be a coordinate like 200,200
+  - liz says: And we use, too, the transition FADE
+  - liz says: Next line is Deuzi welcoming you. The extra parameter is the text.
+  - hide scenestart:
+  - liz says: So, with just these sentences you can show backgrounds, characters and make them talk
+  - liz says: But how do we hide them?
+  - liz says: Easily! Just hide them!
+  - show scenehide:
+  - liz says: In this scene Jair is trying to annoy Deuzilene once again.
+  - show liz: angry
+  - liz says: He has her phone!
+  - show liz: normal
+  - liz says: On the second line, the phone, a cgs with phone1 tag, is shown
+  - liz says: As the cgs are smaller than characters, we need a specific coordinate to locate them on the screen
+  - liz says: We use the special word AT again, but this time, with the coordinates
+  - liz says: Next we play the phone's ringtone, an SFX tagged as ringtoneSFX
+  - liz says: To visually show the phone is ringing, we show its onomatopoeia.
+  - liz says: "As no character is speaking, the 'text' action is used instead."
+  - liz says: Then Deuzilene comes to rescue her phone!
+  - liz says: Can you notice something different when Deuzi appears this time?
+  - liz says: That's right, she's flipped
+  - liz says: Sometimes we need our characters to face the other way
+  - liz says: One easy way to do it is to flip their look
+  - liz says: On the show action, you just add a new extra parameter
+  - liz says: "The line right after 'show' doesn't start with a dash, that means it's still the same action as before"
+  - liz says: "And so we add the parameter, flipped: true"
+  - liz says: Then Deuzi grabs her phone
+  - liz says: Hiding it is really easy, as I said before
+  - liz says: And same thing for characters, we can hide Deuzi, taking a specific transition
+  - liz says: Let's hide this lesson now
+  - hide scenehide:
+  - show liz: AT CENTER WITH MOVE
+  - liz says: So that's it for today. You must be really tired after studying the whole day.
+  - show liz: happy
+  - liz says: See you tomorrow for part 2!
+  - hide liz: WITH FADE
+  - scene: interval
+
+interval:
+  - stop morningBGM: WITH FADE
+  - show room_night:
+  - show room_night_light: WITH FUSION
+  - play cicadas: WITH FADE
+  - show deuzi: normalC WITH FADE
+  - deuzi says: Hey! I knew I was going to find you here.
+  - deuzi says: Were you going to sleep already?
+  - deuzi says: I know you're new in town, so I thought I could show you around a bit 
+  - deuzi says: What do you think?
+  - interrupt:
+    - Isn't it a bit awkward???:
+      - show deuzi: angryC
+      - deuzi says: What do you mean?
+      - deuzi says: Because I'm your teacher?  
+      - show deuzi: happyC
+      - deuzi says: We're almost the same age!
+      - show deuzi: normalC
+      - deuzi says: You might be teaching some years from now too. 
+      - show deuzi: angryC
+      - deuzi says: Then you'll see how awkward is to be called professor and treatead like and old person.
+      - show deuzi: normalC
+      - deuzi says: Anyway, as I was saying...
+  - deuzi says: You probably know it already, but this is a small town.
+  - deuzi says: There's not much to see, really.
+  - deuzi says: But the cool kids all get together outside the store.
+  - deuzi says: Have you gone there already?
+  - deuzi says: You can't miss it.
+  - deuzi says: So, ready to go?
+  - interrupt: stop
+  - show deuzi: happyC
+  - deuzi says: Let's go!
+  - scene: storeAtNight
+
+storeAtNight:
+  - play storeBGM:
+  - show store:
+  - show liz: happyC WITH FADE
+  - liz says: Deuzi!!! Over here!
+  - show liz: happyC AT 500,600 WITH MOVE
+  - show deuzi: happyC AT 300,600 WITH FADE
+  - deuzi says: Liz! How are you?
+  - show liz: normalC
+  - liz says: Great! I just got here and was wondering where you were.
+  - show deuzi: normalC
+  - deuzi says: I stopped by the dorms to get my new student, and show them around.
+  - show jair: happyC AT LEFT WITH FADE
+    flipped: true
+  - jair says: You should stop acting like a mama duck to your students
+  - show deuzi: angryC
+    flipped: true
+  - deuzi says: Are you jealous for not getting all the attention now?
+  - show jair: angryC
+  - jair says: Yeah, right...
+  - show marco: normalC WITH FADE AT RIGHT
+  - marco says: You two fighting again?
+  - show liz: happyC
+  - liz says: Seems like a normal day
+  - show deuzi: angryC
+    flipped: false
+  - deuzi says: Hey! You're supposed to be on my side.
+  - deuzi says: He started it!
+  - show liz: normalC
+  - show deuzi: normalC
+  - deuzi says: Anyway, good to see you Marco.
+  - show jair: happyC
+  - jair says: Yes, what's the special occasion that made you crawl out of your hole.
+  - show marco: happyC
+  - marco says: Have to get some food before it starts raining.
+  - show liz: angryC
+  - liz says: What rain? It was a beautiful day!
+  - effect THUNDER:
+  - marco says: I better hurry. Bye!
+  - hide marco:
+  - deuzi says: Maybe we should go too, before...
+  - ambient RAIN:
+  - jair says: I knew something weird was going to happend when I saw that guy.
+  - deuzi says: How could this happen so suddenly?
+  - show liz: normalC
+  - liz says: Well, it's rather easy.
+  - liz says: Ambients and effects.
+  - jair says: Come on! Not on the street!
+  - show liz: angryC
+  - show deuzi: angryC
+    flipped: true
+  - deuzi says: That's it! You and I are going to have a serious talk!
+  - jair says: If you can catch me!
+  - hide jair:
+  - show deuzi: angryC AT LEFT WITH MOVE
+  - hide deuzi: WITH FADE
+  - show liz: happyC
+  - liz says: I know how that's going to end.
+  - show liz: normalC
+  - liz says: As I was saying, ambient changes are really easy to make.
+  - liz says: Let me show you.
+  - show ambientAndEffects:
+  - liz says: Ambients are visual and sound effects that persist on time.
+  - liz says: Like rain, snow or cherry blossoms falling.
+  - liz says: "You call them using the action 'ambient', followed by the ambient name"
+  - liz says: There's a few ambients ready to use.
+  - liz says: RAIN, SNOW and SAKURA.
+  - liz says: To stop an ambient you call a special ambient called CLEAR.
+  - ambient CLEAR:
+  - show liz: happyC
+  - liz says: And the rain stops!
+  - liz says: Finally!
+  - show liz: normalC
+  - liz says: Effects are also visual and sound effects, but they are played just once.
+  - liz says: Like that thunder before.
+  - liz says: "Some other handy effects are:"
+  - liz says: SHAKE, a screen shake!
+  - liz says: SHOWTITLE, a title screen like the ones at the start of each chapter.
+  - liz says: You can send two extra parameters, title and subtitle to it.
+  - liz says: EXPLOSION, just what it says on the tin.
+  - liz says: ATTACK, MULTIATTACK and CHAINATTACK.
+  - liz says: Last thing about this,
+  - liz says: The extra sounds and images used by ambients and effects have to be declared on the extra section of the setup file.
+  - liz says: For example, the RAIN ambient uses a rain sound and a raindrop image.
+  - hide ambientAndEffects:
+  - show liz: happyC
+  - liz says: And that's pretty much it.
+  - show marco: normalC AT LEFT WITH FADE
+  - marco says: Where you under the rain all this time?
+  - show liz: normalC
+  - liz says: It's ok, I like rain.
+  - liz says: Did you get your dinner?
+  - show marco: happyC
+  - marco says: I got some things to cook, do you want to come over?
+  - liz says: Really? All right, let's go.
+  - show liz: normalC
+  - liz says: By the way, this is Marco, he'll be teaching you about the GUI tomorrow.
+  - show marco: normalC
+  - marco says: Hi new kid!
+  - liz says: Do you think you can find your way back to the dorms by yourself?
   - choice:
-    - I'm not sure things were that way.:
-      - Me says: You looked pretty scared to me.
-      - scene: corsoangry
-    - Oh, I see.:
-      - Me says: It's nice to know you're doing better now.
-      - Me says: My morning has been insane.
-      - Me says: So it's nice to see somebody else doing fine.
-      - scene: corsosteal
+    - Yes, no problem:
+      - liz says: Ok, then I guess I'll see you tomorrow, don't be late!
+    - Sure:
+      - liz says: Ok, then I guess I'll see you tomorrow, don't be late!
+  - scene: backToTheRoom
 
-corsosteal:
-  - show Corso: grin
-  - Corso says: We could fetch some drinks to cheer you up, you know?
-  - show Corso: normal
-  - Me says: I don't have any money with me.
-  - show Corso: eyesmile
-  - Corso says: Who said anything about paying?
-  - choice:
-    - Stealing is wrong!:
-      - scene: corsoangry
-    - I don't want to get in trouble.:
-      - scene: corsoboyfriend
+backToTheRoom:
+  - play cicadas: WITH FADE
+  - show room_night:
+  - show room_night_light: WITH FUSION  
+  - text: Your day was very tiring, but you're closer to be a visual novel writer. Tomorrow is going to be another long day, you better rest.
+  - show room_night: WITH FUSION
+  - wait: 400
+  - scene: day2
 
-corsoboyfriend:
-  - show Corso: normal
-  - Me says: Lucien went to jail for stealing.
-  - Me says: I'd rather not follow him there.
-  - show Corso: flustered
-  - Corso says: Lucien, huh?
-  - choice:
-    - Yes, we lived together until recently.:
-      - Me says: I think I really like him.
-      - Corso says: Good for you. I guess.
-      - scene: corsoangry
-    - He's a poet like me.:
-      - Me says: I hope he's okay.
-      - scene: corsopoetry
+day2:
+  - play morningBGM:
+  - show school_morning: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome back!
+  - deuzi says: How was your first night away from home?
+  - show deuzi: normal
+  - deuzi says: Are you ready for today's lessons?
 
-corsopoetry:
-  - show Corso: normal
-  - Corso says: I used to be in jail.
-  - Corso says: It's not that bad if you make the right friends, I guess.
-  - Corso says: And I told you this last time we met.
-  - Corso says: But I'm a poet too.
-  - show Corso: eyesmile
-  - Me says: That's cool.
-  - Me says: Me too!
-  - Me says: Can you show me your stuff?
-  - show Corso: normal
-  - Corso says: Sure, I have some here.
-  - text: A couple of beers later.
-  - Me says: They're really good.
-  - Corso says: I can show you more, they're at the library, though.
-  - Corso says: I live there.
-  - show Corso: smile
-  - Me says: Really? That's so cool!
-  - Me says: I guess I have nowhere to live right now.
-  - show Corso: normal
-  - Corso says: You seem like a nice kid.
-  - Corso says: I guess it would do no harm to let you crash.
-  - Me says: Really!?
-  - Corso says: Yes, really.
-  - Me says: Thanks!
-  - Corso says: Let me know when you're ready to go.
-  - show Corso: smile
-  - Corso says: I'll be drinking over here.
-  - var pickcorso: true
-  - hide Corso: WITH FADE
-  - scene: bar
 
-corsoangry:
-  - show Corso: angry
-  - Corso says: This is stupid.
-  - show Corso: frown
-  - Corso says: I'm out of here.
-  - hide Corso: WITH FADE
-  - Me says: You forgot your beer.
-  - show Corso: angry WITH FADE
-  - Corso says: Don't expect me to be grateful.
-  - hide Corso: WITH FADE
-  - scene: bar
-
-gowithcorso:
-  - show Corso: eyesmile
-  - Corso says: So, are you ready to go?
-  - Me says: Yes, let's do this!
-  - hide bar: WITH FADE
-  - show heart: WITH FADE
-  - Me says: I spent the night with Greg at the library.
-  - Me says: It was lovely.
-  - hide Corso: WITH FADE
-  - hide heart: WITH FADE
-  - show credits: WITH FADE

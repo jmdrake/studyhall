@@ -46,10 +46,14 @@ RenJS.transitions = {
         to.x = position.x;
         to.y = position.y; 
         to.scale.x = scaleX ? scaleX : to.scale.x;
-        RenJS.tweenManager.parallel([
-            {sprite:from,tweenables:{alpha:0}},
-            {sprite:to,tweenables:{alpha:1},callback:RenJS.resolve}
-        ],config.fadetime);
+        RenJS.tweenManager.tween(to,{ alpha: 1 },function(){
+            from.alpha = 0;
+            RenJS.resolve();
+        },config.fadetime,true);
+        // RenJS.tweenManager.parallel([
+        //     {sprite:from,tweenables:{alpha:0}},
+        //     {sprite:to,tweenables:{alpha:1},callback:RenJS.resolve}
+        // ],config.fadetime);
     },
     MOVE: function(from,to,position,scaleX){
         if (!from || !to){
@@ -96,23 +100,6 @@ RenJS.transitions = {
     },
     FADETOWHITE: function(from,to,position){
         RenJS.transitions.FADETOCOLOUR(from,to,position,0xFFFFFF)
-    },
-    FADETOCOLOUROVERLAY: function (colour) {
-        RenJS.transitions.overlay = new Phaser.Graphics(0, 0);
-        RenJS.transitions.overlay.beginFill(colour, 1);
-        RenJS.transitions.overlay.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
-        RenJS.transitions.overlay.alpha = 0;
-        RenJS.transitions.overlay.endFill();
-        RenJS.storyManager.cgsSprites.add(RenJS.transitions.overlay);
-        RenJS.tweenManager.tween(RenJS.transitions.overlay,{ alpha: 1 },function() {},config.fadetime,true);  
-    },
-    FADEOUTCOLOUROVERLAY: function () {
-        if (RenJS.transitions.overlay){
-            RenJS.tweenManager.tween(RenJS.transitions.overlay,{ alpha: 1 },function() {
-                RenJS.transitions.overlay.destroy();
-                RenJS.transitions.overlay = null;
-            },config.fadetime,true);  
-        }
     }
 }
 

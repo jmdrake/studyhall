@@ -106,14 +106,21 @@ var preloadStory = {
         });
     });
     if (RenJS.story.setup.extra){
-        _.each(RenJS.story.setup.extra.spritesheets,function(file,key){
-            var str = file.split(" ");
-            game.load.spritesheet(key, str[0], parseInt(str[1]),parseInt(str[2]));
+        _.each(RenJS.story.setup.extra,function(assets,type){
+            if (type=="spritesheets"){
+                _.each(assets,function(file,key){
+                    var str = file.split(" ");
+                    game.load.spritesheet(key, str[0], parseInt(str[1]),parseInt(str[2]));
+                });
+            } else {
+                _.each(assets,function(file,key){
+                    // console.log("loading "+key+ " "+file+" of type "+type);
+                    game.load[type](key, file);
+                });
+            }
         });
-        _.each(RenJS.story.setup.extra.scripts,function(file,key){
-            console.log("loading "+key+ " "+file)
-            game.load.script(key, file);
-        });
+        
+        
     }
     
   },

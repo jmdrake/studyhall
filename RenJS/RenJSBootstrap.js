@@ -1,13 +1,15 @@
 var phaserConfig = {
-  w:1280,
-  h:720,
-  mode: "WEBGL",
-  splash: "assets/gui/Splash.png", //splash background
-  loading: "assets/gui/LoadingBar.png", //loading bar image
-  loadingPosition: [149,123], //loading bar size
+  w:800,
+  h:600,
+  mode: "AUTO",
+  splash: "assets/gui/splash.png", //splash background
+  loading: "assets/gui/loadingbar.png", //loading bar image
+  loadingPosition: [111,462], //loading bar size
   storyFiles: [
         "Story/YourStory.yaml",
-        "Story/GUI.yaml"
+        "Story/GUI.yaml",
+        "Story/Setup.yaml",
+
     ],
 }
 var game = new Phaser.Game(phaserConfig.w, phaserConfig.h, Phaser[phaserConfig.mode], "RenJS");

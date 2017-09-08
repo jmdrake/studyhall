@@ -61,7 +61,7 @@ RenJS.ambient = {
         RenJS.resolve();
     },
     RAIN: function() {
-        RenJS.audioManager.play("cicadas","bgs",true,"FADE"); 
+        RenJS.audioManager.play("rain","bgs",true,"FADE"); 
         RenJS.ambient.addEmitter({
             maxParticles: 400,
             sprite:"rain",

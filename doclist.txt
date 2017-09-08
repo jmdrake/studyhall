@@ -1,0 +1,28 @@
+
+show character: with TRANSITION at POSITION/COORDS (extra: flipped)
+show cgs: with TRANSITION at POSITION/COORDS (extra: zoom, angle, alpha, position)
+show background: with TRANSITION
+
+hide character: with TRANSITION
+hide cgs: with TRANSITION
+
+play MUSIC:
+play SFX:
+
+animate cgs: (alpha, angle, position, zoom, time)
+
+characters says: TEXT
+text: TEXT
+
+wait: TIME
+
+choice:
+interrupt:
+if: else:
+
+scene: SCENE
+
+effect: EFFECT
+ambient: AMBIENT
+
+call: OWNFUNCTION

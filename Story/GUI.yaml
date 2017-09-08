@@ -1,92 +1,83 @@
 simpleGUI:
   assets:
     fonts:
-      - junicode
-      - albertus
-      - elliotsix
-      - exo
+      - audimat-mono
     images:
-      menuBackground: assets/gui/MenuBG.png
-      settingsBackground: assets/gui/settingsBG.png
-      sliderFull: assets/gui/sliderfull.png
-      sliderEmpty: assets/gui/sliderempty.png
-      textBox: assets/gui/TextBox.png
-      nameBox: assets/gui/NameBox.png
-      ctc: assets/gui/CTC.png
+      menuBackground: assets/gui/menu.png
+      settingsBackground: assets/gui/settings.png
+      sliderFull: assets/gui/slider.png
+      textBox: assets/gui/textbox.png
+      nameBox: assets/gui/namebox.png
+      ctc: assets/gui/ctc.png
     spritesheets:
-      startButton: assets/gui/MenuStart.png 249 97
-      loadButton: assets/gui/MenuLoad.png 254 96
-      saveButton: assets/gui/MenuSave.png 248 107
-      settingsButton: assets/gui/MenuSettings.png 253 100
-      returnButton: assets/gui/MenuReturn.png 266 112
-      qmAutoButton: assets/gui/GuiButtonsAuto.png 100 27
-      qmSkipButton: assets/gui/GuiButtonsSkip.png 100 27
-      qmSettingsButton: assets/gui/GuiButtonsMenu.png 100 27
+      startButton: assets/gui/startbutton.png 163 83
+      loadButton: assets/gui/loadbutton.png 163 83
+      saveButton: assets/gui/savebutton.png 163 83
+      settingsButton: assets/gui/settingsbutton.png 163 83
+      returnButton: assets/gui/returnbutton.png 163 83
+      qmAutoButton: assets/gui/qmenuauto.png 47 45
+      qmSkipButton: assets/gui/qmenuskip.png 47 45
+      qmSettingsButton: assets/gui/qmenusettings.png 47 45
       qmMuteButton: assets/gui/Mute.png 50 50
-      qmSaveButton: assets/gui/GuiButtonsSave.png 100 27
-      choice: assets/gui/Choice.png 1136 74
+      qmSaveButton: assets/gui/qmenusave.png 47 45
+      choice: assets/gui/choice.png 716 65
     sound:
       bgm: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
   hud:
     message:
-      box: textBox 0 572
+      box: textBox 46 435
       text:
-        font: 28pt albertus
-        boundingBox: 52 75 1000 70
+        font: 16pt audimat-mono
+        boundingBox: 36 36 545 76
         fill: "#ac9393"
     name:
-      box: nameBox 88 -34
+      box: nameBox 36 -40
       text:
-        font: 40pt junicode
+        font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
     choice:
       box: choice
       text:
-        font: 28pt albertus
+        font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
-        fill: "#ac9393"
+        fill: "#333333"
     buttons:
-      auto: qmAutoButton 1175 583
-      skip: qmSkipButton 1175 647
-      save: qmSaveButton 1175 679
-      settings: qmSettingsButton 1175 615
+      auto: qmAutoButton 647 502
+      skip: qmSkipButton 694 502
+      save: qmSaveButton 694 457
+      settings: qmSettingsButton 647 457
       # mute: qmMuteButton 1175 60
-    ctc: ctc 1116 62
+    ctc: ctc 570 90
   menus:
     main: 
       background: menuBackground 0 0
       music: bgm
       buttons: 
-        start: startButton 488 623
-        load: loadButton 149 624
-        settings: settingsButton 798 620
+        start: startButton 112 462
+        load: loadButton 320 462
+        settings: settingsButton 528 462
     settings:
       background: settingsBackground 0 0
       buttons:
-        return: returnButton 810 501
-        start: startButton 512 516
-        load: loadButton 209 515
+        return: returnButton 112 500
+        start: startButton 320 500
+        load: loadButton 528 500
       sliders:
         textSpeed: 
-          full: sliderFull 724 312
-          empty: sliderEmpty 724 312
+          full: sliderFull 436 235
           min: 10
           max: 150
         autoSpeed:
-          full: sliderFull 724 450
-          empty: sliderEmpty 724 450
+          full: sliderFull 436 364
           min: 50
           max: 300
         bgmv:
-          full: sliderFull 228 312
-          empty: sliderEmpty 228 312
+          full: sliderFull 147 235
           min: 0
           max: 1
         sfxv:
-          full: sliderFull 228 450
-          empty: sliderEmpty 228 450
+          full: sliderFull 147 364
           min: 0
           max: 1
-   

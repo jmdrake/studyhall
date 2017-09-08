@@ -118,8 +118,10 @@ function SimpleGUI(meta){
 
     this.initSliders = function(slidersMeta,group){
         _.each(slidersMeta,function(slider,prop){
-            var se = this.getSpriteInfo(slider.empty);
-            game.add.image(se.x,se.y,se.key,0,group);
+            if (slider.empty){
+                var se = this.getSpriteInfo(slider.empty);
+                game.add.image(se.x,se.y,se.key,0,group);
+            }
             var sf = this.getSpriteInfo(slider.full);
             var sliderFull = game.add.image(sf.x,sf.y,sf.key,0,group);
             var sliderMask = game.add.graphics(sf.x,sf.y,group);
@@ -277,6 +279,12 @@ function SimpleGUI(meta){
         this.hud.choices.boxes.removeAll(true);
     }
 
+    this.clear = function(){
+        //clears choices and text
+        this.hideChoices();
+        this.hideText();
+    }
+
     this.showHUD = function(){
         this.hud.group.visible = true;
     }
@@ -337,6 +345,10 @@ function SimpleGUI(meta){
     this.hideText = function(){
         console.log("hiding text");
         this.hud.textBox.visible = false;
+        this.hideCTC();
+    }
+
+    this.hideCTC = function(){
         if (this.hud.ctc && this.hud.ctc.tween){
             this.hud.ctc.alpha = 0;
             this.hud.ctc.tween.stop();

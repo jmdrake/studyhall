@@ -12,7 +12,7 @@ var defaults = {
         autoSpeed: 150,
         bgmv: 1,
         sfxv: 1,
-        muted: true
+        muted: false
     },
 
     positions : {
