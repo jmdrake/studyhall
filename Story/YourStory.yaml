@@ -323,7 +323,7 @@ interval:
   - deuzi says: Were you going to sleep already?
   - deuzi says: I know you're new in town, so I thought I could show you around a bit 
   - deuzi says: What do you think?
-  - interrupt:
+  - interrupt 6:
     - Isn't it a bit awkward???:
       - show deuzi: angryC
       - deuzi says: What do you mean?
@@ -342,7 +342,6 @@ interval:
   - deuzi says: Have you gone there already?
   - deuzi says: You can't miss it.
   - deuzi says: So, ready to go?
-  - interrupt: stop
   - show deuzi: happyC
   - deuzi says: Let's go!
   - scene: storeAtNight

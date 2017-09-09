@@ -3,11 +3,11 @@ simpleGUI:
     fonts:
       - audimat-mono
     images:
-      menuBackground: assets/gui/menu.png
+      mainBackground: assets/gui/menu.png
       settingsBackground: assets/gui/settings.png
       sliderFull: assets/gui/slider.png
-      textBox: assets/gui/textbox.png
-      nameBox: assets/gui/namebox.png
+      messageBox:  assets/gui/textbox.png
+      nameBox:  assets/gui/namebox.png
       ctc: assets/gui/ctc.png
     spritesheets:
       startButton: assets/gui/startbutton.png 163 83
@@ -21,63 +21,129 @@ simpleGUI:
       qmMuteButton: assets/gui/Mute.png 50 50
       qmSaveButton: assets/gui/qmenusave.png 47 45
       choice: assets/gui/choice.png 716 65
+      interrupt: assets/gui/interrupt.png 716 95
     sound:
-      bgm: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
+      mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
   hud:
     message:
-      box: textBox 46 435
-      text:
+      position: 
+        x: 46 
+        y: 435
+      textPosition: 
+        x: 36 
+        y: 36
+      textStyle:
         font: 16pt audimat-mono
-        boundingBox: 36 36 545 76
+        wordWrap: true
+        wordWrapWidth: 545
         fill: "#ac9393"
     name:
-      box: nameBox 36 -40
-      text:
+      position: 
+        x: 36 
+        y: -40
+      textStyle:
         font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
+    ctc: 
+      position:
+        x: 570 
+        y: 90
+      animated: false
     choice:
-      box: choice
-      text:
+      separation: 95
+      textStyle:
         font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
         fill: "#333333"
+    interrupt:
+      normalText: 
+        font: 20pt audimat-mono
+        boundsAlignH: center
+        boundsAlignV: middle
+        fill: "#333333"
+      lastText: 
+        font: 22pt audimat-mono
+        boundsAlignH: center
+        boundsAlignV: middle
+        fill: "#FF3333"
     buttons:
-      auto: qmAutoButton 647 502
-      skip: qmSkipButton 694 502
-      save: qmSaveButton 694 457
-      settings: qmSettingsButton 647 457
+      auto: 
+        position:
+          x: 647
+          y: 502
+        sprite: qmAutoButton
+      skip: 
+        position:
+          x: 694
+          y: 502
+        sprite: qmSkipButton
+      save: 
+        position:
+          x: 694
+          y: 457
+        sprite: qmSaveButton
+      settings: 
+        position:
+          x: 647
+          y: 457
+        sprite: qmSettingsButton
       # mute: qmMuteButton 1175 60
-    ctc: ctc 570 90
   menus:
     main: 
-      background: menuBackground 0 0
-      music: bgm
+      music: mainMusic
       buttons: 
-        start: startButton 112 462
-        load: loadButton 320 462
-        settings: settingsButton 528 462
+        start: 
+          position:
+            x: 112
+            y: 462
+          sprite: startButton
+        load:  
+          position:
+            x: 320
+            y: 462
+          sprite: loadButton
+        settings:
+          position:
+            x: 528
+            y: 462
+          sprite: settingsButton
     settings:
-      background: settingsBackground 0 0
       buttons:
-        return: returnButton 112 500
-        start: startButton 320 500
-        load: loadButton 528 500
+        return: 
+          position:
+            x: 112
+            y: 500
+          sprite: returnButton
+        start:  
+          position:
+            x: 320
+            y: 500
+          sprite: startButton
+        load:
+          position:
+            x: 528
+            y: 500
+          sprite: loadButton
       sliders:
         textSpeed: 
-          full: sliderFull 436 235
-          min: 10
-          max: 150
+          position:
+            x: 436
+            y: 235
+          sprite: sliderFull
         autoSpeed:
-          full: sliderFull 436 364
-          min: 50
-          max: 300
+          position:
+            x: 436
+            y: 364
+          sprite: sliderFull
         bgmv:
-          full: sliderFull 147 235
-          min: 0
-          max: 1
+          position:
+            x: 147
+            y: 235
+          sprite: sliderFull
         sfxv:
-          full: sliderFull 147 364
-          min: 0
-          max: 1
+          position:
+            x: 147
+            y: 364
+          sprite: sliderFull

@@ -15,6 +15,13 @@ var defaults = {
         muted: false
     },
 
+    limits: {
+        textSpeed: [10,150],
+        autoSpeed: [50,300],
+        bgmv: [0,1],
+        sfxv: [0,1]
+    },
+
     positions : {
         LEFT: {x:phaserConfig.w/6,y:phaserConfig.h},
         CENTER: {x:phaserConfig.w/2,y:phaserConfig.h},

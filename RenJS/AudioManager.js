@@ -120,7 +120,8 @@ function AudioManager(){
 
     this.playSFX = function(key){
         if (this.audioLoaded && !config.settings.muted){
-            // debugger;            
+            // debugger;
+            this.sfx[key].volume = config.settings.sfxv;
             this.sfx[key].play();    
 
         }

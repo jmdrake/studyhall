@@ -1,6 +1,7 @@
 function LogicManager(){
 
     this.vars = {};
+    this.currentChoices = [];
     
     this.setVar = function(name,value){
         value = value+"";
@@ -57,6 +58,7 @@ function LogicManager(){
 
     this.evalChoice = function(choice){
         var choiceText = _.keys(choice)[0];
+        choice.choiceId = "Choice"+Date.now();
         var params = choiceText.split("!if");
         if (params.length > 1){
             var val = RenJS.logicManager.evalExpression(params[1]);
@@ -73,12 +75,44 @@ function LogicManager(){
     this.showChoices = function(choices){
         var ch = _.map(choices,_.clone);
         ch = _.filter(ch,this.evalChoice);
-        RenJS.logicManager.currentChoices = ch;     
-        RenJS.gui.showChoices(ch); 
+        // debugger;
+        RenJS.logicManager.currentChoices = RenJS.logicManager.currentChoices.concat(ch);     
+        RenJS.gui.showChoices(RenJS.logicManager.currentChoices); 
         if (RenJS.logicManager.interrupting){
             RenJS.control.execStack[0].interrupting = RenJS.control.execStack[0].c;
             RenJS.resolve();
         }
+    }
+
+    this.interrupt = function(steps,choices){
+        this.interrupting = true;
+        var s = parseInt(steps);
+        if (!isNaN(s) && s>0){
+            _.each(choices,function(choice){
+                // choice.startingStep = RenJS.control.globalCounter;
+                choice.remainingSteps = s+1;
+                choice.interrupt = true;
+            });
+            RenJS.onInterpretActions.interruptAction = function(){
+                RenJS.logicManager.currentChoices = _.filter(RenJS.logicManager.currentChoices,function(choice){
+                    if (choice.remainingSteps) {
+                        choice.remainingSteps--;
+                        if (choice.remainingSteps==1){
+                            RenJS.gui.changeToLastInterrupt(choice.choiceId); 
+                        } else if (choice.remainingSteps==0){
+                            RenJS.gui.hideChoice(choice.choiceId); 
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+                if (RenJS.logicManager.currentChoices.length == 0){
+                    delete RenJS.onInterpretActions.interruptAction;
+                }
+            }    
+        }
+        
+        this.showChoices(choices);
     }
 
     this.choose = function(index,chosenOption){
@@ -88,6 +122,7 @@ function LogicManager(){
             RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);
             RenJS.control.execStack.unshift({c:-1,index:index,op:chosenOption,total:actions.length,action:"choice"});
         }
+        RenJS.logicManager.currentChoices = [];
         if (RenJS.logicManager.interrupting){
             RenJS.control.execStack[0].action = "interrupt";
             RenJS.logicManager.interrupting = false;

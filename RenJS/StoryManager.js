@@ -153,15 +153,16 @@ function StoryManager(){
                     RenJS.logicManager.showChoices(_.clone(params));
                     break;
                 case "interrupt" : 
+                    RenJS.logicManager.interrupt(actor,_.clone(params));
                     // debugger;
-                    if (params == "stop"){
-                        // console.log("interrupting");
-                        RenJS.logicManager.interrupting = false;
-                        RenJS.logicManager.choose();
-                    } else {
-                        RenJS.logicManager.interrupting = true;
-                        RenJS.logicManager.showChoices(_.clone(params));
-                    }
+                    // if (params == "stop"){
+                    //     // console.log("interrupting");
+                    //     RenJS.logicManager.interrupting = false;
+                    //     RenJS.logicManager.choose();
+                    // } else {
+                    //     RenJS.logicManager.interrupting = true;
+                    //     RenJS.logicManager.showChoices(_.clone(params));
+                    // }
                     break;
                 case "text" :
                     RenJS.textManager.show(params);
@@ -200,18 +201,16 @@ function StoryManager(){
     this.interpret = function() {
         return new Promise(function(resolve, reject) {
             if (RenJS.storyManager.currentScene.length == 0){
-                // console.log("Resolving somthing here");
+                // console.log("Resolving something here");
                 resolve();
             } else {
                 var action = RenJS.storyManager.currentScene.shift();
-                RenJS.control.execStack[0].c++;
-                // console.log("Stack is");
-                // console.log(RenJS.control.execStack[0]);
-                if (RenJS.control.execStack[0].c == RenJS.control.execStack[0].total){
-                    RenJS.control.execStack.shift();
-                    // console.log("Stack is");
-                    // console.log(RenJS.control.execStack[0]);
-                }
+                _.each(RenJS.onInterpretActions,function(additionalAction){
+                    //does extra stuff on every step
+                    //like updating the execution stack
+                    //or counting the interruption steps
+                    additionalAction(action);
+                });
                 console.log("About to do");
                 console.log(action);
                 RenJS.storyManager.interpretAction(action).then(function(){

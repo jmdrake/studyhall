@@ -208,6 +208,7 @@ var config = _.clone(defaults);
 //control variables
 RenJS.control = {
     execStack:[{c:-1}],
+    globalCounter: 0,
     paused: false,
     fadetime : config.fadetime,
     timeout : config.timeout,
@@ -220,6 +221,19 @@ RenJS.control = {
     clickCooldown: config.clickCooldown, 
 }
 
+RenJS.onInterpretActions = {
+    updateStack: function(){
+        RenJS.control.execStack[0].c++;
+        RenJS.control.globalCounter++;
+        // console.log("Stack is");
+        // console.log(RenJS.control.execStack[0]);
+        if (RenJS.control.execStack[0].c == RenJS.control.execStack[0].total){
+            RenJS.control.execStack.shift();
+            // console.log("Stack is");
+            // console.log(RenJS.control.execStack[0]);
+        }
+    }
+}
 //init managers
 
 RenJS.bgManager = new BackgroundManager();

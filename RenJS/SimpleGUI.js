@@ -17,36 +17,31 @@ function SimpleGUI(meta){
         return assets;
     }
 
-    this.getSpriteInfo = function(spriteInfo){
-        var info = spriteInfo.split(" ");
-        return {x: parseInt(info[1]), y:parseInt(info[2]), key:info[0]};
-    }
+    // this.getSpriteInfo = function(spriteInfo){
+    //     var info = spriteInfo.split(" ");
+    //     return {x: parseInt(info[1]), y:parseInt(info[2]), key:info[0]};
+    // }
 
-    this.getBoundingBoxInfo = function(bbInfo){
-        var info = bbInfo.split(" ");
-        return {x: parseInt(info[0]), y:parseInt(info[1]), w:parseInt(info[2]), h:parseInt(info[3])};
-    }
+    // this.getBoundingBoxInfo = function(bbInfo){
+    //     var info = bbInfo.split(" ");
+    //     return {x: parseInt(info[0]), y:parseInt(info[1]), w:parseInt(info[2]), h:parseInt(info[3])};
+    // }
 
     this.init = function(){
         this.initHUD();
         this.initChoices();
+        
+
         this.menus = {};
         _.each(this.elements.menus,function(menu,name){
             this.initMenu(name,menu);
         },this);
     }
 
-    this.initChoices = function(){
-        var choiceSprite = this.elements.hud.choice.box;
-        var dimensions = this.getSpriteInfo(this.elements.assets.spritesheets[choiceSprite]);
-        var choiceStyle = _.extend(config.defaultTextStyle,this.elements.hud.choice.text);
-        this.hud.choices = {
-            key: choiceSprite,
-            w: dimensions.x,
-            h: dimensions.y,
-            style: choiceStyle,
-            boxes: game.add.group()
-        }
+    
+
+    this.getTextStyle = function(textStyle){
+        return _.extend(_.clone(config.defaultTextStyle),textStyle);
     }
 
     this.initHUD = function(){
@@ -55,40 +50,61 @@ function SimpleGUI(meta){
         };
         // this.hud.group.alpha = 0;
         this.hud.group.visible = false;
-        var textBox = this.getSpriteInfo(this.elements.hud.message.box);
-        this.hud.textBox = game.add.image(textBox.x,textBox.y,textBox.key,0,this.hud.group);
-        this.hud.textBox.visible = false;
-        textBox = this.getBoundingBoxInfo(this.elements.hud.message.text.boundingBox);
-        var textStyle = _.extend(config.defaultTextStyle,
-            this.elements.hud.message.text,
-            {wordWrap:true, wordWrapWidth:textBox.w});
+        var messageBox = this.elements.hud.message;
+        this.hud.messageBox = game.add.image(messageBox.position.x,messageBox.position.y,"messageBox",0,this.hud.group);
+        var style = this.getTextStyle(messageBox.textStyle);
+
+        // var messageBox = this.getSpriteInfo(this.elements.hud.message.box);
+        // this.hud.messageBox = game.add.image(messageBox.x,messageBox.y,messageBox.key,0,this.hud.group);
+        this.hud.messageBox.visible = false;
+        // messageBox = this.getBoundingBoxInfo(this.elements.hud.message.text.boundingBox);
+        // var textStyle = _.extend(config.defaultTextStyle,
+        //     this.elements.hud.message.text,
+        //     {wordWrap:true, wordWrapWidth:messageBox.w});
         
         // textStyle.wordWrap = true;
         // textStyle.wordWrap = true;
             
         // };
-        // console.log(textBox);
-        this.hud.text = game.add.text(textBox.x,textBox.y, "", textStyle,this.hud.group);
-        this.hud.textBox.addChild(this.hud.text);
+        // console.log(messageBox);
+        this.hud.text = game.add.text(messageBox.textPosition.x,messageBox.textPosition.y, "", style,this.hud.group);
+        this.hud.messageBox.addChild(this.hud.text);
 
         if (this.elements.hud.name){
-            var nameBox = this.getSpriteInfo(this.elements.hud.name.box);
-            this.hud.nameBox = game.add.image(nameBox.x,nameBox.y,nameBox.key,0,this.hud.group);            
-            this.hud.nameBox.visible = false;
-            this.hud.textBox.addChild(this.hud.nameBox);
-            var nameStyle = _.extend(config.defaultTextStyle,this.elements.hud.name.text);
+            var name = this.elements.hud.name;
+            this.hud.nameBox = game.add.image(name.position.x,name.position.y,"nameBox",0,this.hud.group);            
+            this.hud.messageBox.addChild(this.hud.nameBox);
+            var nameStyle = this.getTextStyle(name.textStyle);
             this.hud.name = game.add.text(0,0, "", nameStyle,this.hud.group);
             this.hud.name.setTextBounds(0,0, this.hud.nameBox.width, this.hud.nameBox.height);   
             this.hud.nameBox.addChild(this.hud.name);
         }
         if (this.elements.hud.ctc) {
-            var ctc = this.getSpriteInfo(this.elements.hud.ctc);
-            this.hud.ctc = game.add.sprite(ctc.x,ctc.y,ctc.key);
-            // this.clickToContinue.anchor.set(0.5);
-            this.hud.ctc.visible = false;
-            this.hud.textBox.addChild(this.hud.ctc);
+            var ctc = this.elements.hud.ctc;
+            this.hud.ctc = game.add.sprite(ctc.position.x,ctc.position.y,"ctc");
+            this.hud.ctc.animated = ctc.animated;
+            if (this.hud.ctc.animated){
+                this.hud.ctc.animations.add('click');
+
+            }
+            this.hud.messageBox.addChild(this.hud.ctc);
         }
-        this.buttons = this.initButtons(this.elements.hud.buttons,this.hud.group);   
+        this.HUDButtons = this.initButtons(this.elements.hud.buttons,this.hud.group);   
+    }
+
+    this.initButtons = function(buttonsMeta,group){
+        var buttons = {};
+        _.each(buttonsMeta,function(btn,action){
+            // console.log("Adding button");
+            // console.log(btn);
+            // button(x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame, group)
+            if (!btn.frames){
+                btn.frames = [0,1,0,1];
+            }
+            buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions[action],
+                this,btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);
+        },this);
+        return buttons;
     }
 
     this.initMenu = function(name,menu){
@@ -97,20 +113,14 @@ function SimpleGUI(meta){
         };
         // this.menus[name].group.alpha = 0;
         this.menus[name].group.visible = false;
-        var sprite = this.getSpriteInfo(menu.background);
-        this.menus[name].background = game.add.image(sprite.x,sprite.y,sprite.key,0,this.menus[name].group);
+
+        this.menus[name].background = game.add.image(0,0,name+"Background",0,this.menus[name].group);
         if (menu.music && !config.settings.muted){
-            // console.log("adding music");
             this.menus[name].music = game.add.audio(menu.music);
             this.menus[name].music.onDecoded.add(function(){
                 this.menus[name].music.ready = true;
             }, this);
         };
-        _.each(menu.images,function(image,key){
-            sprite = this.getSpriteInfo(image);
-            this.menus[name][key] = game.add.image(sprite.x,sprite.y,sprite.key,0,this.menus[name].group);
-        },this);
-
         this.menus[name].buttons = this.initButtons(menu.buttons,this.menus[name].group);
         this.initSliders(menu.sliders,this.menus[name].group);
 
@@ -118,45 +128,28 @@ function SimpleGUI(meta){
 
     this.initSliders = function(slidersMeta,group){
         _.each(slidersMeta,function(slider,prop){
-            if (slider.empty){
-                var se = this.getSpriteInfo(slider.empty);
-                game.add.image(se.x,se.y,se.key,0,group);
-            }
-            var sf = this.getSpriteInfo(slider.full);
-            var sliderFull = game.add.image(sf.x,sf.y,sf.key,0,group);
-            var sliderMask = game.add.graphics(sf.x,sf.y,group);
+            var sliderFull = game.add.image(slider.position.x,slider.position.y,slider.sprite,0,group);
+            var sliderMask = game.add.graphics(slider.position.x,slider.position.y,group);
             sliderMask.beginFill(0xffffff);
             
             var currentVal = config.settings[prop];
-            // console.log("currentVal");
-            // console.log(currentVal);
-            var maskWidth = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
-            // console.log("maskWidth");
-            // console.log(maskWidth);
-            // sliderMask.width = sliderFull.width*(currentVal-slider.min)/(slider.max-slider.min);
+            var limits = config.limits[prop];
+            var maskWidth = sliderFull.width*(currentVal-limits[0])/(limits[1]-limits[0]);
             sliderMask.drawRect(0,0,maskWidth,sliderFull.height);
             sliderFull.mask = sliderMask;
             sliderFull.inputEnabled=true;
-            sliderFull.meta = slider;
+            sliderFull.limits = limits;
             sliderFull.prop = prop;
             sliderFull.events.onInputDown.add(function(sprite,pointer){
                 var val = (pointer.x-sprite.x);
                 sprite.mask.width = val;
-                var newVal = (val/sprite.width)*(sprite.meta.max - sprite.meta.min)+sprite.meta.min;
+                var newVal = (val/sprite.width)*(sprite.limits[1] - sprite.limits[0])+sprite.limits[0];
                 this.sliderValueChanged[sprite.prop](newVal);
             }, this);
         },this);
     }
 
-    this.initButtons = function(buttonsMeta,group){
-        var buttons = {};
-        _.each(buttonsMeta,function(button,action){
-            var btn = this.getSpriteInfo(button);
-            // button(x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame, group)
-            buttons[action] = game.add.button(btn.x,btn.y,btn.key,this.buttonActions[action],this,0,1,0,1,group)
-        },this);
-        return buttons;
-    }
+    
 
     this.sliderValueChanged = {
         textSpeed: function(newVal){
@@ -171,10 +164,9 @@ function SimpleGUI(meta){
         },
         sfxv: function(newVal){
             config.settings.sfxv = newVal;
-            // RenJS.audioManager.changeVolume("sfx",newVal);
         },
     }
-    //quick menu actions
+    //menu actions
     this.buttonActions = {
         start: function(){
             RenJS.gui.hideMenu();
@@ -245,6 +237,29 @@ function SimpleGUI(meta){
         
     }
 
+    this.initChoices = function(type){
+        this.hud.choices = {
+            group: game.add.group(),
+            map: {},
+            textStyles:{
+                choice:this.getTextStyle(this.elements.hud.choice.textStyle),
+                interrupt:this.getTextStyle(this.elements.hud.interrupt.normalText),
+                interruptLast:this.getTextStyle(this.elements.hud.interrupt.lastText),
+            },
+        };
+        // var choiceSprite = this.elements.hud.choice.box;
+        // var dimensions = this.getSpriteInfo(this.elements.assets.spritesheets[choiceSprite]);
+        // var choiceStyle = _.extend(config.defaultTextStyle,this.elements.hud.choice.text);
+        // this.hud.choice = {
+        //     normal: {
+        //         box:choiceSprite
+
+        //     w: dimensions.x,
+        //     h: dimensions.y,
+        //     style: choiceStyle,
+        // }
+    }
+
     //choice and interrupt buttons
     this.showChoices = function(choices){
         // this.hud.choices.boxes = []; 
@@ -255,28 +270,73 @@ function SimpleGUI(meta){
         //     style: choiceStyle,
         //     boxes: game.add.group()
         // }
+        this.hideChoices();
+        // var box = this.hud.choice;
+        // var yOffset = (choices.length*box.h)/2;
+        var position = this.elements.hud.choice.position;
+        if (!position){
+            position = {x:game.world.centerX};
+            position.y = game.world.centerY - (choices.length*this.elements.hud.choice.separation)/2;
+            position.anchor = {x:0.5,y:0};
+        }
 
-        var yOffset = (choices.length*this.hud.choices.h)/2;
+        
+
         _.each(choices,function(choice,index){
             console.log("Showing choice");
             console.log(choice);
-            var y = game.world.centerY - yOffset + this.hud.choices.h*index;
             var choiceText = _.keys(choice)[0];
-            var chBox = game.add.button(game.world.centerX, y, this.hud.choices.key, function(){
+
+            var y = position.y + this.elements.hud.choice.separation*index;
+            var key = "choice";
+            var frames = [0,1,0,1];
+            var textStyle = this.hud.choices.textStyles.choice;
+            
+            if (choice.interrupt){
+                key = "interrupt";
+                textStyle = this.hud.choices.textStyles.interrupt;
+                if (choice.remainingSteps==1){
+                    frames = [2,3,2,3];
+                    textStyle = this.hud.choices.textStyles.interruptLast;
+                }
+            }
+            var chBox = game.add.button(position.x, y, key, function(){
                 RenJS.logicManager.choose(index,choiceText);
-            }, RenJS.logicManager, 0,1,0,1,this.hud.choices.boxes);
-            chBox.anchor.set(0.5,0);
-            var chText = game.add.text(0,0, choiceText, this.hud.choices.style);
-            chText.setTextBounds(-chBox.width/2,0, chBox.width, chBox.height);
+            }, RenJS.logicManager, frames[0],frames[1],frames[2],frames[3],this.hud.choices.group);
+            if (position.anchor){
+                chBox.anchor.set(position.anchor.x,position.anchor.y);    
+            }
+            
+            var chText = game.add.text(0,0, choiceText, textStyle);
+            var textPosition = this.elements.hud.choice.textPosition;
+            if (!textPosition){
+                textPosition = !position.anchor ? [0,0] : [-chBox.width*position.anchor.x,-chBox.height*position.anchor.y];
+            }
+            chText.setTextBounds(textPosition[0],textPosition[1], chBox.width, chBox.height);
             //chText.anchor.set(0.5,0.5);
             chBox.addChild(chText);
+            this.hud.choices.map[choice.choiceId]=chBox;
             // debugger;
             // this.choiceBoxes.push(chBox);            
         },this);
     }
 
+    this.changeToLastInterrupt = function(choiceId){
+        if (this.hud.choices.map[choiceId]){
+            this.hud.choices.map[choiceId].setFrames(2,3,2,3);
+        }
+    }
+
+    this.hideChoice = function(choiceId){
+        if (this.hud.choices.map[choiceId]){
+            this.hud.choices.group.remove(this.hud.choices.map[choiceId]);
+            delete this.hud.choices.map[choiceId];
+        }
+    }
+
     this.hideChoices = function(){
-        this.hud.choices.boxes.removeAll(true);
+        this.hud.choices.map = {};
+        this.hud.choices.group.removeAll(true);
     }
 
     this.clear = function(){
@@ -309,7 +369,7 @@ function SimpleGUI(meta){
         // }
         if (RenJS.control.skipping || config.settings.textSpeed < 10){
             this.hud.text.text = text;
-            this.hud.textBox.visible = true;
+            this.hud.messageBox.visible = true;
             RenJS.gui.showCTC();
             callback();
             return;
@@ -330,7 +390,7 @@ function SimpleGUI(meta){
             }   
         }, config.settings.textSpeed);
         // this.hud.group.visible = true;
-        this.hud.textBox.visible = true;
+        this.hud.messageBox.visible = true;
         if (!RenJS.control.auto){
             RenJS.waitForClick(function(){
                 clearTimeout(loop);
@@ -343,24 +403,30 @@ function SimpleGUI(meta){
     }
 
     this.hideText = function(){
-        console.log("hiding text");
-        this.hud.textBox.visible = false;
+        // console.log("hiding text");
+        this.hud.messageBox.visible = false;
         this.hideCTC();
     }
 
     this.hideCTC = function(){
-        if (this.hud.ctc && this.hud.ctc.tween){
-            this.hud.ctc.alpha = 0;
-            this.hud.ctc.tween.stop();
+        if (this.hud.ctc){
+            this.hud.ctc.visible = false;
+            if (this.hud.ctc.animated){
+                this.hud.ctc.animations.stop();
+            } else {
+                this.hud.ctc.tween.stop();    
+            }
         }
     }
 
     this.showCTC = function(){
-        console.log("Showing ctc");
+        // console.log("Showing ctc");
         var ctc = RenJS.gui.hud.ctc;
-        ctc.alpha = 0;
         ctc.visible = true;
-        if (ctc) {
+        if (ctc.animated) {
+            ctc.animations.play('click', 15, true);
+        } else {
+            ctc.alpha = 0;
             ctc.tween = game.add.tween(ctc).to({ alpha: 1 }, 400, Phaser.Easing.Linear.None,true,0,-1);
         }
     }
