@@ -61,6 +61,8 @@ setup:
     scenestart: assets/objects/scenestart.png
     scenehide: assets/objects/scenehide.png
     ambientAndEffects: assets/objects/ambientandeffect.png
+    lessonScene: assets/objects/lessonScene.png
+    lessonChoice: assets/objects/lessonChoice.png
   music:
     morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
     storeBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3

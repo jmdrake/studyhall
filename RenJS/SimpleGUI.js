@@ -414,7 +414,9 @@ function SimpleGUI(meta){
             if (this.hud.ctc.animated){
                 this.hud.ctc.animations.stop();
             } else {
-                this.hud.ctc.tween.stop();    
+                if (this.hud.ctc.tween){
+                    this.hud.ctc.tween.stop();        
+                }                
             }
         }
     }

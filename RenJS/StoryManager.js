@@ -18,11 +18,7 @@ function StoryManager(){
 
     this.startScene = function(name){
         RenJS.control.execStack = [{c:-1,scene:name}];
-        // _.each(RenJS.characters,function(character,name){
-        //     character.hide();
-        // });
-        // RenJS.bgManager.hide(RenJS.transitions.FADETOBLACK);
-        // this.waitForContinue();
+        RenJS.gui.hideChoices(); //For any interrup still showing
         RenJS.chManager.hideAll();
         // RenJS.bgManager.hide();
         RenJS.cgsManager.hideAll();

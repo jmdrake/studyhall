@@ -470,5 +470,80 @@ day2:
   - deuzi says: How was your first night away from home?
   - show deuzi: normal
   - deuzi says: Are you ready for today's lessons?
+  - deuzi says: I'll let you to it.
+  - hide deuzi: WITH FADE
+  - show liz: WITH FADE
+  - liz says: Good morning!
+  - liz says: Let's start right away.
+  - effect SHOWTITLE: 
+    title: Chapter 4
+    subtitle: Writing Part 2
+  - liz says: Today we're going to see a very important part of writting interactive fiction.
+  - show liz: happy
+  - liz says: Interactivity!
+  - show liz: normal
+  - liz says: That is, how to let your players make choices and affect the story.
+  - liz says: The most direct way of doing this is presenting a list of choices for the player to make.
+  - liz says: Have you seen something like that in this game?
+  - choice:
+    - Yes, Deuzi asks a lot of questions:
+      - show liz: happy
+      - liz says: She does!
+    - I don't think so:
+      - show liz: angry
+      - liz says: Where was your head? The choices were all over.
+      - liz says: This just now was a list of choices and you clicked on one.
+  - show liz: normal
+  - liz says: "Let's see an example:"
+  - show lessonChoice:
+  - liz says: This part of the story is really recent.
+  - liz says: I asked you something.
+  - liz says: And you could choose between two different options.
+  - liz says: That is achieved with the action 'choice'.
+  - liz says: This action then takes a list of choices, indented by two spaces, and starting each with a dash.
+  - liz says: Your choices here were 'Yes, Deuzi asks a lot of questions' and 'I don't think so'.
+  - liz says: Inside each option, indented too by two spaces from the choice text, there's a new list.
+  - liz says: Those are the actions to execute if that choice is made.
+  - liz says: And when those actions are finished, you return to the next action after the 'choice' tag.
+  - hide lessonChoice:
+  - liz says: Inside a choice you can do anything you do in a scene.
+  - show liz: happy
+  - liz says: Even showing more choices!
+  - liz says: But that could get out of hand really fast. Try not to nest more than two choices at a time.
+  - show liz: normal
+  - liz says: Now, I told you about what a scene is yesterday, and now I'm going to show you how to change from one scene to the other.
+  - show lessonScene:
+  - liz says: In this example a whole scene, and with two possible next scenes.
+  - liz says: To start another scene we use the action 'scene'. It takes an extra parameter, the name of the scene to be executed next.
+  - liz says: That means the order you write the scenes or place them in the file has nothing to do with the actual execution.
+  - liz says: And that also means that you have to explicitly call the next scene when the current one ends.
+  - liz says: We can see here that the game will continue in different paths depending on what choices the player makes.
+  - liz says: When you change the scene, nothing else from that scene is executed.
+  - liz says: So if the player picks the phone up and then chooses to go to the party, the scene will change immediately to the 'partyScene' scene. 
+  - liz says: And if she doesn't attend the call or chooses not to go, the scene will continue until the end and change to the 'dormsScene' scene.
+  - hide lessonScene:
+  - show liz: happy
+  - liz says: Remember you can always say no to invitations, don't fall into peer pressure.
+  - show liz: normal
+  - liz says: Another way to 
+
+invitationScene:
+  - show phone2: AT 400,300
+  - play ringtoneSFX:
+  - jair says: Told you! It's probably Deuzilene trying to convince you to go to that party.
+  - choice:
+    - Pick up the phone:
+      - deuzi says: Hey! I'm glad you're not asleep yet! 
+      - deuzi says: There's this party tonight and I wanted you to come.
+      - deuzi says: So what do you say?
+      - choice:
+        - Sounds like fun!:
+          - scene: partyScene
+        - I'm really tired:
+          - deuzi says: Oh well, next time it is then. Have a good night!
+    - Let it ring:
+      - jair says: Brutal! You ain't even picking up.
+  - scene: dormsScene
+
 
 
