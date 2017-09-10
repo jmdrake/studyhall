@@ -525,8 +525,208 @@ day2:
   - show liz: happy
   - liz says: Remember you can always say no to invitations, don't fall into peer pressure.
   - show liz: normal
-  - liz says: Another way to 
+  - show marco: normal AT LEFT WITH FADE
+  - show liz: happy
+  - liz says: Marco, hi! What are you up to?
+  - show marco: happy
+  - marco says: I think I have a lesson now?
+  - show marco: normal
+  - marco says: Am I too early?
+  - show liz: normal
+  - liz says: Oh no, it's...
+  - marco says: Too late?
+  - show marco: worry
+  - marco says: Is it the wrong day?
+  - marco says: Again?
+  - show liz: happy
+  - liz says: It's ok, it't the right day and time... And place.
+  - show marco: happy
+  - marco says: Great!
+  - show marco: normal
+  - marco says: Ok, so you have to open the file...
+  - liz says: Wait, wait, wait!
+  - show liz: normal
+  - liz says: You have to introduce yourself first! Come on, Deuzi told you about these things.
+  - liz says: And don't forget to say what the lesson is about neither!
+  - show marco: worry
+  - marco says: Sorry!
+  - wait: 600
+  - show marco: happy
+  - marco says: There! I won't forget again. I'm making a protocol for coming to class, see.
+  - liz says: Really? A protocol?
+  - liz says: Didn't think it could be so complicated... What's on it?
+  - show marco: normal
+  - marco says: Well, first, getting out of bed. And washing my face.
+  - marco says: Then, coming on the right day at the right time is really important.
+  - show marco: happy
+  - marco says: And now I've added saying my name and state lesson summary to the students.
+  - liz says: That's very thorough.
+  - show liz: happy
+  - liz says: Ok, I don't want to disrupt your protocol too much, so I'll let you continue.
+  - show liz: normal
+  - liz says: Good luck!
+  - show liz: happy
+  - liz says: All of you!!!
+  - hide liz: WITH FADE
+  - scene: lessonStoryFlux
 
+lessonStoryFlux:
+  - show marco: normal AT CENTER WITH FADE
+  - marco says: All right, so, as I've gotten out of bed, washed my face and came here on the right day at the right time.
+  - marco says: Now I can tell you.
+  - show marco: happy
+  - marco says: Hi! My name is Marco, and I'll be teaching you about logic and variables.
+  - effect SHOWTITLE: 
+    title: Chapter 5
+    subtitle: Story Flux
+  - show marco: normal
+  - marco says: This is chapter 5 of the course, that means you already know about choices and interrupts.
+  - marco says: That's one way of changing the course of your story.
+  - marco says: But some of our actions take a long time to show how they affect the story.
+  - marco says: That means that sometimes during the story you will need to keep record of the player's decisions.
+  - marco says: What and how exactly is up to you.
+  - marco says: RenJS allows you to save information with the action 'var'.
+  - marco says: Its name comes from the word variable, since it's value could change.
+  - marco says: Let's see an example of what you can do with this action.
+  - show marco: AT RIGHT WITH MOVE
+  - show lessonVarsNumeric:
+  - marco says: Let's start with the easiest of the variable types, numbers. 
+  - marco says: This kind of action is often called an assignation.
+  - marco says: It assigns a value to a variable.
+  - marco says: "We can say an assignation has two parts: left and right."
+  - marco says: On our case, the parts are separated by a colon.
+  - marco says: The left part contains the variable name.
+  - marco says: And the right part contains the value that will be assigned.
+  - marco says: This value can be the raw data, a number like 0.
+  - marco says: Or we make an operation combining numbers and other variables in an operation.
+  - marco says: To use the value of a variable in the right part, we have to surround its name with curly braces.
+  - marco says: That way we are saying we need to go and find the value of those variables, replace them in the operation.
+  - marco says: And then resolve the operation.
+  - marco says: The first variable 'score' is assigned the number 0 directly.
+  - marco says: Same with the variable 'extraPoints'.
+  - marco says: The third line assigns again a value to the variable 'score'.
+  - marco says: The old value is lost, and the new one will replace it.
+  - marco says: The new value is a summatory between the old value and 10.
+  - marco says: "First it evaluates the value of 'score' and then it resolves: 0 + 10 = 10"
+  - marco says: In this way, we can make almost any arithmetical operation we want.
+  - marco says: "The marks allowed in this operations are:"
+  - marco says: " '+' is used for addition."
+  - marco says: " '-' is for subtraction."
+  - marco says: " '*' is for multiplication."
+  - marco says: " '/' is for division."
+  - marco says: And you can also use parentheses to make more complicated operations, like the assignation to 'totalScore'.
+  - marco says: One last thing to pay attention to is,
+  - marco says: Most of the values on the right side are bewtween inverted commas.
+  - marco says: That's because the parser, the program that reads each line and decides what it means...
+  - marco says: "gets nervous when special characters like + & / etc appear on a line."
+  - marco says: So you have to use the inverted commas to tell it it's all one line, and it's legal.
+  - hide lessonVarsNumeric:
+  - marco says: Next type of variables are boolean.
+  - marco says: A boolean variable can take only one of two values, either true or false.
+  - marco says: These variables are useful to store flags of events.
+  - show lessonVarsBoolean:
+  - marco says: As with numeric variables, we can also assign an operations to the variables.
+  - marco says: The operations in this case are logical, and they have their own symbols to use.
+  - marco says: "The usual ones are:"
+  - marco says: "'!', wich means 'not'. On the second line we assign the variable 'lightOff' with 'not lightOn'."
+  - marco says: " '&&' means 'and'. The variable 'allLightsOn' will be true only if both variables 'lightOn and lampOn' are true."
+  - marco says: " '||' means 'or'. The variable 'canRead' will be true if any of the variables 'lightOn or lampOn' are true."
+  - marco says: With just these symbols, including parentheses too, you can make ver complex operations.
+  - hide lessonVarsBoolean:
+  - show marco: happy
+  - marco says: But there's yet another way to get a boolean value. One that mixes numbers and arithmetic with it!
+  - marco says: Isn't it great!
+  - show marco: normal
+  - show lessonVarsBooleanCont:
+  - marco says: Here we have some new symbols.
+  - marco says: "'>' greater than and '>=' greater or equal than. "
+  - marco says: "'==' equal to."
+  - marco says: "'<' less than and '<=' less than or equal to."
+  - marco says: We use those symbols to compare numbers and or variables that contain numbers.
+  - marco says: So we can resolve that a 'highScore' means the 'score is greater than 10'.
+  - marco says: A 'perfectScore' is when 'score is equal to maxScore'. 
+  - marco says: And a 'lowScore' is when 'score is less than or equal to maxScore divided by two'.
+  - hide lessonVarsBooleanCont:
+  - marco says: The boolean operations are really important for the story, as you can use them to branch it. 
+  - marco says: There's a last type of variable. This one is really easy.
+  - show lessonVarsString:
+  - marco says: This is a character string, or more directly, a string.
+  - marco says: These variables store text.
+  - marco says: You can store a text directly, or combine them.
+  - marco says: The 'wholeName' variable will resolve to 'Mr. Marco Da Silva'.
+  - show marco: happy
+  - marco says: That's me!
+  - show marco: normal
+  - marco says: You can also show the content of any variable, not just strings, in any dialogue and text.
+  - hide lessonVarsString:
+  - show marco: happy
+  - marco says: And those are all the types of variables you need.
+  - marco says: Now we're going to see how we can use them to change the course of the story.
+  - show marco: normal
+  - marco says: For this we're going to use a new action, 'if'.
+  - marco says: This action allows you to execute orders only if a condition is met.
+  - show lessonIf:
+  - marco says: As you can see, after the 'if', the condition is bewtween parentheses.
+  - marco says: A condition is nothing more than a boolean value. Anything that evaluates to true or false.
+  - marco says: So if you have a boolean variable like 'lightOn', we can use it as a condition.
+  - marco says: If that condition is true, the actions indented inside the if are executed.
+  - marco says: After an 'if' action, we can have an 'else' action.
+  - marco says: This action is only to indicate what actions should be executed if the condition is false.
+  - marco says: The else can be omitted, but if you need it, it should be immediately after the actions of the 'if'.
+  - hide lessonIf:
+  - show marco: happy
+  - marco says: Let's see something a bit more complex.
+  - show marco: normal
+  - show lessonIfCont:
+  - marco says: On this example we can see the condition as a logical operation. 
+  - marco says: If that condition is met, we encounter a second 'if'.
+  - marco says: This is another operation, but the variables being compared are strings, not numbers.
+  - marco says: With strings, we use the '==' operator to check if they're equal.
+  - marco says: You can use the other operators too, but they're not so useful.
+  - marco says: Finally, we find an else, and here, we have to pay extra attention to the indentation.
+  - marco says: The else is just next to the second 'if', but it's on the same level of the first one.
+  - marco says: To which one do you think it belongs?
+  - choice:
+    - First 'if'!:
+      - show marco: happy
+      - marco says: Correct!
+    - Second 'if?:
+      - show marco: worry
+      - marco says: Not really.
+  - show marco: normal  
+  - marco says: The indentation level is what marks the right 'if' to pair it with. So that 'else' belongs to the first 'if'.
+  - hide lessonIfCont:
+  - show marco: normal AT CENTER WITH MOVE
+  - marco says: So that was all you need to know about logic and internal decisions in a story.
+  - marco says: The pieces are simple enough, but combine them and you can make really intricate systems.
+  - show marco: happy
+  - marco says: I love systems!
+  - marco says: They're so perfect!
+  - show marco: normal
+  - marco says: I really don't know if you have another class right now.
+  - marco says: But mine is over, so I'll leave.
+  - show marco: happy
+  - marco says: Bye!
+  - hide marco: WITH FADE
+  - scene: lastClass
+
+lastClass:
+  - show school_afternoon: WITH FUSION
+  - show deuzi: happy WITH FADE
+  - deuzi says: Hi! Did you have fun today?
+  - show deuzi: normal
+  - deuzi says: Marco's is one of the hardest, but once you learn it, it becomes a lot easier to write just the stories you want.
+  - deuzi says: One last lesson and you can start writing!
+  - show deuzi: happy
+  - deuzi says: For this lesson, I'll be your teacher.
+  - deuzi says: It'll be a lot of fun!
+  - show deuzi: normal
+  - effect SHOWTITLE: 
+    title: Chapter 6
+    subtitle: Graphical User Interface
+  - deuzi says: So, a Graphical User Interface, or GUI, constitutes most of the look and feel of your story.
+
+  
 invitationScene:
   - show phone2: AT 400,300
   - play ringtoneSFX:
@@ -545,5 +745,39 @@ invitationScene:
       - jair says: Brutal! You ain't even picking up.
   - scene: dormsScene
 
-
+varsScene:
+  # numeric variables
+  - var score: 0
+  - var extraPoints: 3
+  - var score: "{score} + 10"
+  - var bonification: "{extraPoints} - 1"
+  - var totalScore: "({score} + {extraPoints}) * {bonification}"
+  # boolean variables
+  - var lightOn: true
+  - var lightOff: "!{lightOn}"
+  - var lampOn: true
+  - allLightsOn: "{lightOn} && {lampOn}"
+  - canRead: "{lightOn} || {lampOn}"
+  - highScore: "{score} > 10"
+  - perfectScore: "{score} == {maxScore}"
+  - lowScore: "{score} <= {maxScore} / 2"
+  # string variables
+  - var name: Marco
+  - var surname: Da Silva
+  - var wholeName: "Mr. {name} {surname}"
+  - text: "Hello {wholeName}, your score is {score}!"
+  # if
+  - if ({lightOn}):
+    - text: The light is on.
+  - else:
+    - text: The light is off.
+  - deuzi says: Let's check your score.
+  - deuzi says: "You have {score} points."
+  - if ({score > 10}):
+    - show deuzi: happy
+    - deuzi says: You did great! Congratulations!
+    - if ({name} == {favouriteStudent}):
+      - deuzi says: That's why you're my favourite student.
+  - else:
+    - deuzi says: It's not bad, but you'll have to study a bit more next time.
 

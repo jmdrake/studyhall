@@ -18,7 +18,7 @@ function StoryManager(){
 
     this.startScene = function(name){
         RenJS.control.execStack = [{c:-1,scene:name}];
-        RenJS.gui.hideChoices(); //For any interrup still showing
+        RenJS.logicManager.clearChoices(); //For any interrup still showing
         RenJS.chManager.hideAll();
         // RenJS.bgManager.hide();
         RenJS.cgsManager.hideAll();

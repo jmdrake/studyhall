@@ -55,9 +55,9 @@ function CGSManager(){
     this.hide = function(name,transition){
         if (this.cgs[name]){
             RenJS.control.nextAction = function(){
-                this.cgs[name].destroy();
-                delete this.cgs[name];
-                delete this.current[name];
+                RenJS.cgsManager.cgs[name].destroy();
+                delete RenJS.cgsManager.cgs[name];
+                delete RenJS.cgsManager.current[name];
                 RenJS.resolve();
             }
             transition(this.cgs[name],null);

@@ -115,6 +115,12 @@ function LogicManager(){
         this.showChoices(choices);
     }
 
+    this.clearChoices = function(){
+        RenJS.gui.hideChoices();
+        RenJS.logicManager.currentChoices = [];
+        RenJS.logicManager.interrupting = false;
+    }
+
     this.choose = function(index,chosenOption){
         RenJS.gui.hideChoices();
         if (chosenOption){

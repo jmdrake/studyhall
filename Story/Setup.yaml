@@ -37,6 +37,7 @@ setup:
         normal: assets/characters/Char1NormalSchool.png
         happy: assets/characters/Char1HappySchool.png
         angry: assets/characters/Char1AngrySchool.png
+        worry: assets/characters/Char1WorrySchool.png
         normalC: assets/characters/Char1Normal.png
         happyC: assets/characters/Char1Happy.png
         angryC: assets/characters/Char1Angry.png
@@ -53,16 +54,22 @@ setup:
   cgs:
     phone1: assets/objects/phone1.png
     phone2: assets/objects/phone2.png
-    folders: assets/objects/folders.png
-    setupbg: assets/objects/setupbg.png
-    setupch: assets/objects/setupch.png
-    setupcgs: assets/objects/setupcgs.png
-    setupaudio: assets/objects/setupaudio.png
-    scenestart: assets/objects/scenestart.png
-    scenehide: assets/objects/scenehide.png
-    ambientAndEffects: assets/objects/ambientandeffect.png
-    lessonScene: assets/objects/lessonScene.png
-    lessonChoice: assets/objects/lessonChoice.png
+    folders: assets/lessons/folders.png
+    setupbg: assets/lessons/lessonsetupbg.png
+    setupch: assets/lessons/lessonsetupch.png
+    setupcgs: assets/lessons/lessonsetupcgs.png
+    setupaudio: assets/lessons/lessonsetupaudio.png
+    scenestart: assets/lessons/lessonscenestart.png
+    scenehide: assets/lessons/lessonscenehide.png
+    ambientAndEffects: assets/lessons/lessonambientandeffect.png
+    lessonScene: assets/lessons/lessonscene.png
+    lessonChoice: assets/lessons/lessonchoice.png
+    lessonVarsNumeric: assets/lessons/lessonvarsnumeric.png
+    lessonVarsBoolean: assets/lessons/lessonvarsboolean.png
+    lessonVarsBooleanCont: assets/lessons/lessonvarsbooleancont.png
+    lessonVarsString: assets/lessons/lessonvarsstring.png
+    lessonIf: assets/lessons/lessonif.png
+    lessonIfCont: assets/lessons/lessonifcont.png
   music:
     morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
     storeBGM: assets/audio/Evan_Schaeffer_-_18_-_Big_Tree.mp3

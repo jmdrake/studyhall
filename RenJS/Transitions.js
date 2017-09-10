@@ -4,10 +4,8 @@ RenJS.transitions = {
             from.alpha = 0;
         }
         if (to) {
-            to.x = position.x;
-            to.y = position.y;
             to.alpha = 1;
-            to.scale.x = scaleX ? scaleX : to.scale.x;
+            setNewProperties(to,position,scaleX);
         }
         RenJS.resolve();
     },
@@ -22,9 +20,7 @@ RenJS.transitions = {
         }
         RenJS.tweenManager.chain([
             {sprite:from,tweenables:{alpha:0},callback:function(){
-                to.x = position.x;
-                to.y = position.y;
-                to.scale.x = scaleX ? scaleX : to.scale.x;
+                setNewProperties(to,position,scaleX);
             }},
             {sprite:to,tweenables:{alpha:1},callback:RenJS.resolve}
         ],config.fadetime);               
@@ -33,9 +29,7 @@ RenJS.transitions = {
         RenJS.tweenManager.tween(from,{ alpha: 0 },RenJS.resolve,config.fadetime,true);
     },
     FADEIN: function(to,position,scaleX){
-        to.x = position.x;
-        to.y = position.y;
-        to.scale.x = scaleX ? scaleX : to.scale.x;
+        setNewProperties(to,position,scaleX);
         RenJS.tweenManager.tween(to,{ alpha: 1 },RenJS.resolve,config.fadetime,true);        
     },
     FUSION: function(from,to,position,scaleX){
@@ -43,9 +37,7 @@ RenJS.transitions = {
             RenJS.transitions.FADE(from,to,position);
             return;
         }   
-        to.x = position.x;
-        to.y = position.y; 
-        to.scale.x = scaleX ? scaleX : to.scale.x;
+        setNewProperties(to,position,scaleX);
         RenJS.tweenManager.tween(to,{ alpha: 1 },function(){
             from.alpha = 0;
             RenJS.resolve();
@@ -61,9 +53,7 @@ RenJS.transitions = {
             return;
         } 
         RenJS.tweenManager.tween(from,{ x:position.x,y:position.y },function(){
-            to.x = position.x;
-            to.y = position.y;
-            to.scale.x = scaleX ? scaleX : to.scale.x;
+            setNewProperties(to,position,scaleX);
             from.alpha = 0;
             to.alpha = 1;
             RenJS.resolve();
@@ -83,9 +73,7 @@ RenJS.transitions = {
                     from.alpha = 0;
                 }
                 if (to) {
-                    to.x = position.x;
-                    to.y = position.y;
-                    to.scale.x = scaleX ? scaleX : to.scale.x;
+                    setNewProperties(to,position,scaleX);
                     to.alpha = 1;
                 }
             }},
@@ -103,5 +91,11 @@ RenJS.transitions = {
     }
 }
 
-
+function setNewProperties(sprite,position,scaleX){
+    sprite.x = position.x;
+    sprite.y = position.y;
+    if (scaleX!=null && scaleX!=undefined){
+        sprite.scale.x = scaleX;
+    }
+}
 
