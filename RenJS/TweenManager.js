@@ -29,7 +29,8 @@ function TweenManager(){
         tm.current = [];
         var lastTween = null;
         _.each(tweens,function(tw){
-            var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,time/tweens.length,false,tw.delay);
+            var t = tw.time ? tw.time : time/tweens.length;
+            var tween = tm.tween(tw.sprite,tw.tweenables,tw.callback,t,false,tw.delay);
             if (lastTween){
                 lastTween.chain(tween);
             }

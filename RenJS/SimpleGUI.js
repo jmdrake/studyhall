@@ -10,7 +10,7 @@ function SimpleGUI(meta){
             return {key:key,file:e[0],w:parseInt(e[1]),h:parseInt(e[2]), type: "spritesheet"};
         });
         assets = _.union(assets,list);
-        list = _.map(this.elements.assets.sound,function(asset,key){
+        list = _.map(this.elements.assets.audio,function(asset,key){
             return {key:key, file:asset, type: "audio"};
         });
         assets = _.union(assets,list);

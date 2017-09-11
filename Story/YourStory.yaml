@@ -725,8 +725,162 @@ lastClass:
     title: Chapter 6
     subtitle: Graphical User Interface
   - deuzi says: So, a Graphical User Interface, or GUI, constitutes most of the look and feel of your story.
+  - deuzi says: The graphical elements of your story are the backgrounds, the characters and the cgs.
+  - deuzi says: We could say that anything else is part of the GUI.
+  - deuzi says: So, the menus, the text box where we show dialogue, the font of the texts, the buttons of the quick menu here in the corner.
+  - deuzi says: All of that is part of the GUI.
+  - deuzi says: The GUI is not exactly part of the story, but it's great to set the mood, to show the story's aesthetic.
+  - deuzi says: So a period drama and a cyberpunk story shouldn't look the same.
+  - deuzi says: Also, the GUI will depend on the image resolution used.
+  - deuzi says: A little pixel art game will need a specific GUI, and so would a big HD one.
+  - deuzi says: With RenJS we have an easy way to make the GUI look exactly how we need.
+  - deuzi says: All of the configuration is made inside the file 'GUI.yaml'.
+  - show deuzi: happy AT RIGHT WITH MOVE
+  - deuzi says: Let's check it!
+  - show lessonGUI:
+  - deuzi says: The first tag we use is simpleGUI.
+  - deuzi says: Inside it, the first tag is assets.
+  - deuzi says: Just as we did with the story setup, here we need to declare each resource with a file and tag.
+  - deuzi says: First of all, we have a fonts list.
+  - deuzi says: For this GUI we only use one font, called auditmat-mono.
+  - deuzi says: Fonts are declared in a special way.
+  - deuzi says: To find them, we first have to load them in a web style.
+  - deuzi says: Let's check for a moment the index.html file.
+  - show lessonGUIFonts:
+  - deuzi says: Here we tell the web page we need a 'font-face'.
+  - deuzi says: The 'font-family' property is the name we'll be referencing in our GUI file.
+  - deuzi says: And the 'src' indicates where to find the font file.
+  - deuzi says: "We have our font file inside the 'assets/gui' folder."
+  - deuzi says: You can go check!
+  - hide lessonGUIFonts:
+  - deuzi says: So, for every font you need to use on your game, you have to declare a 'font-face' for each.
+  - deuzi says: And then list them on your GUI file.
+  - show deuzi: happy
+  - deuzi says: You can find free fonts to use on sites like Google Fonts!
+  - show deuzi: normal
+  - hide lessonGUI:
+  - deuzi says: Next thing is images.
+  - show lessonGUIImages:
+  - deuzi says: Here we list the images we will use with their file names.
+  - deuzi says: Pay attention to the tag names, they are important.
+  - deuzi says: "'mainBackground' will be the background of the main menu."
+  - deuzi says: "'settingsBackground' will be the background of the settings menu."
+  - deuzi says: "'sliderFull' will be the image used to show the a slider all full, in the settings menu."
+  - deuzi says: You can check how those look if you open the settings menu right now and change some of the values.
+  - deuzi says: "'messageBox' is the box where dialogue and text will appear. It's where this text is showing right now."
+  - deuzi says: And 'nameBox' is the little box the character's name is displayed. Right now it says Deuzilene.
+  - deuzi says: "'ctc' means click to continue, and it's the little image that blinks when the story is waiting for you to click."
+  - deuzi says: Your gui could have no nameBox and no ctc, but you definitely need the rest.
+  - hide lessonGUIImages:
+  - show lessonGUISpritesheets:
+  - deuzi says: Next you load the spritesheets.
+  - deuzi says: A spritesheet is an image that contains different frames of the same image.
+  - deuzi says: That's why after the file, you need to add the width and height of the frame.
+  - deuzi says: This is particularly useful to load animations and buttons.
+  - deuzi says: So let's see what spritesheets we have.
+  - deuzi says: So let's see what images we have.
+  - deuzi says: A bunch of buttons! Start, load, save, settings and return button from the main and settings menu.
+  - deuzi says: Then the quick menu buttons. The quick menu refers to this little menu we have in the corner.
+  - deuzi says: It let's you autoplay, skip play, save and open the settings menu. So we need a button for each of those.
+  - deuzi says: Then we have the choice box.
+  - deuzi says: And the interrupt box.
+  - deuzi says: If you open the interrupt box image, you'll notice it has 4 frames.
+  - deuzi says: The first two are for the normal interrupt. 
+  - deuzi says: And the last two are for and interrupt that's just about to disappear.
+  - deuzi says: It should look more urgent.
+  - hide lessonGUISpritesheets:
+  - deuzi says: The last kind of asset to declare is audio.
+  - show lessonGUIAudio:
+  - deuzi says: The only thing we load here is the main menu music.
+  - hide lessonGUIAudio:
+  - deuzi says: After loading all of the assets, we need to configure how each part of the gui looks.
+  - deuzi says: Where the buttons are located, where the text should go, etc.
+  - deuzi says: We start with the HUD, the head-up display.
+  - deuzi says: That's all the GUI parts we'll use during the story.
+  - show lessonGUIHUD:
+  - deuzi says: After the 'hud' tag, first thing we find is the 'message'.
+  - deuzi says: That's the box where all the story text will be displayed.
+  - deuzi says: By convention, it will use the 'messageBox' asset.
+  - deuzi says: But we need to tell it where to locate it.
+  - deuzi says: And then, inside it, where the text will be located, and how it will look.
+  - hide lessonGUIHUD:
+  - show lessonGUIHUDcont:
+  - deuzi says: Then we have the name box. Same as before, you add position and text style.
+  - deuzi says: One important thing to notice here is the position must be relative the message box.
+  - deuzi says: The ctc doesn't have any text, but it can be animated or not.
+  - deuzi says: If it's not animated, then it will be made to blink programatically.
+  - deuzi says: But it can be if instead of it being a static image, you load it as a spritesheet.
+  - deuzi says: In that case, you should set the 'animated' parameter to true.
+  - deuzi says: The ctc's position is also relative to the message box.
+  - hide lessonGUIHUDcont:
+  - show lessonGUIHUDcont2:
+  - deuzi says: Next elements on the 'hud' are the choice and interrupt boxes.
+  - deuzi says: You can give them a position, like the rest of the elements.
+  - deuzi says: But if you don't, these boxes will be located in the middle of the screen.
+  - deuzi says: You can see how that looks on the choices of this story.
+  - deuzi says: If you set a position, then the list of choices will be added from that point down.
+  - deuzi says: The 'separation' in the choice means how far one box will be from the other.
+  - deuzi says: This number should be bigger than the box height itself, else they will be one on top of the other.
+  - deuzi says: Last thing is text style.
+  - deuzi says: For the interrupt you have to set two text styles, one for the normal interrupt and one for the last chance to pick it.
+  - hide lessonGUIHUDcont2:
+  - deuzi says: If you want to know more about text styles, you can find information about it from Phaser.
+  - deuzi says: Now, the last elements on the 'hud' are the buttons for the quick menu.
+  - show lessonGUIHUDcont3:
+  - deuzi says: The tag name for each button is very important, since it's what will determine their action when you press them.
+  - deuzi says: The available buttons we have are 'auto', 'skip', 'save' and 'settings'.
+  - deuzi says: You don't need all of them in your GUI, of course. You can have only the buttons you deem necessary.
+  - hide lessonGUIHUDcont3:
+  - deuzi says: And that's all you need to create your 'hud'.
+  - deuzi says: But the GUI also have menus.
+  - deuzi says: A menu is basically a background with buttons on it. It can have music, and it can have other elements like sliders.
+  - deuzi says: Let's see how to do it.
+  - show lessonGUIMenu:
+  - deuzi says: The first menu we have is 'main'. That's the main menu. As a convention, it will use the background 'mainMenu'.
+  - deuzi says: It has music, so we have to indicate what music tag it is we should reproduce.
+  - deuzi says: And then it has buttons.
+  - deuzi says: The buttons are configured in the same way as before.
+  - deuzi says: A meaningful tag, a position and a sprite.
+  - hide lessonGUIMenu:
+  - show lessonGUISliders:
+  - deuzi says: The settings menu is very similar to the main menu, but it has sliders.
+  - deuzi says: The sliders, just like the buttons, have a meaningful name. 
+  - deuzi says: The name indicates what property will be modified by that slider.
+  - deuzi says: Then a position, and the sprite of the slider when it's full.
+  - hide lessonGUISliders:
+  - deuzi says: Wow, that was longer than expected.
+  - deuzi says: But that completes the whole of this course.
+  - deuzi says: You can now go out in the world and write your own stories.
+  - show deuzi: happy
+  - deuzi says: I'm so proud of you!
+  - deuzi says: I hope I can read all of your stories.
+  - effect ROLLINGCREDITS:
+    text:
+      - RenJS developed by
+      - lunafromthemoon
+      - null
+      - Inspired by Ren'py
+      - Powered by PhaserJS
+      - null
+      - null
+      - Thanks for playing
+      - The Tutorial Game
+      - null
+      - written by
+      - lunafromthemoon
+      - null
+      - edited by
+      - rumpelcita
+      - null
+      - background art and cgs by
+      - konett
+      - null
+      - characters by
+      - Shida
+      - null
+      - music by
+      - Evan Schaeffer
 
-  
 invitationScene:
   - show phone2: AT 400,300
   - play ringtoneSFX:
