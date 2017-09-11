@@ -3,31 +3,31 @@ start:
   - play morningBGM:
   - show school_morning: WITH FADE
   - show deuzi: happy AT CENTER WITH FADE
-  - deuzi says: Welcome to the Tutorial Game!
-  - deuzi says: My name is Deuzilene and I'll be your guide
+  - deuzi says: Welcome to our Tutorial Game!
+  - deuzi says: My name is Deuzilene and I'll be your guide.
   - show deuzi: normal
-  - deuzi says: So you want to make a Visual Novel
-  - deuzi says: With RenJS you can easily make games just like this one
-  - deuzi says: RenJS is inspired by Renpy and based on PhaserJS
-  - deuzi says: If you already know any of those you have and advantage
-  - deuzi says: And if not
+  - deuzi says: So you want to make a Visual Novel.
+  - deuzi says: With RenJS you can easily make games just like this one.
+  - deuzi says: RenJS is inspired by Renpy and based on PhaserJS.
+  - deuzi says: If you are familiwar with any of those you have an advantage.
+  - deuzi says: And if not...
   - show deuzi: happy
   - deuzi says: No problem!
-  - deuzi says: RenJS is made so the text of your story is written intuitively like a script 
+  - deuzi says: RenJS is made so the text of your story is written intuitively like a script. 
   - show deuzi: normal
-  - deuzi says: Once you learn the structure, there's no limit to what you can create
-  - deuzi says: So let's start with
+  - deuzi says: Once you learn the structure, there's no limit to what you can create.
+  - deuzi says: So let's start with...
   - effect SHOWTITLE: 
     title: Chapter 1
     subtitle: The basics 
-  - deuzi says: First thing we'll check is the file structure
-  - deuzi says: That is, all the files you need for your game to work properly
-  - deuzi says: We'll use this game as an example
+  - deuzi says: First thing we'll check is the file structure.
+  - deuzi says: That is, all the files you need for your game to work properly.
+  - deuzi says: We'll use this game as an example.
   - deuzi says: Have you downloaded it yet?
   - choice:
     - I have it!:
       - show deuzi: happy
-      - deuzi says: Great! What a hardworking student
+      - deuzi says: Great! What a hardworking student.
     - Not yet:
       - show deuzi: angry
       - deuzi says: What are you waiting for!?
@@ -35,29 +35,29 @@ start:
       - choice:
         - I have it!:
           - show deuzi: happy
-          - deuzi says: Good! Let's continue
+          - deuzi says: Good! Let's continue.
   - show deuzi: normal
-  - deuzi says: Now, open the root folder of this game
-  - deuzi says: It should look like this
+  - deuzi says: Now, open the root folder of this game.
+  - deuzi says: It should look like this.
   - show deuzi: AT LEFT WITH MOVE
   - show folders: AT 550,300 WITH FADE
-  - deuzi says: There are four folders and a file
-  - deuzi says: RenJS is web based, that means the game runs as a webpage
-  - deuzi says: index.html is the page that contains this game
-  - deuzi says: You can play the game locally by opening this file with a browser
-  - deuzi says: The folder named RenJS is where the engine's files are located
-  - deuzi says: And the folder libs contains the engine's external dependencies, like PhaserJS
-  - deuzi says: If you're making a simple game, you shouldn't worry about any of this
-  - deuzi says: The files that concern you as a writer are inside the folder Story
-  - deuzi says: These yaml files are what make your game
-  - deuzi says: YAML is a human readable data serialization language
-  - deuzi says: That means that the files contain data in a structure that you can read easily
+  - deuzi says: There are four folders and a file.
+  - deuzi says: RenJS is web based, that means the game runs as a webpage.
+  - deuzi says: index.html is the page that contains this game.
+  - deuzi says: You can play the game locally by opening this file with a web browser.
+  - deuzi says: The folder named RenJS is where the engine's files are located.
+  - deuzi says: And the folder libs contains the engine's external dependencies, like PhaserJS.
+  - deuzi says: If you're making a simple game, you shouldn't worry about any of this.
+  - deuzi says: The files that concern you as a writer are inside the Story folder.
+  - deuzi says: These YAML files are what you will use to make your game.
+  - deuzi says: YAML is a human readable data serialization language.
+  - deuzi says: That means that the files contain data in a structure that you can read easily.
   - deuzi says: And how do you open and edit them?
   - show deuzi: happy
-  - deuzi says: With your favourite text processor!
-  - deuzi says: Mine is Sublime Text, a lightweight, open source and multiplatform text processor
+  - deuzi says: With your favourite text editor!
+  - deuzi says: Mine is Sublime Text, a lightweight and multiplatform text editor.
   - show deuzi: normal
-  - deuzi says: In any case, the most important thing about YAML files is that indentation is super important
+  - deuzi says: In any case, the most important thing about YAML files is that indentation is super important.
   - deuzi says: If you screw up the indentation the game won't even load!
   - show deuzi: angry
   - deuzi says: So be very careful about it. Only two spaces per level!
@@ -74,8 +74,8 @@ start:
       - deuzi says: I have a feeling you're not stopping until you write your first story
       - deuzi says: Isn't that exciting?
   - show deuzi: normal
-  - deuzi says: All right, I'm going to take a break anyways
-  - deuzi says: But I'll let you in good hands
+  - deuzi says: All right, I'm going to take a break anyways.
+  - deuzi says: But I'm leaving you in good hands.
   - show deuzi: happy
   - deuzi says: Good luck!
   - hide deuzi: WITH FADE
@@ -84,57 +84,57 @@ start:
 storySetup:
   - show school_morning:
   - show jair:
-  - jair says: So you're the new student
-  - jair says: I've heard lots of you from Deuzi
-  - jair says: She gets easily excited
+  - jair says: So you're the new student.
+  - jair says: I've heard a lot about you from Deuzi.
+  - jair says: She gets easily excited.
   - show jair: angry
-  - jair says: But to me, you'll have to prove yourself first
+  - jair says: But with me, you'll have to prove yourself first.
   - jair says: Do you have what it takes to be a visual novel writer?
   - show jair: normal
-  - jair says: We'll see
-  - jair says: I'm Jair btw
-  - jair says: But you should know that, since my name is on display right above the text box
-  - jair says: I'm here to show you how to setup your story
+  - jair says: We'll see.
+  - jair says: I'm Jair, btw.
+  - jair says: But you should know that, since my name is on display right above the text box.
+  - jair says: I'm here to show you how to setup your story.
   - effect SHOWTITLE: 
     title: Chapter 2
     subtitle: Setting up the story
-  - jair says: The setup is all contained in the Setup.yaml file
-  - jair says: What this means is
-  - jair says: All your characters, things, music, sfx and everything you're going to use on the story
-  - jair says: Needs to be declared on this file
-  - jair says: And of course, you need to know everything before even starting to write your story
+  - jair says: All the setup is contained in the Setup.yaml file.
+  - jair says: What this means is.
+  - jair says: All your characters, music, sfx and everything else you're planning to use on the story.
+  - jair says: Needs to be declared on this file.
+  - jair says: And of course, you need to know everything before even start to write your story.
   - jair says: What kind of writer doesn't though...
   - wait: 300
   - show jair: happy
   - jair says: Just joking!
-  - jair says: You won't always know what things you need on a story
-  - jair says: So every time you add something, remember to also add it to the setup file
+  - jair says: You won't always know what things you need for a story.
+  - jair says: So every time you add something, remember to also add it to the setup file.
   - show jair: normal
-  - jair says: Let's see how it's made
+  - jair says: Let's see how it's made.
   - show jair: AT RIGHT WITH MOVE
   - show setupbg: AT 400,350 WITH FADE
-  - jair says: First tag you need is setup
-  - jair says: Inside the setup, indented by two spaces you declare each kind of object
-  - jair says: The first we have is backgrounds
-  - jair says: Each background has a tag, the name that will be used to refer to that background on the story
-  - jair says: And the path to where the background image is located
-  - jair says: If you go to the game's assets folder, you'll find there all the images
+  - jair says: First tag you need is setup.
+  - jair says: Inside the setup, indented by two spaces you declare each kind of object.
+  - jair says: The first we have is backgrounds.
+  - jair says: Each background has a tag, the name that will be used to refer to that background on the story.
+  - jair says: And the path to where the background image is located.
+  - jair says: If you go to the game's assets folder, you'll find all the images we can use here.
   - show jair: happy
-  - jair says: Seems like we have an afternoon background
-  - jair says: Let's check it so I can go home sooner
+  - jair says: Seems like we have an afternoon background.
+  - jair says: Let's use it so I can go home sooner.
   - show school_afternoon: WITH FUSION
   - hide setupbg: WITH FADE
-  - jair says: Well, time to go home
-  - jair says: See you
+  - jair says: Well, time to go home.
+  - jair says: See you.
   - show jair: normal AT LEFT WITH MOVE
   - show deuzi: angry AT RIGHT
     flipped: true
   - deuzi says: Not so fast!
   - show jair: normal
     flipped: true
-  - jair says: Uh oh
+  - jair says: Uh oh.
   - deuzi says: Where do you think you're going? There's a lot more to say about the setup!
-  - jair says: Your student is smart enought to get it without my help
+  - jair says: Your student is smart enought to get it without my help.
   - deuzi says: What? Do you agree with that?
   - choice:
     - Yeah, I checked the file by myself:
@@ -143,13 +143,13 @@ storySetup:
       - show jair: happy
       - jair says: See, told you not to treat 'em like a baby
       - show deuzi: angry
-      - deuzi says: Shut up you! We'll have a talk later
+      - deuzi says: Shut up, you! We'll have a talk later.
       - hide jair: WITH FADE
       - show deuzi: normal
-      - deuzi says: Ok, next lesson starts soon, maybe you should save and rest before continuing
-      - deuzi says: It's going to be long, but probably easy for you
+      - deuzi says: Ok, the next lesson starts soon, maybe you should save and rest before moving on.
+      - deuzi says: It's going to be long, but it'll probably be easy for you.
       - show deuzi: happy
-      - deuzi says: And the teacher is great! She's my best friend
+      - deuzi says: And the teacher is great! She's my best friend.
       - deuzi says: Good luck!
       - scene: writingTheStory
     - We barely saw the first part!:
@@ -157,39 +157,39 @@ storySetup:
       - jair says: Ok boss, don't worry
       - hide deuzi: WITH FADE
   - show jair: angry
-  - jair says: What a snitch
+  - jair says: What a snitch.
   - show jair: normal
-  - jair says: Anyway, let's see the next part
-  - jair says: Characters
-  - jair says: The characters are... you know what a character is, come on
+  - jair says: Anyway, let's see the next part.
+  - jair says: Characters.
+  - jair says: The characters are... you know what a character is, come on.
   - show setupch: AT 400,300 WITH FADE
-  - jair says: Ok so, inside the characters tag, each character is declared after its own tag
-  - jair says: Same as the backgrounds, this tag will be used to refer to this character on the text of your story
-  - jair says: Every time you need to use Deuzilene, you will use her tag, deuzi
-  - jair says: Characters also have a display name, that's the name that will apear on the name box when we talk
-  - jair says: The display name can have whitespaces, accents and whatever you want
-  - jair says: If you omit it, the tag will be used as the name
-  - jair says: The speech colour is the colour to write the name in the name box
-  - jair says: And then you have a list of looks
-  - jair says: A look is an image representing a state of the character
-  - jair says: You always need a normal look, that will be the default
-  - jair says: And you can have as many additional looks as you want
-  - jair says: Deuzi here can be happy or angry
+  - jair says: Ok so, inside the characters tag, each character is declared after its own tag.
+  - jair says: Same as the backgrounds, this tag will be used to refer to this character on the text of your story.
+  - jair says: Every time you need to use Deuzilene, you will use her tag, deuzi.
+  - jair says: Characters also have a display name, that's the name that will apear on the name box when we talk.
+  - jair says: The display name can have whitespaces, accents and whatever you want.
+  - jair says: If you omit it, the tag will be used as the name.
+  - jair says: The speech colour is the colour to write the name in the name box.
+  - jair says: And then you have a list of looks.
+  - jair says: A look is an image representing a state of the character.
+  - jair says: You always need a normal look, that will be the default.
+  - jair says: And you can have as many additional looks as you want.
+  - jair says: Deuzi here can be happy or angry.
   - show jair: happy
-  - jair says: Her range of emotions is infinite though
-  - jair says: Believe me
+  - jair says: Her range of emotions is infinite though.
+  - jair says: Believe me.
   - show jair: normal
   - hide setupch:
-  - jair says: Next up is cgs
+  - jair says: Next up is cgs.
   - show setupcgs: 400,350 WITH FADE
-  - jair says: CGs stands for Computer Graphics
-  - jair says: It's an image that you can display and animate
+  - jair says: CGs stands for Computer Graphics.
+  - jair says: It's an image that you can display and animate.
   - show jair: angry
-  - jair says: It should have a better name, I know
-  - jair says: But for now, it's what we have
+  - jair says: It should have a better name, I know.
+  - jair says: But for now, it's what we have.
   - show jair: normal
-  - jair says: Same as always, you have the cgs tag, and then each cgs has a tag and an image file
-  - jair says: We have two phones
+  - jair says: Same as always, you have the cgs tag, and then each cgs has a tag and an image file.
+  - jair says: We have two phones.
   - jair says: Could one of those be mine?
   - show phone1: AT 600,300
   - show phone2: AT 380,300
@@ -199,14 +199,14 @@ storySetup:
   - hide setupcgs:
   - jair says: "And to finish: audio"
   - show setupaudio: AT 400,350
-  - jair says: You can have music, and you can have sfx
-  - jair says: The music will usually be looped, while the sfx will play just once
-  - jair says: For example, the current background music is morningBGM
+  - jair says: You can have music, and you can have sfx.
+  - jair says: The music will usually be looped, while the sfx will play just once.
+  - jair says: For example, the current background music is morningBGM.
   - jair says: Let's make a phone call and check the ringtone...
   - show phone1: AT 400,300
   - play ringtoneSFX:
   - text: Tururu Ruru Ruru Ruruuuu
-  - jair says: This has to be Deuzi's
+  - jair says: This has to be Deuzi's.
   - show deuzi: angry AT RIGHT
     flipped: true
   - deuzi says: Hey! That's my phone!
@@ -215,12 +215,12 @@ storySetup:
   - show jair: happy
   - jair says: I knew it!
   - show jair: normal
-  - jair says: Anyway, that's it, lesson over
+  - jair says: Anyway, that's it, lesson over.
   - hide setupaudio:
-  - jair says: I'm going to try and find the place where this bar music is playing
+  - jair says: I'm going to try and find the place where this bar music is playing.
   - show jair: happy
-  - jair says: You're not entirely bad
-  - jair says: See you around
+  - jair says: You're not entirely bad.
+  - jair says: See you around.
   - jair says: And don't get lost, your next class is over there!
   - hide jair: WITH FADE
   - scene: writingTheStory
