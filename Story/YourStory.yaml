@@ -9,7 +9,7 @@ start:
   - deuzi says: So you want to make a Visual Novel.
   - deuzi says: With RenJS you can easily make games just like this one.
   - deuzi says: RenJS is inspired by Renpy and based on PhaserJS.
-  - deuzi says: If you are familiwar with any of those you have an advantage.
+  - deuzi says: If you are familiar with any of those you have an advantage.
   - deuzi says: And if not...
   - show deuzi: happy
   - deuzi says: No problem!
@@ -154,7 +154,7 @@ storySetup:
       - scene: writingTheStory
     - We barely saw the first part!:
       - deuzi says: Come back here you ratbag, and finish the lesson!
-      - jair says: Ok boss, don't worry
+      - jair says: Ok boss, don't worry.
       - hide deuzi: WITH FADE
   - show jair: angry
   - jair says: What a snitch.
@@ -228,58 +228,58 @@ storySetup:
 writingTheStory:
   - show school_afternoon:
   - show liz: normal
-  - liz says: Hi! I'm Liz and I'll be your writing mentor
-  - liz says: Here we'll see how to actually write the story
+  - liz says: Hi! I'm Liz and I'll be your writing mentor.
+  - liz says: Here we'll see how to actually write the story.
   - show liz: happy
   - liz says: Are you ready!?
   - effect SHOWTITLE: 
     title: Chapter 3
     subtitle: Writing Part 1
   - show liz: normal
-  - liz says: First thing you need to know about a story is, it's divided in scenes
-  - liz says: Each scene is a list of orders that will be executed from first to last
-  - liz says: Inside a scene you can show backgrounds, characters, make them talk, show choices, call other scenes, and a lot more
-  - liz says: The scenes are all contained in the file YourStory.yaml
-  - liz says: And each one has a tag name. This name can be anything, but you always need a scene called start
-  - liz says: That will be, of course, the starting scene
+  - liz says: First thing you need to know about a story is, it's divided in scenes.
+  - liz says: Each scene is a list of orders that will be executed from first to last.
+  - liz says: Inside a scene you can show backgrounds, characters, make them talk, show choices, call other scenes, and a lot more.
+  - liz says: The scenes are all contained in the file YourStory.yaml.
+  - liz says: And each one has a tag name. This name can be anything, but you always need a scene called start.
+  - liz says: That will be, of course, the starting scene.
   - show liz: happy
   - liz says: Really easy, don't you think?
   - show liz: normal
-  - liz says: So, let's see what's the content of a scene
+  - liz says: So, let's see what's the content of a scene.
   - show liz: AT RIGHT WITH MOVE
   - show scenestart:
-  - liz says: This is the starting scene of this game
-  - liz says: First thing we do is play music
-  - liz says: Notice the dash symbol
-  - liz says: That dash indicates that this is a single action
-  - liz says: Every action starts with a dash
-  - liz says: Also, after declaring the basic action, you add a colon
-  - liz says: After this, you can add additional parameters
-  - liz says: But sometimes you don't need anything, like in this case
-  - liz says: Still, the colon is important
-  - liz says: Next line we have another action, notice the starting dash
-  - liz says: This one shows the background whose tag is school_morning
+  - liz says: This is the starting scene of this game.
+  - liz says: First thing we do is play music.
+  - liz says: Notice the dash symbol.
+  - liz says: That dash indicates that this is a single action.
+  - liz says: Every action starts with a dash.
+  - liz says: Also, after declaring the basic action, you add a colon.
+  - liz says: After this, you can add additional parameters.
+  - liz says: But sometimes you don't need anything, like in this case.
+  - liz says: Still, the colon is important..
+  - liz says: Next line we have another action, notice the starting dash.
+  - liz says: This one shows the background whose tag is 'school_morning'.
   - liz says: You were there this morning, remember?
-  - liz says: The background takes some aditional parameters
-  - liz says: The uppercase text WITH is a special word to indicate a transition
-  - liz says: And FADE is the name of that transition
-  - liz says: There are a few transitions included with RenJS, like CUT, FADE, FUSION, MOVE, FADETOBLACK and FADETOWHITE
-  - liz says: You can add your own transitions if you feel adventurous
+  - liz says: The background takes some aditional parameters.
+  - liz says: The uppercase text WITH is a special word to indicate a transition.
+  - liz says: And 'FADE' is the name of that transition.
+  - liz says: There are a few transitions included with RenJS, like 'CUT', 'FADE', 'FUSION', 'MOVE', 'FADETOBLACK' and 'FADETOWHITE'.
+  - liz says: You can add your own transitions if you feel adventurous.
   - show liz: happy
   - liz says: Or you can ask your programmer friend to code them for you!
   - show liz: normal
-  - liz says: The transitions aren't just for backgrounds but also for characters and cgs
-  - liz says: The next line shows a character appearing on the screen
+  - liz says: The transitions aren't just for backgrounds but also for characters and cgs.
+  - liz says: The next line shows a character appearing on the screen.
   - show liz: happy
-  - liz says: Deuzilene, my best friend
+  - liz says: Deuzilene, my best friend!
   - show liz: normal
   - liz says: The first aditional parameter is her look. She was happy to welcome you!
-  - liz says: Also, notice another special word AT, used to designate the position
-  - liz says: The position can be LEFT, CENTER, RIGHT, or it can be a coordinate like 200,200
-  - liz says: And we use, too, the transition FADE
+  - liz says: Also, notice another special word AT, used to designate the position.
+  - liz says: The position can be 'LEFT', 'CENTER', 'RIGHT', or it can be a coordinate like '200,200'.
+  - liz says: And we use, too, the transition 'FADE'.
   - liz says: Next line is Deuzi welcoming you. The extra parameter is the text.
   - hide scenestart:
-  - liz says: So, with just these sentences you can show backgrounds, characters and make them talk
+  - liz says: So, with just these sentences you can show backgrounds, characters and make them talk.
   - liz says: But how do we hide them?
   - liz says: Easily! Just hide them!
   - show scenehide:
@@ -287,24 +287,24 @@ writingTheStory:
   - show liz: angry
   - liz says: He has her phone!
   - show liz: normal
-  - liz says: On the second line, the phone, a cgs with phone1 tag, is shown
-  - liz says: As the cgs are smaller than characters, we need a specific coordinate to locate them on the screen
-  - liz says: We use the special word AT again, but this time, with the coordinates
-  - liz says: Next we play the phone's ringtone, an SFX tagged as ringtoneSFX
+  - liz says: On the second line, the phone, a cgs with 'phone1' tag, is shown.
+  - liz says: As the cgs are smaller than characters, we need a specific coordinate to locate them on the screen.
+  - liz says: We use the special word AT again, but this time, with the coordinates.
+  - liz says: Next we play the phone's ringtone, an SFX tagged as 'ringtoneSFX'.
   - liz says: To visually show the phone is ringing, we show its onomatopoeia.
   - liz says: "As no character is speaking, the 'text' action is used instead."
   - liz says: Then Deuzilene comes to rescue her phone!
   - liz says: Can you notice something different when Deuzi appears this time?
-  - liz says: That's right, she's flipped
-  - liz says: Sometimes we need our characters to face the other way
-  - liz says: One easy way to do it is to flip their look
-  - liz says: On the show action, you just add a new extra parameter
-  - liz says: "The line right after 'show' doesn't start with a dash, that means it's still the same action as before"
-  - liz says: "And so we add the parameter, flipped: true"
-  - liz says: Then Deuzi grabs her phone
-  - liz says: Hiding it is really easy, as I said before
-  - liz says: And same thing for characters, we can hide Deuzi, taking a specific transition
-  - liz says: Let's hide this lesson now
+  - liz says: That's right, she's flipped.
+  - liz says: Sometimes we need our characters to face the other way.
+  - liz says: One easy way to do it is to flip their look.
+  - liz says: On the show action, you just add a new extra parameter.
+  - liz says: "The line right after 'show' doesn't start with a dash, that means it's still the same action as before."
+  - liz says: "And so we add the parameter, flipped: true."
+  - liz says: Then Deuzi grabs her phone.
+  - liz says: Hiding it is really easy, as I said before.
+  - liz says: And same thing for characters, we can hide Deuzi, taking a specific transition.
+  - liz says: Let's hide this lesson now.
   - hide scenehide:
   - show liz: AT CENTER WITH MOVE
   - liz says: So that's it for today. You must be really tired after studying the whole day.
@@ -321,7 +321,7 @@ interval:
   - show deuzi: normalC WITH FADE
   - deuzi says: Hey! I knew I was going to find you here.
   - deuzi says: Were you going to sleep already?
-  - deuzi says: I know you're new in town, so I thought I could show you around a bit 
+  - deuzi says: I know you're new in town, so I thought I could show you around a bit .
   - deuzi says: What do you think?
   - interrupt 6:
     - Isn't it a bit awkward???:
@@ -360,7 +360,7 @@ storeAtNight:
   - deuzi says: I stopped by the dorms to get my new student, and show them around.
   - show jair: happyC AT LEFT WITH FADE
     flipped: true
-  - jair says: You should stop acting like a mama duck to your students
+  - jair says: You should stop acting like a mama duck to your students.
   - show deuzi: angryC
     flipped: true
   - deuzi says: Are you jealous for not getting all the attention now?
@@ -369,7 +369,7 @@ storeAtNight:
   - show marco: normalC WITH FADE AT RIGHT
   - marco says: You two fighting again?
   - show liz: happyC
-  - liz says: Seems like a normal day
+  - liz says: Seems like a normal day.
   - show deuzi: angryC
     flipped: false
   - deuzi says: Hey! You're supposed to be on my side.
@@ -412,8 +412,8 @@ storeAtNight:
   - liz says: Like rain, snow or cherry blossoms falling.
   - liz says: "You call them using the action 'ambient', followed by the ambient name"
   - liz says: There's a few ambients ready to use.
-  - liz says: RAIN, SNOW and SAKURA.
-  - liz says: To stop an ambient you call a special ambient called CLEAR.
+  - liz says: "'RAIN', 'SNOW' and 'SAKURA'."
+  - liz says: To stop an ambient you call a special ambient called 'CLEAR'.
   - ambient CLEAR:
   - show liz: happyC
   - liz says: And the rain stops!
@@ -422,11 +422,11 @@ storeAtNight:
   - liz says: Effects are also visual and sound effects, but they are played just once.
   - liz says: Like that thunder before.
   - liz says: "Some other handy effects are:"
-  - liz says: SHAKE, a screen shake!
-  - liz says: SHOWTITLE, a title screen like the ones at the start of each chapter.
+  - liz says: "'SHAKE', a screen shake!"
+  - liz says: "'SHOWTITLE', a title screen like the ones at the start of each chapter."
   - liz says: You can send two extra parameters, title and subtitle to it.
-  - liz says: EXPLOSION, just what it says on the tin.
-  - liz says: ATTACK, MULTIATTACK and CHAINATTACK.
+  - liz says: "'EXPLOSION', just what it says on the tin."
+  - liz says: And same with 'ATTACK', 'MULTIATTACK' and 'CHAINATTACK'.
   - liz says: Last thing about this,
   - liz says: The extra sounds and images used by ambients and effects have to be declared on the extra section of the setup file.
   - liz says: For example, the RAIN ambient uses a rain sound and a raindrop image.
@@ -513,7 +513,7 @@ day2:
   - show liz: normal
   - liz says: Now, I told you about what a scene is yesterday, and now I'm going to show you how to change from one scene to the other.
   - show lessonScene:
-  - liz says: In this example a whole scene, and with two possible next scenes.
+  - liz says: This example shows a whole scene with two possible next scenes.
   - liz says: To start another scene we use the action 'scene'. It takes an extra parameter, the name of the scene to be executed next.
   - liz says: That means the order you write the scenes or place them in the file has nothing to do with the actual execution.
   - liz says: And that also means that you have to explicitly call the next scene when the current one ends.
@@ -571,7 +571,7 @@ day2:
   - scene: lessonStoryFlux
 
 lessonStoryFlux:
-  - show marco: normal AT CENTER WITH FADE
+  - show marco: normal AT CENTER WITH MOVE
   - marco says: All right, so, as I've gotten out of bed, washed my face and came here on the right day at the right time.
   - marco says: Now I can tell you.
   - show marco: happy
@@ -844,17 +844,33 @@ lastClass:
   - hide lessonGUIMenu:
   - show lessonGUISliders:
   - deuzi says: The settings menu is very similar to the main menu, but it has sliders.
-  - deuzi says: The sliders, just like the buttons, have a meaningful name. 
+  - deuzi says: The sliders, just like the buttons, have a meaningful name.
   - deuzi says: The name indicates what property will be modified by that slider.
   - deuzi says: Then a position, and the sprite of the slider when it's full.
   - hide lessonGUISliders:
   - deuzi says: Wow, that was longer than expected.
   - deuzi says: But that completes the whole of this course.
+  - deuzi says: Now we need to hurry!
+  - scene: graduation
+  
+graduation:
+  - show street_afternoon:
+  - show deuzi: AT 300,600 WITH FADE
+    flipped: true
+  - show liz: happy AT 500,600 WITH FADE
+  - show jair: happy AT RIGHT WITH FADE
+  - show marco: happy AT LEFT WITH FADE
+    flipped: true
+  - deuzi says: So, this is the big day.
   - deuzi says: You can now go out in the world and write your own stories.
   - show deuzi: happy
   - deuzi says: I'm so proud of you!
-  - deuzi says: I hope I can read all of your stories.
+  - liz says: I hope I can read all of your stories.
+  - jair says: Let's keep in touch!
+  - marco says: And don't be scared of making it complex!
+  - deuzi says: You can do it!
   - effect ROLLINGCREDITS:
+    endGame: true
     text:
       - RenJS developed by
       - lunafromthemoon

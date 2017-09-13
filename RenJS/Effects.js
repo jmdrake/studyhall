@@ -9,6 +9,7 @@ RenJS.effects = {
     },
     ROLLINGCREDITS: function(params){
         var bg = game.add.graphics(0, 0);
+        RenJS.audioManager.play("rollingCredits","bgm",true,"FADE");  
         bg.beginFill(0x000000, 1);
         bg.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
         bg.endFill();
@@ -18,7 +19,7 @@ RenJS.effects = {
         console.log(style);
         var credits = game.add.text(game.world.centerX,phaserConfig.h+30,params.text[0],style);
         credits.anchor.set(0.5);
-        var separation = 30;
+        var separation = 35;
         for (var i = 1; i < params.text.length; i++) {
             if (params.text[i]){
                 var nextLine = game.add.text(0,i*separation,params.text[i],style);
@@ -26,15 +27,22 @@ RenJS.effects = {
                 credits.addChild(nextLine);
             }            
         };
-        RenJS.tweenManager.chain([
+        var tweenChain = [
             {sprite:bg,tweenables:{alpha:1},time:config.fadetime},
             {sprite:credits,tweenables:{y:-(separation*params.text.length+30)},time:700*params.text.length},
-            {sprite:bg,tweenables:{alpha:0},time:config.fadetime,callback:function(){
+            
+        ];
+        if (!params.endGame){
+            tweenChain.push({sprite:bg,tweenables:{alpha:0},time:config.fadetime,callback:function(){
                 bg.destroy();
                 credits.destroy();
                 RenJS.resolve();
-            }},
-        ]);
+            }});
+        } else {
+            tweenChain[1].callback = RenJS.resolve;
+        }
+        RenJS.tweenManager.unskippable = true;
+        RenJS.tweenManager.chain(tweenChain);
     },
     SHOWTITLE: function(param){
         var bg = game.add.sprite(game.world.centerX,game.world.centerY,"title");

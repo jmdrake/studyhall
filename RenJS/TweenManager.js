@@ -55,9 +55,9 @@ function TweenManager(){
     }
 
     this.skip = function(){
-        // debugger;
-
-        // console.log("skipping "+tweenManager.current.length);
+        if (RenJS.tweenManager.unskippable){
+            return;
+        }
         var tweens = RenJS.tweenManager.current;
         RenJS.tweenManager.current = [];
         _.each(tweens,function(tween){

@@ -5,6 +5,7 @@ function Character(name,speechColour){
     this.looks = {};
     this.currentLook = null;
     this.speechColour = speechColour;
+    this.lastScale = 1;
 
     this.addLook = function(lookName,image){        
         var look = RenJS.storyManager.characterSprites.create(config.positions.CENTER.x,config.positions.CENTER.y,(image ? image : lookName));
@@ -21,7 +22,7 @@ function Character(name,speechColour){
 function CharactersManager(){
     this.characters = {};
     this.showing = {};
-
+    
     this.add = function(name,displayName,speechColour,looks){
         this.characters[name] = new Character(displayName,speechColour);
         _.each(looks,function(filename,look){
@@ -33,15 +34,15 @@ function CharactersManager(){
         var ch = this.characters[name];
         var oldLook = ch.currentLook;
         ch.currentLook = props.look ? ch.looks[props.look] : ch.looks.normal;
+
         if (!props.position){
             props.position = (oldLook != null) ? {x:oldLook.x,y:oldLook.y} : config.positions.CENTER;
         }
-        var scaleX = oldLook != null ? oldLook.scale.x : 1;
         if (props.flipped != undefined){
-            scaleX = props.flipped ? -1 : 1;
+            ch.lastScale = props.flipped ? -1 : 1;
         }
-        this.showing[name] = {look: ch.currentLook.name,position:props.position,flipped:(scaleX==-1)};
-        transition(oldLook,ch.currentLook,props.position,scaleX);
+        this.showing[name] = {look: ch.currentLook.name,position:props.position,flipped:(ch.lastScale==-1)};
+        transition(oldLook,ch.currentLook,props.position,ch.lastScale);
     }
 
     this.hide = function(name,transition){
