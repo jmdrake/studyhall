@@ -42,7 +42,7 @@ function CharactersManager(){
             ch.lastScale = props.flipped ? -1 : 1;
         }
         this.showing[name] = {look: ch.currentLook.name,position:props.position,flipped:(ch.lastScale==-1)};
-        transition(oldLook,ch.currentLook,props.position,ch.lastScale);
+        transition(oldLook,ch.currentLook,props.position,ch.lastScale,RenJS.storyManager.characterSprites);
     }
 
     this.hide = function(name,transition){
@@ -58,8 +58,9 @@ function CharactersManager(){
         this.showing = showing;
         _.each(this.showing,function(ch,name) {
             var character = this.characters[name];
-            character.x = ch.position.x; character.y = ch.position.y;
             character.currentLook = character.looks[ch.look];
+            character.currentLook.x = ch.position.x; 
+            character.currentLook.y = ch.position.y;
             character.currentLook.scaleX = ch.flipped ? -1 : 1;
             character.currentLook.alpha = 1;
         },this);

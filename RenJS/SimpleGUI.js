@@ -243,8 +243,7 @@ function SimpleGUI(meta){
             map: {},
             textStyles:{
                 choice:this.getTextStyle(this.elements.hud.choice.textStyle),
-                interrupt:this.getTextStyle(this.elements.hud.interrupt.normalText),
-                interruptLast:this.getTextStyle(this.elements.hud.interrupt.lastText),
+                interrupt:this.getTextStyle(this.elements.hud.interrupt.textStyle)
             },
         };
         // var choiceSprite = this.elements.hud.choice.box;
@@ -297,7 +296,6 @@ function SimpleGUI(meta){
                 textStyle = this.hud.choices.textStyles.interrupt;
                 if (choice.remainingSteps==1){
                     frames = [2,3,2,3];
-                    textStyle = this.hud.choices.textStyles.interruptLast;
                 }
             }
             var chBox = game.add.button(position.x, y, key, function(){

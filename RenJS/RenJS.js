@@ -193,6 +193,10 @@ var RenJS = {
 
     resolve: function(){
         if (RenJS.control.resolve != null){
+            if (RenJS.control.doBeforeResolve != null){
+                RenJS.control.doBeforeResolve();
+                RenJS.control.doBeforeResolve = null;
+            }
             // debugger;
             RenJS.control.waitForClick = false; 
             var resolve = RenJS.control.resolve;
@@ -216,6 +220,7 @@ RenJS.control = {
     resolve : null,
     clickLocked: false,
     nextAction: null,
+    doBeforeResolve: null,
     skipping: false,
     auto: false,
     clickCooldown: config.clickCooldown, 

@@ -56,18 +56,13 @@ simpleGUI:
         font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
-        fill: "#333333"
+        fill: "#666666"
     interrupt:
-      normalText: 
+      textStyle:
         font: 20pt audimat-mono
         boundsAlignH: center
         boundsAlignV: middle
-        fill: "#333333"
-      lastText: 
-        font: 22pt audimat-mono
-        boundsAlignH: center
-        boundsAlignV: middle
-        fill: "#FF3333"
+        fill: "#664b4b"        
     buttons:
       auto: 
         position:

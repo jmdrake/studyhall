@@ -8,7 +8,7 @@ start:
   - show deuzi: normal
   - deuzi says: So you want to make a Visual Novel.
   - deuzi says: With RenJS you can easily make games just like this one.
-  - deuzi says: RenJS is inspired by Renpy and based on PhaserJS.
+  - deuzi says: RenJS is inspired by Ren'Py and based on PhaserJS.
   - deuzi says: If you are familiar with any of those you have an advantage.
   - deuzi says: And if not...
   - show deuzi: happy
@@ -141,7 +141,7 @@ storySetup:
       - show deuzi: normal
       - deuzi says: Alright, I guess you can continue with more advanced lessons then...
       - show jair: happy
-      - jair says: See, told you not to treat 'em like a baby
+      - jair says: See, told you not to treat 'em like a baby.
       - show deuzi: angry
       - deuzi says: Shut up, you! We'll have a talk later.
       - hide jair: WITH FADE
@@ -428,7 +428,7 @@ storeAtNight:
   - liz says: "'EXPLOSION', just what it says on the tin."
   - liz says: And the same goes for 'ATTACK', 'MULTIATTACK' and 'CHAINATTACK'.
   - liz says: One last thing.
-  - liz says: The extra sounds and images used by ambients and effects have to be declared on the extra section of the setup file.
+  - liz says: The extra sounds and images used by ambients and effects have to be declared on the 'extra' section of the setup file.
   - liz says: For example, the RAIN ambient uses a rain sound and a raindrop image and you can use your own.
   - hide ambientAndEffects:
   - show liz: happyC
@@ -571,6 +571,7 @@ day2:
   - scene: lessonStoryFlux
 
 lessonStoryFlux:
+  - show marco: normal AT LEFT
   - show marco: normal AT CENTER WITH MOVE
   - marco says: All right, so, as I've gotten out of bed, washed my face and came here on the right day at the right time.
   - marco says: Now I can tell you.
@@ -713,6 +714,7 @@ lessonStoryFlux:
 lastClass:
   - show school_afternoon: WITH FUSION
   - show deuzi: happy WITH FADE
+    flipped: true
   - deuzi says: Hi! Did you have fun today?
   - show deuzi: normal
   - deuzi says: Marco's is one of the hardest, but once you learn it, it becomes a lot easier to write the stories just how you want them.
@@ -753,7 +755,7 @@ lastClass:
   - deuzi says: "We have our font file inside the 'assets/gui' folder."
   - deuzi says: You can go check!
   - hide lessonGUIFonts:
-  - deuzi says: So, for every font you need to use on your game, you have to declare a 'font-face' for each.
+  - deuzi says: So, for every font you need to use on your game, you have to declare a 'font-face'.
   - deuzi says: And then list them on your GUI file.
   - show deuzi: happy
   - deuzi says: You can find free fonts to use on sites like Google Fonts!
@@ -768,7 +770,7 @@ lastClass:
   - deuzi says: "'sliderFull' will be the image used to show the a slider all full, in the settings menu."
   - deuzi says: You can check how those look if you open the settings menu right now and change some of the values.
   - deuzi says: "'messageBox' is the box where dialogue and text will appear. It's where this text is showing right now."
-  - deuzi says: And 'nameBox' is the little box the character's name is displayed. Right now it says Deuzilene.
+  - deuzi says: And 'nameBox' is the little box where the character's name is displayed. Right now it says Deuzilene.
   - deuzi says: "'ctc' means click to continue, and it's the little image that blinks when the story is waiting for you to click."
   - deuzi says: Your gui could have no nameBox and no ctc, but you definitely need the rest.
   - hide lessonGUIImages:
@@ -822,7 +824,7 @@ lastClass:
   - deuzi says: The 'separation' in the choice means how far one box will be from the other.
   - deuzi says: This number should be bigger than the box height itself, or else one box will be on top of the other.
   - deuzi says: Last thing is text style.
-  - deuzi says: For the interrupt you have to set two text styles, one for the normal interrupt and one for the last chance to pick it.
+  - deuzi says: You can choose a different font for the interrupt.
   - hide lessonGUIHUDcont2:
   - deuzi says: If you want to know more about text styles, you can find information about them in the Phaser documentation.
   - deuzi says: Now, the last elements on the 'hud' are the buttons for the quick menu.
@@ -856,11 +858,10 @@ lastClass:
 graduation:
   - show street_afternoon:
   - show deuzi: AT 300,600 WITH FADE
-    flipped: true
+    flipped: false
   - show liz: happy AT 500,600 WITH FADE
   - show jair: happy AT RIGHT WITH FADE
   - show marco: happy AT LEFT WITH FADE
-    flipped: true
   - deuzi says: So, this is the big day.
   - deuzi says: You can now go out in the world and write your own stories.
   - show deuzi: happy
@@ -875,7 +876,7 @@ graduation:
       - RenJS developed by
       - lunafromthemoon
       - null
-      - Inspired by Ren'py
+      - Inspired by Ren'Py
       - Powered by PhaserJS
       - null
       - null

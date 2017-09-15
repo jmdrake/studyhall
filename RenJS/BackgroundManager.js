@@ -23,7 +23,7 @@ function BackgroundManager(){
         this.current = name ? this.backgrounds[name] : null;
         // console.log("showing bg "+name);
         // debugger;
-        transition(oldBg,this.current,{x:game.world.centerX,y:game.world.centerY});        
+        transition(oldBg,this.current,{x:game.world.centerX,y:game.world.centerY},1,RenJS.storyManager.backgroundSprites);        
     }
 
     this.hide = function(bg,transition){   

@@ -11,7 +11,7 @@ RenJS.transitions = {
     },
     FADE: function(from,to,position,scaleX){
         if (!from){
-            RenJS.transitions.FADEIN(to,position);
+            RenJS.transitions.FADEIN(to,position,scaleX);
             return;
         } 
         if (!to){
@@ -32,11 +32,14 @@ RenJS.transitions = {
         setNewProperties(to,position,scaleX);
         RenJS.tweenManager.tween(to,{ alpha: 1 },RenJS.resolve,config.fadetime,true);        
     },
-    FUSION: function(from,to,position,scaleX){
+    FUSION: function(from,to,position,scaleX,group){
         if (!from || !to){
             RenJS.transitions.FADE(from,to,position);
             return;
         }   
+        if (group) {
+            group.bringToTop(to);
+        }
         setNewProperties(to,position,scaleX);
         RenJS.tweenManager.tween(to,{ alpha: 1 },function(){
             from.alpha = 0;

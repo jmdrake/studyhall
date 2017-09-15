@@ -43,7 +43,7 @@ setup:
         angryC: assets/characters/Char1Angry.png
     jair:
       displayName: Jair
-      speechColour: "#a35231"
+      speechColour: "#6a2b2b"
       looks:
         normal: assets/characters/Char4NormalSchool.png
         happy: assets/characters/Char4HappySchool.png
