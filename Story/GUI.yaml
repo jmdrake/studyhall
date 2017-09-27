@@ -25,6 +25,8 @@ simpleGUI:
     audio:
       mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
   hud:
+    area:
+      - 640 450 748 554
     message:
       position: 
         x: 46 

@@ -140,9 +140,13 @@ var init = {
     RenJS.audioManager.init(function(){
         RenJS.gui.showMenu("main");    
     });
-    
-    
-    // RenJS.storyManager.startScene("start");
-    // RenJS.storyManager.interpret();
+  },
+
+  render: function() {
+    // if (RenJS.gui && RenJS.gui.hud && RenJS.gui.hud.area){
+    //     _.each(RenJS.gui.hud.area,function(area){
+    //         game.debug.rectangle(area);
+    //     });
+    // }
   }
 }

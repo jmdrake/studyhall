@@ -49,6 +49,16 @@ function SimpleGUI(meta){
             group: game.add.group()
         };
         // this.hud.group.alpha = 0;
+        this.hud.area = [];
+        _.each(this.elements.hud.area,function(area){
+            var a = area.split(" ");
+            // debugger;
+            var x = parseInt(a[0]);
+            var y = parseInt(a[1]);
+            var w = parseInt(a[2])-x;
+            var h = parseInt(a[3])-y;
+            this.hud.area.push(new Phaser.Rectangle(x,y,w,h));
+        },this);
         this.hud.group.visible = false;
         var messageBox = this.elements.hud.message;
         this.hud.messageBox = game.add.image(messageBox.position.x,messageBox.position.y,"messageBox",0,this.hud.group);
@@ -429,5 +439,13 @@ function SimpleGUI(meta){
             ctc.alpha = 0;
             ctc.tween = game.add.tween(ctc).to({ alpha: 1 }, 400, Phaser.Easing.Linear.None,true,0,-1);
         }
+    }
+
+    this.ignoreTap = function(pointer){
+        // Tap should be ignored if the player clicked on a hud button.
+        var inside = _.find(RenJS.gui.hud.area,function(area){
+            return area.contains(pointer.x,pointer.y);
+        });
+        return inside != null && inside != undefined;
     }
 }

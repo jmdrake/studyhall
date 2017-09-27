@@ -24,8 +24,10 @@ var defaults = {
 
     positions : {
         LEFT: {x:phaserConfig.w/6,y:phaserConfig.h},
+        OUTLEFT: {x:-(phaserConfig.w/6),y:phaserConfig.h},
         CENTER: {x:phaserConfig.w/2,y:phaserConfig.h},
-        RIGHT: {x:(phaserConfig.w/6)*5,y:phaserConfig.h}
+        RIGHT: {x:(phaserConfig.w/6)*5,y:phaserConfig.h},
+        OUTRIGHT: {x:(phaserConfig.w/6)*7,y:phaserConfig.h}
     },
 
     //miliseconds for fade transitions

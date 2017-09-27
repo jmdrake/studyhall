@@ -137,7 +137,11 @@ function StoryManager(){
                     RenJS.textManager.say(actor,params);
                     break;
                 case "wait" : 
-                    RenJS.waitTimeout(parseInt(params));
+                    if (params == "click"){
+                        RenJS.waitForClick();
+                    } else {
+                        RenJS.waitTimeout(parseInt(params));
+                    }
                     break;
                 case "animate" :
                     console.log(action);

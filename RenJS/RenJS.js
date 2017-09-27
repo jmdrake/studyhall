@@ -41,12 +41,14 @@ var RenJS = {
         config.skiptime = 50;
         RenJS.control.skipping = true;
         console.log("skipping");
+        RenJS.resolve();
     },
 
     auto: function(){
         config.skiptime = 1000;
         RenJS.control.auto = true;
-        console.log("autoplaying")
+        console.log("autoplaying");
+        RenJS.resolve();
     },
 
     save: function(slot) {
@@ -165,17 +167,14 @@ var RenJS = {
             if (RenJS.control.paused){
                 return;
             }
+            if (RenJS.gui.ignoreTap(pointer)){
+                // console.log("Hud clicked");
+                return;
+            }
             if (RenJS.control.waitForClick && !RenJS.control.clickLocked){
-                // var buttonPressed = _.find(RenJS.tbManager.buttons,function(button){
-                //     var localPosition = game.input.getLocalPosition(button, pointer);
-                //     return game.input.hitTest(button,pointer,localPosition);
-                // },this);  
-                // var buttonPressed = false;
-                // if (!buttonPressed) {
-                    RenJS.control.waitForClick = false;  
-                    RenJS.lockClick();
-                    RenJS.control.nextAction();
-                // }
+                RenJS.control.waitForClick = false;  
+                RenJS.lockClick();
+                RenJS.control.nextAction();
             }
             if (RenJS.control.skipping || RenJS.control.auto){
                 RenJS.control.skipping = false;
