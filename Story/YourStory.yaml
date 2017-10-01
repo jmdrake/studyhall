@@ -525,11 +525,36 @@ day2:
   - show liz: happy
   - liz says: Remember you can always say no to invitations, don't fall for peer pressure.
   - show liz: normal
-  - show marco: normal AT LEFT WITH FADE
+  - liz says: There's another way of making a choice.
+  - liz says: Visual choices.
+  - liz says: With visual choices instead of using a text line, each option is an image you have to click.
+  - liz says: Let's see it in action.
+  - visualchoice:
+    - phone1 AT 620,300:
+      - play ringtoneSFX:
+      - text: Tururu Ruru Ruru Ruruuuu
+      - liz says: You chose the pink phone.
+    - phone2 AT 180,300:
+      - play ringtoneSFX2:
+      - text: Pi Pi Ri Pi Ripi Pi Ri
+      - liz says: You chose the light blue phone.
   - show liz: happy
-  - liz says: Marco, hi! What are you up to?
+  - liz says: Really interesting, right?
+  - show liz: normal AT LEFT WITH MOVE
+    flipped: true
+  - liz says: Then let's see how to do it.
+  - show lessonVisualChoice:
+  - liz says: It's similar to the normal choices, but the text has the information to show the images.
+  - liz says: First the tag of the image, and then the position.
+  - liz says: The image has to be declared in the setup file, in the extra section.
+  - liz says: And that's it!
+  - hide lessonVisualChoice:
+  - show liz: happy
+  - liz says: There's a few more things about choices, but we'll see them after your next lesson.
+  - show marco: normal AT CENTER WITH FADE
+  - liz says: And here is your professor for it!
   - show marco: happy
-  - marco says: I think I have to teach a lesson now?
+  - marco says: Hey Liz, what are you doing here? I have a lesson now.
   - show marco: normal
   - marco says: Am I too early?
   - show liz: normal
@@ -571,8 +596,7 @@ day2:
   - scene: lessonStoryFlux
 
 lessonStoryFlux:
-  - show marco: normal AT LEFT
-  - show marco: normal AT CENTER WITH MOVE
+  - show marco: normal
   - marco says: All right, so, as I've gotten out of bed, washed my face and came here on the right day at the right time.
   - marco says: Now I can tell you.
   - show marco: happy
@@ -800,7 +824,16 @@ lastClass:
   - deuzi says: We start with the HUD, the head-up display.
   - deuzi says: That's all the GUI parts we'll use during the story.
   - show lessonGUIHUD:
-  - deuzi says: After the 'hud' tag, first thing we find is the 'message'.
+  - deuzi says: First thing inside 'hud' is the area.
+  - deuzi says: The area of the hud is where your quick menu buttons are.
+  - deuzi says: It's a rectangle that envelops them, it doesn't have to be perfect.
+  - deuzi says: You could have many rectangles if the buttons are no all together.
+  - deuzi says: This area is important because it will tell the game that a 'click' inside them doesn't count as a 'story click'.
+  - deuzi says: A story click being a click to make the story advance, for example, when the game is waiting for you to read a text.
+  - deuzi says: We can not define the area, but then, whenever the player clicks on a button, the story will advance too.
+  - deuzi says: That could bring unexpected problems.
+  - deuzi says: So it's better to just check where your hud buttons are and make a rectangle around them to define as hud area.
+  - deuzi says: After the area we have the 'message' tag.
   - deuzi says: That's the box where all the story text will be displayed.
   - deuzi says: By convention, it will use the 'messageBox' asset.
   - deuzi says: But we need to tell it where to locate it.

@@ -8,6 +8,7 @@ var RenJS = {
     unpause: function(){
         RenJS.control.paused = false;
         RenJS.gui.showHUD();
+        RenJS.storyManager.interpret();
     },
 
     setBlackOverlay: function(){
@@ -41,14 +42,17 @@ var RenJS = {
         config.skiptime = 50;
         RenJS.control.skipping = true;
         console.log("skipping");
-        RenJS.resolve();
+        if (RenJS.control.waitForClick){
+            RenJS.control.waitForClick = false;  
+            RenJS.control.nextAction();
+        }
     },
 
     auto: function(){
         config.skiptime = 1000;
         RenJS.control.auto = true;
         console.log("autoplaying");
-        RenJS.resolve();
+        // RenJS.resolve();
     },
 
     save: function(slot) {
@@ -93,7 +97,7 @@ var RenJS = {
         RenJS.chManager.set(data.characters);
         RenJS.audioManager.set(data.audio);
         RenJS.cgsManager.set(data.cgs);
-        RenJS.logicManager.vars = data.vars;
+        RenJS.logicManager.set(data.vars);
         RenJS.gui.clear();
         var stack = _.last(data.stack);
         var scene = stack.scene;
@@ -123,8 +127,9 @@ var RenJS = {
         RenJS.control.execStack = data.stack;
         RenJS.storyManager.currentScene = actions;
         this.removeBlackOverlay();
-        RenJS.control.paused = false;
-        RenJS.storyManager.interpret();
+        RenJS.unpause();
+        // RenJS.control.paused = false;
+        // RenJS.storyManager.interpret();
     },
 
     waitForClick: function(callback){
@@ -161,26 +166,29 @@ var RenJS = {
         },time ? time : config.timeout);        
     },
 
+    onTap: function(pointer,doubleTap){
+        console.log("tapped");
+        if (RenJS.control.paused){
+            return;
+        }
+        if (pointer && RenJS.gui.ignoreTap(pointer)){
+            return;
+        }
+        console.log("click not ignored");
+        if (RenJS.control.waitForClick && !RenJS.control.clickLocked){
+            RenJS.control.waitForClick = false;  
+            RenJS.lockClick();
+            RenJS.control.nextAction();
+        }
+        if (RenJS.control.skipping || RenJS.control.auto){
+            RenJS.control.skipping = false;
+            RenJS.control.auto = false;
+        }
+        },
+
     initInput: function () {
         // adds the control input
-        game.input.onTap.add(function(pointer,doubleTap){
-            if (RenJS.control.paused){
-                return;
-            }
-            if (RenJS.gui.ignoreTap(pointer)){
-                // console.log("Hud clicked");
-                return;
-            }
-            if (RenJS.control.waitForClick && !RenJS.control.clickLocked){
-                RenJS.control.waitForClick = false;  
-                RenJS.lockClick();
-                RenJS.control.nextAction();
-            }
-            if (RenJS.control.skipping || RenJS.control.auto){
-                RenJS.control.skipping = false;
-                RenJS.control.auto = false;
-            }
-        }, this);
+        game.input.onTap.add(this.onTap, this);
     },
 
     lockClick: function(){

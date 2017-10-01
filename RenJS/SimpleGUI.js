@@ -185,7 +185,6 @@ function SimpleGUI(meta){
         },
         load: function(){
             RenJS.gui.hideMenu();
-            RenJS.gui.showHUD();
             RenJS.load(0);
         },
         auto: RenJS.auto,
@@ -194,13 +193,14 @@ function SimpleGUI(meta){
             RenJS.save(0);
         },
         settings: function(){
-            RenJS.control.paused = true;
+            // RenJS.onTap();
+            RenJS.pause();
+            RenJS.resolve();
             RenJS.gui.showMenu("settings");
         },
         return: function(){
-            RenJS.control.paused = false;
             RenJS.gui.hideMenu();  
-            RenJS.gui.showHUD();  
+            RenJS.unpause();
         },
         mute: function (argument) {
             RenJS.audioManager.mute();

@@ -64,6 +64,7 @@ setup:
     ambientAndEffects: assets/lessons/lessonambientandeffect.png
     lessonScene: assets/lessons/lessonscene.png
     lessonChoice: assets/lessons/lessonchoice.png
+    lessonVisualChoice: assets/lessons/lessonvisualchoice.png
     lessonVarsNumeric: assets/lessons/lessonvarsnumeric.png
     lessonVarsBoolean: assets/lessons/lessonvarsboolean.png
     lessonVarsBooleanCont: assets/lessons/lessonvarsbooleancont.png
@@ -89,6 +90,7 @@ setup:
     rain: assets/audio/Rain.mp3
   sfx:
     ringtoneSFX: assets/audio/nokia6210-24-elise.mp3
+    ringtoneSFX2: assets/audio/alcatel-top_secret.mp3
     thunderSFX: assets/audio/thunder_strike_1.mp3
   extra:
     image:

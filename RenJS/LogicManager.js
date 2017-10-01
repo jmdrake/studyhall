@@ -2,6 +2,15 @@ function LogicManager(){
 
     this.vars = {};
     this.currentChoices = [];
+
+    this.set = function(vars){
+        this.vars = vars;
+        this.currentChoices = [];
+        this.interrupting = false;
+        if (this.visualChoices){
+            this.visualChoices.destroy();
+        }
+    }
     
     this.setVar = function(name,value){
         value = value+"";
@@ -72,6 +81,25 @@ function LogicManager(){
         return true; //unconditional choice
     }
 
+    this.showVisualChoices = function(choices){
+        var ch = _.map(choices,_.clone);
+        ch = _.filter(ch,this.evalChoice);
+        this.visualChoices = game.add.group();
+        this.currentChoices = ch;
+        _. each(ch, function(choice,index){
+            
+            var key = _.keys(choice)[0];
+            var str = key.split(" ");
+            var pos = str[2].split(",");
+            var position = {x:parseInt(pos[0]),y:parseInt(pos[1])};
+            var button = game.add.button(position.x,position.y,str[0],function(){
+                RenJS.logicManager.choose(index,key);
+            },RenJS.logicManager,0,0,0,0,this.visualChoices);
+            button.anchor.set(0.5);
+        },this);
+        // debugger;
+    }
+
     this.showChoices = function(choices){
         var ch = _.map(choices,_.clone);
         ch = _.filter(ch,this.evalChoice);
@@ -119,10 +147,16 @@ function LogicManager(){
         RenJS.gui.hideChoices();
         RenJS.logicManager.currentChoices = [];
         RenJS.logicManager.interrupting = false;
+        if (RenJS.logicManager.visualChoices){
+            RenJS.logicManager.visualChoices.destroy();
+        }
     }
 
     this.choose = function(index,chosenOption){
         RenJS.gui.hideChoices();
+        if (RenJS.logicManager.visualChoices){
+            RenJS.logicManager.visualChoices.destroy();
+        }
         if (chosenOption){
             var actions = RenJS.logicManager.currentChoices[index][chosenOption];
             RenJS.storyManager.currentScene = _.union(actions,RenJS.storyManager.currentScene);

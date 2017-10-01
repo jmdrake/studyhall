@@ -152,6 +152,10 @@ function StoryManager(){
                     RenJS.control.skipping = false;
                     RenJS.logicManager.showChoices(_.clone(params));
                     break;
+                case "visualchoice" :
+                    RenJS.control.skipping = false;
+                    RenJS.logicManager.showVisualChoices(_.clone(params));
+                    break;
                 case "interrupt" : 
                     RenJS.logicManager.interrupt(actor,_.clone(params));
                     // debugger;
@@ -200,7 +204,7 @@ function StoryManager(){
 
     this.interpret = function() {
         return new Promise(function(resolve, reject) {
-            if (RenJS.storyManager.currentScene.length == 0){
+            if (RenJS.storyManager.currentScene.length == 0 || RenJS.control.paused){
                 // console.log("Resolving something here");
                 resolve();
             } else {
@@ -214,7 +218,7 @@ function StoryManager(){
                 console.log("About to do");
                 console.log(action);
                 RenJS.storyManager.interpretAction(action).then(function(){
-                    console.log("Done with last action");
+                    console.log("Done with last action "+_.keys(action)[0]);
                     return RenJS.storyManager.interpret();
                 }).then(function(){
                     resolve();

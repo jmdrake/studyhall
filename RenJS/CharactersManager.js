@@ -55,6 +55,7 @@ function CharactersManager(){
     }
 
     this.set = function (showing) {
+        this.hideAll();
         this.showing = showing;
         _.each(this.showing,function(ch,name) {
             var character = this.characters[name];

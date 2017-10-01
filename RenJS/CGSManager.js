@@ -3,6 +3,7 @@ function CGSManager(){
     this.current = {};
 
     this.set = function (current) {
+        this.hideAll();
         this.current = current;
         _.each(this.current, function (props,name) {
            this.show(name,RenJS.transitions.CUT,props)
