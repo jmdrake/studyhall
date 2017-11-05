@@ -68,12 +68,14 @@ function LogicManager(){
     this.evalChoice = function(choice){
         var choiceText = _.keys(choice)[0];
         choice.choiceId = "Choice"+Date.now();
+        choice.choiceText = choiceText;
         var params = choiceText.split("!if");
         if (params.length > 1){
             var val = RenJS.logicManager.evalExpression(params[1]);
             if (val) {
                 var next = choice[choiceText];
                 delete choice[choiceText];
+                choice.choiceText = params[0];
                 choice[params[0]] = next;
             }
             return val;

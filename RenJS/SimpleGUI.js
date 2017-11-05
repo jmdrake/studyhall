@@ -86,7 +86,11 @@ function SimpleGUI(meta){
             this.hud.messageBox.addChild(this.hud.nameBox);
             var nameStyle = this.getTextStyle(name.textStyle);
             this.hud.name = game.add.text(0,0, "", nameStyle,this.hud.group);
-            this.hud.name.setTextBounds(0,0, this.hud.nameBox.width, this.hud.nameBox.height);   
+            if (name.textBounds){
+                this.hud.name.setTextBounds(name.textBounds.x, name.textBounds.y, name.textBounds.w, name.textBounds.h);
+            } else {
+                this.hud.name.setTextBounds(0,0, this.hud.nameBox.width, this.hud.nameBox.height);   
+            }
             this.hud.nameBox.addChild(this.hud.name);
         }
         if (this.elements.hud.ctc) {
@@ -294,7 +298,6 @@ function SimpleGUI(meta){
         _.each(choices,function(choice,index){
             console.log("Showing choice");
             console.log(choice);
-            var choiceText = _.keys(choice)[0];
 
             var y = position.y + this.elements.hud.choice.separation*index;
             var key = "choice";
@@ -309,13 +312,13 @@ function SimpleGUI(meta){
                 }
             }
             var chBox = game.add.button(position.x, y, key, function(){
-                RenJS.logicManager.choose(index,choiceText);
+                RenJS.logicManager.choose(index,choice.choiceText);
             }, RenJS.logicManager, frames[0],frames[1],frames[2],frames[3],this.hud.choices.group);
             if (position.anchor){
                 chBox.anchor.set(position.anchor.x,position.anchor.y);    
             }
             
-            var chText = game.add.text(0,0, choiceText, textStyle);
+            var chText = game.add.text(0,0, choice.choiceText, textStyle);
             var textPosition = this.elements.hud.choice.textPosition;
             if (!textPosition){
                 textPosition = !position.anchor ? [0,0] : [-chBox.width*position.anchor.x,-chBox.height*position.anchor.y];

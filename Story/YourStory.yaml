@@ -985,3 +985,7 @@ varsScene:
   - else:
     - deuzi says: It's not bad, but you'll have to study a bit more next time.
 
+    - call helloworld:
+      param1: hello
+      param2: world
+
