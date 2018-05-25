@@ -71,5 +71,9 @@ function CGSManager(){
         this.cgs = {};
         this.current = {};
     }
+
+    this.isCGS = function(actor){    
+        return _.has(this.cgs,actor);
+    }
 }
 

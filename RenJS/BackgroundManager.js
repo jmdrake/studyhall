@@ -29,5 +29,9 @@ function BackgroundManager(){
     this.hide = function(bg,transition){   
         this.show(null,transition ? transition : RenJS.transitions.FADEOUT);
     }
+
+    this.isBackground = function(actor){
+        return _.has(this.backgrounds,actor);
+    }
 }
 

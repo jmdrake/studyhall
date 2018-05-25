@@ -10,9 +10,17 @@ function AudioManager(){
         bgs : null
     }
 
+    this.isMusic = function(actor){    
+        return _.has(this.musicList,actor);
+    }
+
+    this.isSfx = function(actor){    
+        return _.has(this.sfx,actor);
+    }
+
     this.init = function(callback){
         var audioList = [];
-        _.each(RenJS.story.setup.music,function(filename,key){
+        _.each(RenJS.setup.music,function(filename,key){
             this.musicList[key] = game.add.audio(key);
             audioList.push(this.musicList[key]);
             // music.onDecoded.add(function(){
@@ -23,7 +31,7 @@ function AudioManager(){
             // }, this);
         },this);
         
-        _.each(RenJS.story.setup.sfx,function(filename,key){
+        _.each(RenJS.setup.sfx,function(filename,key){
             this.sfx[key] = game.add.audio(key);            
             audioList.push(this.sfx[key]);
         },this);

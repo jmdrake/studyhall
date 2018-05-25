@@ -1,15 +1,17 @@
 function StoryManager(){
 
+    this.actorsIndex = {};
+
     this.setupStory = function(){        
         //load backgrounds
         this.backgroundSprites = game.add.group();
-        _.each(RenJS.story.setup.backgrounds,function(filename,background){
+        _.each(RenJS.setup.backgrounds,function(filename,background){
             RenJS.bgManager.add(background,background);
         });
         //load characters
         this.behindCharactersSprites = game.add.group();
         this.characterSprites = game.add.group();
-        _.each(RenJS.story.setup.characters,function(character,name){
+        _.each(RenJS.setup.characters,function(character,name){
             var displayName = character.displayName ? character.displayName : name;
             RenJS.chManager.add(name,displayName,character.speechColour,character.looks);
         });
@@ -24,9 +26,7 @@ function StoryManager(){
         RenJS.cgsManager.hideAll();
         // RenJS.audioManager.stop();
         this.currentScene = _.clone(RenJS.story[name]);
-        
         RenJS.resolve();
-        // this.interpretScene();        
     }
 
     this.getActorType = function(actor){
@@ -34,28 +34,30 @@ function StoryManager(){
         if (!actor) {
             return null;
         }
-        if (_.has(RenJS.chManager.characters,actor)){
+        if (this.actorsIndex[actor]){
+            return this.actorsIndex[actor];
+        }
+        if (RenJS.chManager.isCharacter(actor)){
+            this.actorsIndex[actor] = "ch";
             return "ch";
         }
-        if (_.has(RenJS.bgManager.backgrounds,actor)){
+        if (RenJS.bgManager.isBackground(actor)){
+            this.actorsIndex[actor] = "bg";
             return "bg";
         }
-        if (_.has(RenJS.audioManager.musicList,actor)){
+        if (RenJS.audioManager.isMusic(actor)){
+            this.actorsIndex[actor] = "bgm";
             return "bgm";
         }
-        if (_.has(RenJS.audioManager.sfx,actor)){
+        if (RenJS.audioManager.isSfx(actor)){
+            this.actorsIndex[actor] = "sfx";
             return "sfx";
         }
+        this.actorsIndex[actor] = "cgs";
         return "cgs";
     }
 
     this.interpretAction = function(action){
-        // var availableActions = {
-        //     "show":["ch","bg"],
-        //     "hide":["ch","bg"],
-        //     "say":["ch"],
-        //     "choice":[]
-        // };
         var actionParams = {
             withTransition: ["show","hide","play","stop"],
             withPosition: ["show"]

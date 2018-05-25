@@ -73,5 +73,9 @@ function CharactersManager(){
         },this);
     }
 
+    this.isCharacter = function(actor){
+        return _.has(this.characters,actor);
+    }
+
 }
 

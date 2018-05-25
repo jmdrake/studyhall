@@ -67,7 +67,7 @@ RenJS.transitions = {
         var spr_bg = game.add.graphics(0, 0);
         // this.fadeColor = fadeColor ? fadeColor : 0x000000;
         spr_bg.beginFill(colour, 1);
-        spr_bg.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
+        spr_bg.drawRect(0, 0, globalConfig.w, globalConfig.h);
         spr_bg.alpha = 0;
         spr_bg.endFill();
         RenJS.tweenManager.chain([

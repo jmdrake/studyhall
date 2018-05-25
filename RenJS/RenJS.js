@@ -14,7 +14,7 @@ var RenJS = {
     setBlackOverlay: function(){
         this.blackOverlay = game.add.graphics(0, 0);
         this.blackOverlay.beginFill(0x000000, 1);
-        this.blackOverlay.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
+        this.blackOverlay.drawRect(0, 0, globalConfig.w, globalConfig.h);
         this.blackOverlay.endFill();
     },
 

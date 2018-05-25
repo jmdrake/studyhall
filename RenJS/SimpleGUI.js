@@ -260,45 +260,19 @@ function SimpleGUI(meta){
                 interrupt:this.getTextStyle(this.elements.hud.interrupt.textStyle)
             },
         };
-        // var choiceSprite = this.elements.hud.choice.box;
-        // var dimensions = this.getSpriteInfo(this.elements.assets.spritesheets[choiceSprite]);
-        // var choiceStyle = _.extend(config.defaultTextStyle,this.elements.hud.choice.text);
-        // this.hud.choice = {
-        //     normal: {
-        //         box:choiceSprite
-
-        //     w: dimensions.x,
-        //     h: dimensions.y,
-        //     style: choiceStyle,
-        // }
     }
 
     //choice and interrupt buttons
     this.showChoices = function(choices){
-        // this.hud.choices.boxes = []; 
-        // this.hud.choices = {
-        //     key: choiceSprite,
-        //     w: dimensions.x,
-        //     h: dimensions.y,
-        //     style: choiceStyle,
-        //     boxes: game.add.group()
-        // }
         this.hideChoices();
-        // var box = this.hud.choice;
-        // var yOffset = (choices.length*box.h)/2;
         var position = this.elements.hud.choice.position;
         if (!position){
             position = {x:game.world.centerX};
             position.y = game.world.centerY - (choices.length*this.elements.hud.choice.separation)/2;
             position.anchor = {x:0.5,y:0};
-        }
-
-        
+        }       
 
         _.each(choices,function(choice,index){
-            console.log("Showing choice");
-            console.log(choice);
-
             var y = position.y + this.elements.hud.choice.separation*index;
             var key = "choice";
             var frames = [0,1,0,1];
@@ -324,11 +298,8 @@ function SimpleGUI(meta){
                 textPosition = !position.anchor ? [0,0] : [-chBox.width*position.anchor.x,-chBox.height*position.anchor.y];
             }
             chText.setTextBounds(textPosition[0],textPosition[1], chBox.width, chBox.height);
-            //chText.anchor.set(0.5,0.5);
             chBox.addChild(chText);
             this.hud.choices.map[choice.choiceId]=chBox;
-            // debugger;
-            // this.choiceBoxes.push(chBox);            
         },this);
     }
 
@@ -375,9 +346,6 @@ function SimpleGUI(meta){
         } else {
             this.hud.nameBox.visible = false; 
         }
-        // if (this.hud.ctc){
-        //     this.hud.ctc.visible = true;
-        // }
         if (RenJS.control.skipping || config.settings.textSpeed < 10){
             this.hud.text.text = text;
             this.hud.messageBox.visible = true;
@@ -414,7 +382,6 @@ function SimpleGUI(meta){
     }
 
     this.hideText = function(){
-        // console.log("hiding text");
         this.hud.messageBox.visible = false;
         this.hideCTC();
     }
@@ -433,7 +400,6 @@ function SimpleGUI(meta){
     }
 
     this.showCTC = function(){
-        // console.log("Showing ctc");
         var ctc = RenJS.gui.hud.ctc;
         ctc.visible = true;
         if (ctc.animated) {

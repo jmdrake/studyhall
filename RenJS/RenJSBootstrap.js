@@ -1,24 +1,22 @@
-var phaserConfig = {
-  w:800,
-  h:600,
-  mode: "AUTO",
-  splash: "assets/gui/splash.png", //splash background
-  loading: "assets/gui/loadingbar.png", //loading bar image
-  loadingPosition: [111,462], //loading bar size
-  storyFiles: [
-        "Story/YourStory.yaml",
-        "Story/GUI.yaml",
-        "Story/Setup.yaml",
 
-    ],
-}
-var game = new Phaser.Game(phaserConfig.w, phaserConfig.h, Phaser[phaserConfig.mode], "RenJS");
+var game = new Phaser.Game(globalConfig.w, globalConfig.h, Phaser[globalConfig.mode], "");
 
 var bootstrap = {
 
+  init: function() {
+    if (!(globalConfig.scaleMode == "EXACT_FIT")){
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+    }    
+    game.scale.scaleMode = Phaser.ScaleManager[globalConfig.scaleMode];
+    game.scale.refresh();
+  },
+
   preload: function () {
-    game.load.image('loading',  phaserConfig.loading);
-    game.load.image('splash',  phaserConfig.splash);
+    game.load.image('splash',  globalConfig.splash.loadingScreen);
+    if (globalConfig.splash.loadingBar) {
+      game.load.image('loading',  globalConfig.splash.loadingBar.fullBar);
+    }    
     game.load.script('preload',  'RenJS/Preload.js');
   },
 

@@ -104,8 +104,8 @@ RenJS.ambient = {
         console.log("doing drugs");
         
         var bg = RenJS.storyManager.behindCharactersSprites.create(0,0);
-        bg.width = phaserConfig.w;
-        bg.height = phaserConfig.h;
+        bg.width = globalConfig.w;
+        bg.height = globalConfig.h;
         var fragmentSrc = [
             // "precision mediump float;",
             // "uniform vec2      resolution;",
@@ -164,7 +164,7 @@ RenJS.ambient = {
         //  filter.speed = 10.0;
         //  filter.intensity = 0.30;
         var filter = new Phaser.Filter(game, null, fragmentSrc);
-        filter.setResolution(phaserConfig.w, phaserConfig.h);
+        filter.setResolution(globalConfig.w, globalConfig.h);
         bg.filters = [filter];
         var counter = 2000;
         RenJS.ambient.drugsFlag = 1;

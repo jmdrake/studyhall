@@ -23,11 +23,11 @@ var defaults = {
     },
 
     positions : {
-        LEFT: {x:phaserConfig.w/6,y:phaserConfig.h},
-        OUTLEFT: {x:-(phaserConfig.w/6),y:phaserConfig.h},
-        CENTER: {x:phaserConfig.w/2,y:phaserConfig.h},
-        RIGHT: {x:(phaserConfig.w/6)*5,y:phaserConfig.h},
-        OUTRIGHT: {x:(phaserConfig.w/6)*7,y:phaserConfig.h}
+        LEFT: {x:globalConfig.w/6,y:globalConfig.h},
+        OUTLEFT: {x:-(globalConfig.w/6),y:globalConfig.h},
+        CENTER: {x:globalConfig.w/2,y:globalConfig.h},
+        RIGHT: {x:(globalConfig.w/6)*5,y:globalConfig.h},
+        OUTRIGHT: {x:(globalConfig.w/6)*7,y:globalConfig.h}
     },
 
     //miliseconds for fade transitions

@@ -11,13 +11,13 @@ RenJS.effects = {
         var bg = game.add.graphics(0, 0);
         RenJS.audioManager.play("rollingCredits","bgm",true,"FADE");  
         bg.beginFill(0x000000, 1);
-        bg.drawRect(0, 0, phaserConfig.w, phaserConfig.h);
+        bg.drawRect(0, 0, globalConfig.w, globalConfig.h);
         bg.endFill();
         bg.alpha = 0;
-        var style = _.clone(_.extend(config.defaultTextStyle,RenJS.story.simpleGUI.hud.choice.text));
-        style.font = "25pt "+RenJS.story.simpleGUI.assets.fonts[0];
+        var style = _.clone(_.extend(config.defaultTextStyle,RenJS.gui.elements.hud.choice.text));
+        style.font = "25pt "+RenJS.gui.elements.assets.fonts[0];
         console.log(style);
-        var credits = game.add.text(game.world.centerX,phaserConfig.h+30,params.text[0],style);
+        var credits = game.add.text(game.world.centerX,globalConfig.h+30,params.text[0],style);
         credits.anchor.set(0.5);
         var separation = 35;
         for (var i = 1; i < params.text.length; i++) {
@@ -47,10 +47,10 @@ RenJS.effects = {
     SHOWTITLE: function(param){
         var bg = game.add.sprite(game.world.centerX,game.world.centerY,"title");
         bg.anchor.set(0.5);
-        var style = _.clone(_.extend(config.defaultTextStyle,RenJS.story.simpleGUI.hud.choice.text));
-        style.font = "50pt "+RenJS.story.simpleGUI.assets.fonts[0];
+        var style = _.clone(_.extend(config.defaultTextStyle,RenJS.gui.elements.hud.choice.text));
+        style.font = "50pt "+RenJS.gui.elements.assets.fonts[0];
         var title = game.add.text(0,-20, param.title, style);
-        style.font = "25pt "+RenJS.story.simpleGUI.assets.fonts[0];
+        style.font = "25pt "+RenJS.gui.elements.assets.fonts[0];
         var subtitle = game.add.text(0,40, param.subtitle, style);
         subtitle.anchor.set(0.5);
         title.anchor.set(0.5);
