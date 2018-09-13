@@ -1,0 +1,243 @@
+
+start:
+  - play morningBGM:
+  - show classroom: WITH FADE
+  - show marco: Hello.  Welcome to study hall.
+  - deuzi says: My name is Marco and I am here to help you review for your geometry test.
+  
+review:
+  - deuzi says: Which would you like to review?
+  - choice:
+    - 1.5 Overview Of Angles:
+    - 1.7 Midpoint, Endpoint and Length:
+    - 1.8 Perimeter and Areas:
+  
+1.5 Overview Of Angles:
+  - deuzi says: Here are a few things you should know about angles.
+  - deuzi says: An angle is a measure of rotation.
+  - deuzi says: Angles are measured in degrees.
+  - deuzi says: There are 360 degrees in a circle.  If you look at a navigation compass, which is diferent from the drawing compass you use in class, you will see 360 degrees on it.
+  - show navcompass:
+  - deuzi says: If you divide a circle in half you get a semicirlce which has 180 degrees, like on your protractor.
+  - show protractor:
+  - deuzi says: If you divide a semicirlce in half you get a quarter circle.  Notice that at the top of your protractor is the number 90.  A 90 degree angle is also known as a right angle.  
+  - hide navcompass:
+  - hide protractor:
+  - show intersecingangles:
+  - deuzi says: Angles are formed when lines intersect like in this diagram.
+  - deuzi says: There are certain properties of angles that you should know.
+  - hide intersectingangles:
+  - show adjacentangles:
+  - deuzi says: Adjacent angles are angles that are next to each other.  They share a common side but do not overlap.
+  - hide adjacentangles:
+  - show congruentangles:
+  - deuzi says: Congruent angles have the same measurement.
+  - hide congruentangles:
+  - show complimentaryangles:
+  - deuzi says: Complimentary angles are angles that add up to 90 degrees.  
+  - hide complimentaryangles:
+  - show supplementaryangles:
+  - deuzi says: Supplementary angles are angles that add up to 180 degrees.
+  - hide supplementaryangles:
+  - show linearpair:
+  - deuzi says: If two angles are suplementary and congruent they make up a linear pair.
+  - hide linearpair:
+  - show verticalangles:
+  - deuzi says: When two lines intersect they form two pair of vertical angles, aka opposite angles.  vertical angles are congruent.  The rays of two vertical anlges are opposite (pointing away at 180 degrees).
+  # - show opposite angle.
+  - hide verticalangles:
+  - show linesandangles:
+  - deuzi says: Here is a summary diagram of information about angles.  Take a minute to review it before continuing.
+  - hide linesandangles:
+  - deuzi says: One other concept is bisecting angles.
+  - show anglebisector:
+  - deuzi says: If a ray bisects an angle it cuts the angle in half.  The two new angles are adjacent and congruent.  They are also 1/2 the size of the original angle.
+  - hide anlgebisector:
+  
+quiz1_5:
+  - deuzi says: Okay.  Let's go through the section 1.5 quiz questions.
+  - show quiz1_5diagram1:
+  - deuzi says: Use the diagram for next several question.  I will use the "<" symbol to stand for "angle".  I might name angles using a number like <2 or by using its points like <SOT.
+  - deuzi says: I will also use "->" to stand for "ray".  So "->OR" is ray OR.
+  - deuzi Name an angle adjacent to <5?
+  - var score: 0
+  - choice:
+    - <1:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that adjacent angles are next to each other.  They share a common side.  There is no common side between <2 and <5.
+      - hide linesandangles:
+    - <2:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that adjacent angles are next to each other.  They share a common side.  There is no common side between <2 and <5.
+      - hide linesandangles:
+    - <ROZ:
+      - show deuzi: happy
+      - deuzi says: Yes!  <ROZ is adjacent to <5!  <ROZ is another name for <4!
+      - var score: "{score} + 1"
+    - <ROY: 
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that adjacent angles do not overlap.  
+      - hide linesandangles:
+  - deuzi says: What angle is vertical to <5?
+  - choice:
+    - <1:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that vertical angles are DIRECTLY across from each other.  Their rays are opposite.
+      - hide linesandangles:
+    - <2:
+      - show deuzi: happy
+      - deuzi says: Yes!  <2 is vertical to <5!  <SOT is another name for <2!
+      - var score: "{score} + 1"
+    - <3:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that vertical angles are DIRECTLY across from each other.  Their rays are opposite.
+      - hide linesandangles:
+    - <4:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Remember that vertical angles are DIRECTLY across from each other.  Their rays are opposite.
+      - hide linesandangles:
+  - deuzi says: Name an angle that is supplementary to <5.
+  - choice:
+    - <1:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Supplementary angles add up to 180.
+      - hide linesandangles:
+    - <TOY:
+      - show deuzi: happy
+      - deuzi says: Yes!  <TOY is supplementary to <5!  Their measures add to 180.  <SOZ is also supplementary to <5.  We know this because <2 and <5 are congruent (vertical angles) and <SOZ is supplementary to <2.
+      - var score: "{score} + 1"
+    - <ROZ:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Supplementary angles add up to 180.
+      - hide linesandangles:
+    - <6:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Supplementary angles add up to 180.  <6 is COMPLIMENTARY to <5.
+      - hide linesandangles:
+  - duezi says: name an angle that is linear with <5.
+  - choice:
+    - <XOZ:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  To be linear angles must be both supplementary and adjacent.  <XOZ is neither.
+      - hide linesandangles:
+    - <XOY:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  To be linear angles must be both supplementary and adjacent.  <XOY is adjacent but not complimentary.
+      - hide linesandangles:
+    - <TOY:
+      - show deuzi: happy
+      - deuzi says: Yes!  <TOY is both supplementary and adjacent to <5!  So they are a linear pair!
+      - var score: "{score} + 1"
+    - <SOZ:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  To be linear angles must be both supplementary and adjacent.  <SOZ is supplementary to <5 but not adjacent.
+  - duezi says: If ->OS bisects <ROT then <2 = ____?
+  - choice:
+    - <1:
+      - show deuzi: angry
+      - show anglebisector:
+      - deuzi says: That is not right.  Each angle on either side of a bisector is contrugent.  <1 is not connected to the bisector.
+      - hide anglebisector:
+    - <4:
+      - show deuzi: angry
+      - show anglebisector:
+      - deuzi says: That is not right.  Each angle on either side of a bisector is contrugent.  <1 is not connected to the bisector.
+      - hide anglebisector:
+    - <3:
+      - show deuzi: happy
+      - duezi says: Yes!  That's the answer I am looking for!  Note that <5 is congruent also because it is a vertical and <6 is congruent as the adjacent angle to <5.  But <3 is the best answer.
+      - var score: "{score} + 1"
+  - deuzi says: In order for a linear pair to exist the angles must be:
+    - choice:
+    - Complimentary and congruent:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Please review linear pair angles.
+      - hide linesandangles:
+    - vertical and diaganol:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That is not right.  Please review linear pair angles.
+      - hide linesandangles:
+    - Supplementary and adjacent:
+      - show deuzi: happy
+      - duezi says: Yes!  That's correct!
+      - var score: "{score} + 1"
+  - hide quiz1_5diagram1:
+  - show quiz1_5diagram2:
+  - deuzi says: What is an equation to find X?
+  - choice:
+    - 9x-1 + 5x+6 = 180:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That would be the right equation if the two angles were supplementary, but they are vertical.
+      - hide linesandangles:
+    - 9x-1 + 5x+6 = 90:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That would be the right equation if the two angles were complimentary, but they are vertical.
+      - hide linesandangles:
+    - 9x-1 = 5x+6
+      - show deuzi: happy
+      - duezi says: Yes!  That's correct!  The two angles are vertical which means they are also congruent.  So you can set their epressions to be equal in order to find x.
+      - var score: "{score} + 1"
+  - hide quiz1_5diagram2:
+  - show quiz1_5diagram3:
+  - deuzi says: What is an equation to find X?
+  - choice:
+    - 9x-1 + 5x+6 = 180:
+      - show deuzi: happy
+      - duezi says: Yes!  That's correct!  The two angles are supplementary which means their measures add to 180 degrees!
+      - var score: "{score} + 1"
+    - 9x-1 + 5x+6 = 90:
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That would be the right equation if the two angles were complimentary, but they are supplementary.
+      - hide linesandangles:
+    - 9x-1 = 5x+6
+      - show deuzi: angry
+      - show linesandangles:
+      - deuzi says: That would be the right equation if the two angles were congruent.  (Vertical angles or angles formed by bisector.)
+      - hide linesandangles:
+  - deuzi says: Your score is {score} out of 9.
+  - if ({score==9}):
+    - show deuzi: happy
+    - deuzi says: Great!  You got them all right!
+    - scene: review
+  - if ({score>7 && score < 9}):
+    - deuzi says: Good score.  But not perfect.  Would you like to try again?
+    - choice:
+      - Yes:
+        - deuzi says: Okay.
+        - scene: quiz1_5
+      - No:
+        - deuzi says: Okay.  Maybe some other time.
+        - scene: review
+  - if({score<7}):
+    - deuzi says: You could use some improvement.  Would you like to try again?
+    - choice:
+      - Yes:
+        - deuzi says: Okay.
+        - scene: quiz1_5
+      - No:
+        - deuzi says: Okay.  Maybe some other time.
+        - scene: review
+
+- 1.7 Midpoint, Endpoint and Length:
+  - show deuzi: angry
+  - deuzi says: Sorry.  I haven't finished prepping to go over that yet.
+- 1.8 Perimeter and Areas:
+  - show deuzi: angry
+  - deuzi says: Sorry.  I haven't finished prepping to go over that yet.

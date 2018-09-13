@@ -8,6 +8,15 @@ backgrounds:
   street_morning: assets/backgrounds/school_front_morning.jpg
   street_afternoon: assets/backgrounds/school_front_afternoon.jpg
   store: assets/backgrounds/store.jpg
+  classroom: assets/backgrounds/empty_classroom_scaled.jpg
+  library: assets/backgrounds/manor_library.jpg
+  lab: assets/backgrounds/Science_lab.jpg
+  linesandangles: assets/geometry/lineandanglerecognition.jpg
+  navigationcompass: assets/geometry/navcompass.jpg
+  protractor: assets/geometry/protractor.jpg
+  supplementaryangles: assets/geometry/supplementaryangles.jpg
+  anglebisector: assets/geometry/anglebisector.jpg
+  verticalangles: assets/geometry/verticalangles.jpg
 characters:
   deuzi:
     displayName: Deuzilene

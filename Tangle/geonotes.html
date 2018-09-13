@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <base target="_top">
+        <title>Tangle: a JavaScript library for reactive documents</title>
+    
+        <!-- stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="Fonts/Insolent/stylesheet.css" type="text/css">
+        <link rel="stylesheet" href="Fonts/BorisBlackBloxx/stylesheet.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    
+        <!-- Tangle -->
+        <script type="text/javascript" src="Tangle.js"></script>
+    
+        <!-- TangleKit -->
+        <link rel="stylesheet" href="TangleKit/TangleKit.css" type="text/css">
+        <script type="text/javascript" src="TangleKit/mootools.js"></script>
+        <script type="text/javascript" src="TangleKit/sprintf.js"></script>
+        <script type="text/javascript" src="TangleKit/BVTouchable.js"></script>
+        <script type="text/javascript" src="TangleKit/TangleKit.js"></script>
+    
+        <!-- examples -->
+        <script type="text/javascript" src="Examples/CookieExample.js"></script>
+        <script type="text/javascript" src="Examples/DistanceFormula.js"></script>
+        <script type="text/javascript" src="Examples/ParkExample.js"></script>
+        <script type="text/javascript" src="Examples/FilterExample.js"></script>
+        <script type="text/javascript" src="Examples/FilterExampleDSP.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        
+    </head>
+    <body>
+        <div id="distanceExample" class="example">
+            <div class="exampleCenter">
+                The distance between points A (<span class="TKAdjustableNumber" data-min="-1000" data-var="Ax"></span>, <span data-min="-1000" class="TKAdjustableNumber" data-var="Ay"></span>) 
+                and B (<span data-min="-1000" class="TKAdjustableNumber" data-min="-1000" data-var="Bx"></span>, <span data-min="-1000" class="TKAdjustableNumber" data-var="By"></span>) <br>
+                is given by the distance formula sqrt((<span  data-var="Ax"></span> - <span data-var="Bx"></span>)^2 + (<span data-var="Ay"></span> - <span data-var="By"></span>)^2) <br>
+                Which equals <span data-var="Distance"></span>
+            </div>
+            <div class="exampleCenter">
+                The midpoint is ((<span data-var="Ax"></span>+<span data-var="Bx"></span>)/2,(<span data-var="Ay"></span>+<span data-var="By"></span>)/2)<br>
+                Which equals: (<span data-var="Mx"></span>, <span data-var="My"></span>)
+            </div>
+        </div>
+    </body>
+</html>
